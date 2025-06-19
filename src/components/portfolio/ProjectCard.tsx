@@ -46,10 +46,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       },
     },
   };
-
   // Solo animar cuando el proyecto esté activo
   return (
-    <div className="w-full max-w-5xl mx-auto px-6 py-8 flex flex-col md:flex-row gap-8 h-full">
+    <div className="w-full max-w-5xl mx-auto px-6 py-8 flex flex-col md:flex-row gap-8 h-full min-h-[600px]">
       {/* Columna izquierda - Información del proyecto */}
       <motion.div
         className="w-full md:w-1/2 space-y-6"

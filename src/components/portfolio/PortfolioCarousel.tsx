@@ -10,14 +10,15 @@ import IframeViewer from "./IframeViewer";
 
 interface PortfolioCarouselProps {
   projects: Project[];
+  initialIndex?: number;
 }
 
 /**
  * Componente principal que organiza el carrusel de proyectos y maneja el estado
  */
-const PortfolioCarousel: React.FC<PortfolioCarouselProps> = ({ projects }) => {
+const PortfolioCarousel: React.FC<PortfolioCarouselProps> = ({ projects, initialIndex = 0 }) => {
   // Estados para manejar la interactividad
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(initialIndex);
   const [modalOpen, setModalOpen] = useState(false);
   const [activeIframeId, setActiveIframeId] = useState<string | null>(null);
   
@@ -51,12 +52,10 @@ const PortfolioCarousel: React.FC<PortfolioCarouselProps> = ({ projects }) => {
     setActiveIframeId((prev) => 
       prev === currentProject.id ? null : currentProject.id
     );
-  }, [currentProject.id]);
-
-  return (
-    <div className="w-full max-w-7xl mx-auto">
+  }, [currentProject.id]);  return (
+    <div className="w-full max-w-7xl mx-auto h-full flex flex-col" suppressHydrationWarning>
       {/* Container con overflow oculto para el carrusel */}
-      <div className="relative w-full overflow-hidden">        {/* Pista del carrusel */}
+      <div className="relative w-full overflow-hidden flex-1" suppressHydrationWarning>        {/* Pista del carrusel */}
         <motion.div
           className="flex w-full"
           animate={{ x: `-${currentIndex * 100}%` }}
@@ -65,10 +64,10 @@ const PortfolioCarousel: React.FC<PortfolioCarouselProps> = ({ projects }) => {
             ease: "easeInOut",
             duration: 0.5
           }}
-        >
-          {/* Tarjetas de proyectos */}
+          suppressHydrationWarning
+        >          {/* Tarjetas de proyectos */}
           {projects.map((project, index) => (
-            <div key={project.id} className="w-full flex-shrink-0">
+            <div key={project.id} className="w-full flex-shrink-0" suppressHydrationWarning>
               <ProjectCard
                 project={project}
                 isActive={currentIndex === index}
