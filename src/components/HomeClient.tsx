@@ -9,53 +9,56 @@ export default function HomeClient() {
   const [isViewingProject, setIsViewingProject] = useState(false);
   return (
     <div
-      className="flex flex-col h-screen bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100"
+      className="min-h-screen bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100"
       suppressHydrationWarning
     >
       {/* Encabezado */}
-      <header className="w-full max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+      <header className="w-full max-w-[90rem] mx-auto py-6 px-6 sm:px-8 lg:px-12 flex justify-between items-center border-b dark:border-gray-800">
         <div suppressHydrationWarning>
           <Image
             src="/LogoGc.svg"
             alt="Logo"
-            width={160}
-            height={50}
+            width={180}
+            height={60}
             className="dark:invert"
           />
         </div>
         <nav>
           <ul className="flex space-x-6">
-            <li className="text-sm font-medium hover:text-blue-600 transition-colors">
+            <li className="text-lg font-medium hover:text-blue-600 transition-colors">
               <a href="#portfolio">Gestores y Cocreadores de Soluciones Digitales.</a>
             </li>
           </ul>
-        </nav>{" "}
+        </nav>
       </header>
-      {/* Sección principal de portafolio */}{" "}
+
+      {/* Sección principal de portafolio */}
       <section
         id="portfolio"
-        className="w-full py-8 flex-1 bg-gray-50 dark:bg-gray-900 flex flex-col"
+        className="w-full py-12 bg-gray-50 dark:bg-gray-900"
       >
         <div
-          className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col flex-1"
+          className="max-w-[90rem] mx-auto px-6 sm:px-8 lg:px-12"
           suppressHydrationWarning
         >
           {/* Cabecera del portafolio - Solo se muestra cuando no se está viendo un proyecto específico */}
           {!isViewingProject && (
-            <div className="text-center mb-16" suppressHydrationWarning>
-              <span className="inline-block px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm font-medium mb-3">
+            <div className="text-center mb-20" suppressHydrationWarning>
+              <span className="inline-block px-4 py-2 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-base font-medium mb-4">
                 PORTAFOLIO
               </span>
-              <h2 className="text-3xl sm:text-4xl font-bold">
+              <h2 className="text-4xl sm:text-5xl font-bold mb-6">
                 Nuestros Proyectos
               </h2>
-              <p className="mt-4 text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+              <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
                 Explora nuestra colección de proyectos y descubre cómo
                 transformamos desafíos en soluciones efectivas.
               </p>
             </div>
           )}
-          <ProjectGrid projects={projects} onViewChange={setIsViewingProject} />
+          <div className="w-full">
+            <ProjectGrid projects={projects} onViewChange={setIsViewingProject} />
+          </div>
         </div>
       </section>
     </div>
