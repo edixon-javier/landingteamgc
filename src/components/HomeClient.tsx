@@ -13,7 +13,7 @@ export default function HomeClient() {
       suppressHydrationWarning
     >
       {/* Encabezado */}
-      <header className="w-full max-w-[90rem] mx-auto py-6 px-6 sm:px-8 lg:px-12 flex justify-between items-center border-b dark:border-gray-800">
+      <header className="w-full max-w-[90rem] mx-auto py-3 px-6 sm:px-8 lg:px-12 flex justify-between items-center border-b dark:border-gray-800">
         <div suppressHydrationWarning>
           <Image
             src="/LogoGc.svg"

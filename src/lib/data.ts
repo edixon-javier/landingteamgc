@@ -188,12 +188,12 @@ export const projects: Project[] = [
     ],
   },
   {
-    id: "rg7_ruleta",
-    title: "Ruleta Frontend",
+    id: "La Oleada Roja Legrand",
+    title: "Legrand Oleada Roja",
     challenge:
-      "Los sorteos manuales carecen de transparencia y seguimiento. La experiencia es lenta y difícil de integrar en plataformas digitales, reduciendo la confianza del usuario.",
+      "La gestión manual y descentralizada de las campañas de branding y distribución de material POP (Punto de Venta) en múltiples almacenes genera ineficiencias significativas. Esto incluye la dificultad para rastrear la ubicación y el tipo de material instalado, evaluar el impacto de las campañas por zona o por asesor, y medir la oportunidad de futuras instalaciones. La falta de una visión consolidada impide la toma de decisiones estratégicas y optimiza la asignación de recursos en la red de distribución.",
     solution:
-      "Ruleta Frontend digitaliza sorteos con una interfaz interactiva, resultados en tiempo real y registro de participantes. Mejora la transparencia, la participación y facilita la integración en apps.",
+      "La plataforma 'Legrand Oleada Roja' centraliza y digitaliza la gestión del branding y la distribución de material POP. Permite registrar y georreferenciar almacenes, asignar asesores para las instalaciones, y llevar un control detallado de los productos (cenefas, rompetráficos, exhibidores, stickers, tapetes mostrador) entregados e instalados. Ofrece paneles de control con métricas clave como la cantidad de almacenes impactados, piezas instaladas por almacén, y la oportunidad de instalación en futuras visitas. Esto mejora la transparencia, optimiza la logística, permite una evaluación precisa del rendimiento por zona y asesor, y facilita la identificación de oportunidades para maximizar la visibilidad de la marca Legrand.",
     tech: [
       "React",
       "JavaScript",
@@ -207,8 +207,17 @@ export const projects: Project[] = [
       "Webpack",
       "Babel",
     ],
-    liveUrl: "https://ruleta-gc.equipogctrade.com/",
+    liveUrl: "https://front-legrand.equipogctrade.com/",
     repoUrl: "",
-    galleryImages: [],
+    galleryImages: [
+      "/projects/legrand/Screenshot 2025-07-08 144638.png",
+      "/projects/legrand/Screenshot 2025-07-08 144651.png",
+      "/projects/legrand/Screenshot 2025-07-08 144705.png",
+      "/projects/legrand/Screenshot 2025-07-08 144824.png",
+      "/projects/legrand/Screenshot 2025-07-08 144848.png",
+      "/projects/legrand/Screenshot 2025-07-08 144857.png",
+      "/projects/legrand/Screenshot 2025-07-08 144911.png",
+      "/projects/legrand/Screenshot 2025-07-08 144923.png",
+    ],
   },
 ];
