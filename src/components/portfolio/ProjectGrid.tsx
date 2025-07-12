@@ -124,11 +124,11 @@ const ProjectGrid: React.FC<ProjectGridProps> = ({ projects, onViewChange }) => 
               </div>            </div>
 
             {/* Efecto hover */}
-            <div className="absolute inset-0 z-30 opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center bg-black/40" suppressHydrationWarning>
+            {/* <div className="absolute inset-0 z-30 opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center bg-black/40" suppressHydrationWarning>
               <span className="px-4 py-2 bg-white text-black rounded-md font-medium">
                 Ver detalles
               </span>
-            </div>
+            </div> */}
 
             {/* Box shadow */}
             <div className="absolute inset-0 shadow-lg shadow-blue-500/10 rounded-xl" suppressHydrationWarning></div>
