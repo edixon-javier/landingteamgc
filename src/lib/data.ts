@@ -7,7 +7,7 @@ import { getImagePath } from "./utils";
 export const projects: Project[] = [
   {
     id: "suvey_cibersegurity",
-    title: "Sistema de IA para clasificación de documentos de ciberseguridad",
+    title: "AI System for Cybersecurity Document Classification",
     challenge:
       "Cybersecurity organizations struggle with large volumes of unstructured documents. Manual search is slow, error-prone, and hinders quick decision-making during incidents.",
     solution:

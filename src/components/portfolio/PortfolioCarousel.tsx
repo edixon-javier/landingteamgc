@@ -53,7 +53,7 @@ const PortfolioCarousel: React.FC<PortfolioCarouselProps> = ({ projects, initial
       prev === currentProject.id ? null : currentProject.id
     );
   }, [currentProject.id]);  return (
-    <div className="w-full max-w-7xl mx-auto h-full flex flex-col" suppressHydrationWarning>
+    <div className="w-full  mx-auto h-full flex flex-col" suppressHydrationWarning>
       {/* Container con overflow oculto para el carrusel */}
       <div className="relative w-full overflow-hidden flex-1" suppressHydrationWarning>        {/* Pista del carrusel */}
         <motion.div

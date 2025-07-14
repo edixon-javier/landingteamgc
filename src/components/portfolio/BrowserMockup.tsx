@@ -44,7 +44,7 @@ const BrowserMockup: React.FC<BrowserMockupProps> = ({ imageUrl, onClick, alt = 
         />
           {/* Overlay con efecto hover */}
         <motion.div 
-          className="absolute inset-0 bg-black bg-opacity-0 flex items-center justify-center"
+          className="absolute   flex items-center justify-center"
           whileHover={{ backgroundColor: "rgba(0, 0, 0, 0.3)" }}
           transition={{
             duration: 0.3,
@@ -59,7 +59,7 @@ const BrowserMockup: React.FC<BrowserMockupProps> = ({ imageUrl, onClick, alt = 
               scale: { duration: 0.2 }
             }}
           >
-            Ver galería
+            View Gallery
           </motion.span>
         </motion.div>
       </div>

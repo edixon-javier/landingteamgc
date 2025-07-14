@@ -40,25 +40,21 @@ export default function HomeClient() {
       {/* Main portfolio section */}
       <section
         id="portfolio"
-        className="w-full py-12 bg-gray-50 dark:bg-gray-900"
+        className="w-full py-12 pt-32 bg-gray-50 dark:bg-gray-900"
       >
         <div
           className="max-w-[90rem] mx-auto px-6 sm:px-8 lg:px-12"
           suppressHydrationWarning
         >
           {/* Portfolio header - Only shown when not viewing a specific project */}
-          {!isViewingProject && (
+          {isViewingProject ? (
+            <div className="flex justify-start mb-8">
+            </div>
+          ) : (
             <div className="text-center mb-20" suppressHydrationWarning>
-              <span className="inline-block px-4 py-2 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-base font-medium mb-4">
-                PORTFOLIO
-              </span>
-              <h2 className="text-4xl sm:text-5xl font-bold mb-6">
-                Our Projects
+              <h2 className="text-4xl sm:text-4xl font-bold mb-6">
+                Smart Solutions to Real Challenges
               </h2>
-              <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-                Explore our collection of projects and discover how we turn
-                challenges into effective solutions.
-              </p>
             </div>
           )}
           <div className="w-full">

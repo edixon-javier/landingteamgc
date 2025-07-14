@@ -65,21 +65,21 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 
         <motion.div variants={itemVariants}>
           <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-2">
-            El desafío
+            The Challenge
           </h3>
           <p className="text-gray-600 dark:text-gray-400">{project.challenge}</p>
         </motion.div>
 
         <motion.div variants={itemVariants}>
           <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-2">
-            Nuestra solución
+            Our Solution
           </h3>
           <p className="text-gray-600 dark:text-gray-400">{project.solution}</p>
         </motion.div>
 
         <motion.div variants={itemVariants}>
           <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-2">
-            Tecnologías utilizadas
+            Technologies Used
           </h3>
           <div className="flex flex-wrap gap-2">
             {project.tech.map((tech) => (
@@ -101,7 +101,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             onClick={onShowLiveDemo}
             className="inline-flex items-center justify-center px-5 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors gap-2"
           >
-            <ExternalLink size={18} /> Ver Proyecto en Vivo
+            <ExternalLink size={18} /> Live Demo
           </button>
         </motion.div>
       </motion.div>      {/* Columna derecha - Browser Mockup */}
