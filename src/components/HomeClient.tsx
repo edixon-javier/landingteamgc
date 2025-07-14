@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import ProjectGrid from "@/components/portfolio/ProjectGrid";
 import { projects } from "@/lib/data";
+import { getImagePath } from "@/lib/utils";
 
 export default function HomeClient() {
   const [isViewingProject, setIsViewingProject] = useState(false);
@@ -13,23 +14,27 @@ export default function HomeClient() {
       suppressHydrationWarning
     >
       {/* Header */}
-      <header className="w-full max-w-[90rem] mx-auto py-3 px-6 sm:px-8 lg:px-12 flex justify-between items-center border-b dark:border-gray-800">
-        <div suppressHydrationWarning>
-          <Image
-            src="/LogoGc.svg"
-            alt="Logo"
-            width={180}
-            height={60}
-            className="dark:invert"
-          />
+      <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-gray-950/80 backdrop-blur-sm">
+        <div className="w-full max-w-[90rem] mx-auto py-6 px-6 sm:px-8 lg:px-12 flex justify-between items-center">
+          <div suppressHydrationWarning>
+            <Image
+              src={getImagePath("/LogoGc.svg")}
+              alt="Logo"
+              width={180}
+              height={60}
+              className="dark:invert"
+            />
+          </div>
+          <nav>
+            <ul className="flex space-x-6">
+              <li className="text-lg font-medium hover:text-blue-600 transition-colors">
+                <a href="#portfolio">
+                  Creators and Drivers of Digital Solutions.
+                </a>
+              </li>
+            </ul>
+          </nav>
         </div>
-        <nav>
-          <ul className="flex space-x-6">
-            <li className="text-lg font-medium hover:text-blue-600 transition-colors">
-              <a href="#portfolio">Creators and Drivers of Digital Solutions.</a>
-            </li>
-          </ul>
-        </nav>
       </header>
 
       {/* Main portfolio section */}
@@ -51,7 +56,8 @@ export default function HomeClient() {
                 Our Projects
               </h2>
               <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-                Explore our collection of projects and discover how we turn challenges into effective solutions.
+                Explore our collection of projects and discover how we turn
+                challenges into effective solutions.
               </p>
             </div>
           )}

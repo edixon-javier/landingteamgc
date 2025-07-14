@@ -1,7 +1,8 @@
 import { Project } from "../types";
+import { getImagePath } from "./utils";
 
 /**
- * Project data shown in the portfolio
+ * Datos de los proyectos que se muestran en el portafolio
  */
 export const projects: Project[] = [
   {
@@ -32,12 +33,12 @@ export const projects: Project[] = [
     liveUrl: "https://app.rdishield.com/",
     repoUrl: "",
     galleryImages: [
-      "/projects/suvey_cibersegurity/Screenshot 2025-07-08 093506.png",
-      "/projects/suvey_cibersegurity/Screenshot 2025-07-08 093523.png",
-      "/projects/suvey_cibersegurity/Screenshot 2025-07-08 093603.png",
-      "/projects/suvey_cibersegurity/Screenshot 2025-07-08 093911.png",
-      "/projects/suvey_cibersegurity/Screenshot 2025-07-08 094156.png",
-      "/projects/suvey_cibersegurity/Screenshot 2025-07-08 094256.png",
+      getImagePath("/projects/suvey_cibersegurity/Screenshot 2025-07-08 093506.png"),
+      getImagePath("/projects/suvey_cibersegurity/Screenshot 2025-07-08 093523.png"),
+      getImagePath("/projects/suvey_cibersegurity/Screenshot 2025-07-08 093603.png"),
+      getImagePath("/projects/suvey_cibersegurity/Screenshot 2025-07-08 093911.png"),
+      getImagePath("/projects/suvey_cibersegurity/Screenshot 2025-07-08 094156.png"),
+      getImagePath("/projects/suvey_cibersegurity/Screenshot 2025-07-08 094256.png"),
     ],
   },
   {
@@ -68,10 +69,10 @@ export const projects: Project[] = [
     liveUrl: "https://appdulton.com",
     repoUrl: "https://github.com/rg7services/n8n-dulton-consultans",
     galleryImages: [
-      "/projects/Dultos Consultans/Screenshot 2025-07-08 090621.png",
-      "/projects/Dultos Consultans/Screenshot 2025-07-08 090650.png",
-      "/projects/Dultos Consultans/Screenshot 2025-07-08 090832.png",
-      "/projects/Dultos Consultans/Screenshot 2025-07-08 091156.png",
+      getImagePath("/projects/Dultos Consultans/Screenshot 2025-07-08 090621.png"),
+      getImagePath("/projects/Dultos Consultans/Screenshot 2025-07-08 090650.png"),
+      getImagePath("/projects/Dultos Consultans/Screenshot 2025-07-08 090832.png"),
+      getImagePath("/projects/Dultos Consultans/Screenshot 2025-07-08 091156.png"),
     ],
   },
   {
@@ -103,11 +104,11 @@ export const projects: Project[] = [
     liveUrl: "https://especialdinner.netlify.app/",
     repoUrl: "",
     galleryImages: [
-      "/projects/professionalRestaurant/Screenshot 2025-07-08 101858.png",
-      "/projects/professionalRestaurant/Screenshot 2025-07-08 101929.png",
-      "/projects/professionalRestaurant/Screenshot 2025-07-08 102023.png",
-      "/projects/professionalRestaurant/Screenshot 2025-07-08 102047.png",
-      "/projects/professionalRestaurant/Screenshot 2025-07-08 102303.png",
+      getImagePath("/projects/professionalRestaurant/Screenshot 2025-07-08 101858.png"),
+      getImagePath("/projects/professionalRestaurant/Screenshot 2025-07-08 101929.png"),
+      getImagePath("/projects/professionalRestaurant/Screenshot 2025-07-08 102023.png"),
+      getImagePath("/projects/professionalRestaurant/Screenshot 2025-07-08 102047.png"),
+      getImagePath("/projects/professionalRestaurant/Screenshot 2025-07-08 102303.png"),
     ],
   },
   {
@@ -136,14 +137,14 @@ export const projects: Project[] = [
     liveUrl: "https://formularios.equipogctrade.com/",
     repoUrl: "",
     galleryImages: [
-      "/projects/QrEvent/Screenshot 2025-07-08 100400.png",
-      "/projects/QrEvent/Screenshot 2025-07-08 100421.png",
-      "/projects/QrEvent/Screenshot 2025-07-08 100441.png",
-      "/projects/QrEvent/Screenshot 2025-07-08 100858.png",
-      "/projects/QrEvent/Screenshot 2025-07-08 100911.png",
-      "/projects/QrEvent/Screenshot 2025-07-08 100923.png",
-      "/projects/QrEvent/Screenshot 2025-07-08 100934.png",
-      "/projects/QrEvent/Screenshot 2025-07-08 105905.png",
+      getImagePath("/projects/QrEvent/Screenshot 2025-07-08 100400.png"),
+      getImagePath("/projects/QrEvent/Screenshot 2025-07-08 100421.png"),
+      getImagePath("/projects/QrEvent/Screenshot 2025-07-08 100441.png"),
+      getImagePath("/projects/QrEvent/Screenshot 2025-07-08 100858.png"),
+      getImagePath("/projects/QrEvent/Screenshot 2025-07-08 100911.png"),
+      getImagePath("/projects/QrEvent/Screenshot 2025-07-08 100923.png"),
+      getImagePath("/projects/QrEvent/Screenshot 2025-07-08 100934.png"),
+      getImagePath("/projects/QrEvent/Screenshot 2025-07-08 105905.png"),
     ],
   },
   {
@@ -179,12 +180,12 @@ export const projects: Project[] = [
     liveUrl: "https://front-prh.equipogctrade.com/",
     repoUrl: "",
     galleryImages: [
-      "/projects/rg7_prh/Screenshot 2025-07-08 115104.png",
-      "/projects/rg7_prh/Screenshot 2025-07-08 115125.png",
-      "/projects/rg7_prh/Screenshot 2025-07-08 115142.png",
-      "/projects/rg7_prh/Screenshot 2025-07-08 115209.png",
-      "/projects/rg7_prh/Screenshot 2025-07-08 115220.png",
-      "/projects/rg7_prh/Screenshot 2025-07-08 115232.png",
+      getImagePath("/projects/rg7_prh/Screenshot 2025-07-08 115104.png"),
+      getImagePath("/projects/rg7_prh/Screenshot 2025-07-08 115125.png"),
+      getImagePath("/projects/rg7_prh/Screenshot 2025-07-08 115142.png"),
+      getImagePath("/projects/rg7_prh/Screenshot 2025-07-08 115209.png"),
+      getImagePath("/projects/rg7_prh/Screenshot 2025-07-08 115220.png"),
+      getImagePath("/projects/rg7_prh/Screenshot 2025-07-08 115232.png"),
     ],
   },
   {
@@ -210,14 +211,14 @@ export const projects: Project[] = [
     liveUrl: "https://front-legrand.equipogctrade.com/",
     repoUrl: "",
     galleryImages: [
-      "/projects/legrand/Screenshot 2025-07-08 144638.png",
-      "/projects/legrand/Screenshot 2025-07-08 144651.png",
-      "/projects/legrand/Screenshot 2025-07-08 144705.png",
-      "/projects/legrand/Screenshot 2025-07-08 144824.png",
-      "/projects/legrand/Screenshot 2025-07-08 144848.png",
-      "/projects/legrand/Screenshot 2025-07-08 144857.png",
-      "/projects/legrand/Screenshot 2025-07-08 144911.png",
-      "/projects/legrand/Screenshot 2025-07-08 144923.png",
+      getImagePath("/projects/legrand/Screenshot 2025-07-08 144638.png"),
+      getImagePath("/projects/legrand/Screenshot 2025-07-08 144651.png"),
+      getImagePath("/projects/legrand/Screenshot 2025-07-08 144705.png"),
+      getImagePath("/projects/legrand/Screenshot 2025-07-08 144824.png"),
+      getImagePath("/projects/legrand/Screenshot 2025-07-08 144848.png"),
+      getImagePath("/projects/legrand/Screenshot 2025-07-08 144857.png"),
+      getImagePath("/projects/legrand/Screenshot 2025-07-08 144911.png"),
+      getImagePath("/projects/legrand/Screenshot 2025-07-08 144923.png"),
     ],
   },
 ];

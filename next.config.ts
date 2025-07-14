@@ -5,13 +5,9 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
-  ...(process.env.NODE_ENV === 'production' ? {
-    basePath: '/landingteamgc',
-    assetPrefix: '/landingteamgc',
-  } : {
-    basePath: '',
-    assetPrefix: '',
-  }),
+  basePath: process.env.NODE_ENV === 'production' ? '/landingteamgc' : '',
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/landingteamgc' : '',
+  trailingSlash: true,
 };
 
 export default nextConfig;
