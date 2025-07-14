@@ -25,19 +25,17 @@ const CarouselControls: React.FC<CarouselControlsProps> = ({
     <div className="flex flex-col items-center gap-6 my-8">
       {/* Flechas de navegación */}
       <div className="flex items-center justify-center gap-6">
-        {" "}
         <motion.button
           whileTap={{ scale: 0.95 }}
           whileHover={{
             scale: 1.1,
-            backgroundColor: "#364153",
           }}
           transition={{
             duration: 0.2,
             ease: "easeOut",
           }}
           onClick={onPrev}
-          className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors"
           aria-label="Proyecto anterior"
         >
           <ChevronLeft size={24} />
@@ -64,15 +62,13 @@ const CarouselControls: React.FC<CarouselControlsProps> = ({
           whileTap={{ scale: 0.95 }}
           whileHover={{
             scale: 1.1,
-            backgroundColor: "#364153",
-            dark: { backgroundColor: "#374151" },
           }}
           transition={{
             duration: 0.2,
             ease: "easeOut",
           }}
           onClick={onNext}
-          className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors"
           aria-label="Proyecto siguiente"
         >
           <ChevronRight size={24} />
