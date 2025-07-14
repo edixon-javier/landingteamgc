@@ -27,18 +27,13 @@ const CarouselControls: React.FC<CarouselControlsProps> = ({
       <div className="flex items-center justify-center gap-6">
         <motion.button
           whileTap={{ scale: 0.95 }}
-          whileHover={{
-            scale: 1.1,
-          }}
-          transition={{
-            duration: 0.2,
-            ease: "easeOut",
-          }}
+          whileHover={{ scale: 1.1 }}
+          transition={{ duration: 0.2, ease: "easeOut" }}
           onClick={onPrev}
-          className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors"
+          className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors"
           aria-label="Proyecto anterior"
         >
-          <ChevronLeft size={24} />
+          <ChevronLeft size={24} className="text-gray-700" />
         </motion.button>
         {/* Indicadores de diapositivas */}
         <div className="flex items-center justify-center gap-3">
@@ -60,18 +55,13 @@ const CarouselControls: React.FC<CarouselControlsProps> = ({
         </div>
         <motion.button
           whileTap={{ scale: 0.95 }}
-          whileHover={{
-            scale: 1.1,
-          }}
-          transition={{
-            duration: 0.2,
-            ease: "easeOut",
-          }}
+          whileHover={{ scale: 1.1 }}
+          transition={{ duration: 0.2, ease: "easeOut" }}
           onClick={onNext}
-          className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors"
+          className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors"
           aria-label="Proyecto siguiente"
         >
-          <ChevronRight size={24} />
+          <ChevronRight size={24} className="text-gray-700" />
         </motion.button>
       </div>
     </div>
