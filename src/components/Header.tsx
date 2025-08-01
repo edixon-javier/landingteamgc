@@ -1,0 +1,107 @@
+"use client";
+
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { Menu, X } from 'lucide-react';
+
+const navLinks = [
+  { name: 'Inicio', href: '/' },
+  { name: 'Metodología', href: '/metodologia' },
+  { name: 'Soluciones', href: '/soluciones' },
+  { name: 'Casos de Éxito', href: '/casos-de-exito' },
+  { name: 'Contacto', href: '/contacto' }
+];
+
+export function Header() {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  return (
+    <header
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+        isScrolled? 'bg-white/90 shadow-md backdrop-blur-sm' : 'bg-transparent'
+      }`}
+    >
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-20">
+          {/* Logo */}
+          <Link href="/" className="flex-shrink-0">
+            <motion.img
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+              className={`h-10 w-auto transition-all duration-300 ${isScrolled? 'filter-none' : 'brightness-0 invert'}`}
+              src="/LogoGc.svg"
+              alt="Equipo GC Logo"
+            />
+          </Link>
+
+          {/* Navegación Desktop */}
+          <nav className="hidden md:flex md:space-x-8">
+            {navLinks.map((link, index) => (
+              <motion.div
+                key={link.name}
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 * index }}
+              >
+                <Link
+                  href={link.href}
+                  className={`text-sm font-semibold transition-colors duration-300 ${
+                    isScrolled? 'text-gray-800 hover:text-blue-600' : 'text-white hover:text-white/80'
+                  }`}
+                >
+                  {link.name}
+                </Link>
+              </motion.div>
+            ))}
+          </nav>
+
+          {/* Botón Menú Móvil */}
+          <div className="md:hidden">
+            <button onClick={() => setIsMenuOpen(!isMenuOpen)}>
+              <Menu className={`h-6 w-6 ${isScrolled? 'text-gray-800' : 'text-white'}`} />
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Panel Menú Móvil */}
+      {isMenuOpen && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="md:hidden absolute top-0 left-0 w-full bg-white p-4"
+        >
+          <div className="flex justify-between items-center mb-6">
+            <img className="h-10 w-auto" src="/LogoGc.svg" alt="Equipo GC Logo" />
+            <button onClick={() => setIsMenuOpen(false)}>
+              <X className="h-6 w-6 text-gray-800" />
+            </button>
+          </div>
+          <nav className="flex flex-col space-y-4">
+            {navLinks.map((link) => (
+              <Link
+                key={link.name}
+                href={link.href}
+                className="text-gray-800 hover:text-blue-600 font-semibold"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {link.name}
+              </Link>
+            ))}
+          </nav>
+        </motion.div>
+      )}
+    </header>
+  );
+}
