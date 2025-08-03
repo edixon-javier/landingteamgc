@@ -64,7 +64,8 @@ export const HeroSection = () => {
             size="lg"
             variant="outline"
             className="text-white border-white hover:bg-white hover:text-black transition-colors duration-300"
-          >
+       
+       >
             <span>Ver Casos de Éxito</span>
             <MoveRight className="ml-2 h-5 w-5" />
           </Button>
