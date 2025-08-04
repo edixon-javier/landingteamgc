@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 
@@ -35,14 +36,19 @@ export function Header() {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link href="/" className="flex-shrink-0">
-            <motion.img
+            <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
-              className={`h-10 w-auto transition-all duration-300 ${isScrolled? 'filter-none' : 'brightness-0 invert'}`}
-              src="/LogoGc.svg"
-              alt="Equipo GC Logo"
-            />
+            >
+              <Image
+                className={`h-10 w-auto transition-all duration-300 ${isScrolled? 'filter-none' : 'brightness-0 invert'}`}
+                src="/LogoGc.svg"
+                alt="Equipo GC Logo"
+                width={120}
+                height={40}
+              />
+            </motion.div>
           </Link>
 
           {/* Navegación Desktop */}
@@ -83,7 +89,13 @@ export function Header() {
           className="md:hidden absolute top-0 left-0 w-full bg-white p-4"
         >
           <div className="flex justify-between items-center mb-6">
-            <img className="h-10 w-auto" src="/LogoGc.svg" alt="Equipo GC Logo" />
+            <Image 
+              src="/LogoGc.svg" 
+              alt="Equipo GC Logo" 
+              width={120} 
+              height={40} 
+              className="h-10 w-auto" 
+            />
             <button onClick={() => setIsMenuOpen(false)}>
               <X className="h-6 w-6 text-gray-800" />
             </button>

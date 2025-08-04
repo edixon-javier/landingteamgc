@@ -5,14 +5,32 @@ import Link from 'next/link';
 import { Header } from '@/components/Header';
 import { caseStudiesData } from '@/lib/content';
 
-type Props = {
-  params: {
+export async function generateStaticParams() {
+  return caseStudiesData.map((project) => ({
+    slug: project.slug,
+  }));
+}
+
+// Usando la definición correcta de PageProps según Next.js 15
+type PageProps = {
+  params?: Promise<{
     slug: string;
-  };
+  }>;
+  searchParams?: Promise<Record<string, string | string[] | undefined>>;
 };
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const project = caseStudiesData.find((project) => project.slug === params.slug);
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  if (!params) {
+    return {
+      title: "Proyecto no encontrado",
+    };
+  }
+  
+  // Resolver la promesa de params
+  const resolvedParams = await params;
+  const slug = resolvedParams.slug;
+  
+  const project = caseStudiesData.find((project) => project.slug === slug);
   
   if (!project) {
     return {
@@ -26,8 +44,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function CaseStudyPage({ params }: Props) {
-  const project = caseStudiesData.find((project) => project.slug === params.slug);
+export default async function CaseStudyPage({ params }: PageProps) {
+  if (!params) {
+    notFound();
+  }
+  
+  // Resolver la promesa de params
+  const resolvedParams = await params;
+  const slug = resolvedParams.slug;
+  
+  const project = caseStudiesData.find((project) => project.slug === slug);
   
   if (!project) {
     notFound();

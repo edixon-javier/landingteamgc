@@ -5,33 +5,45 @@ import Link from 'next/link';
 import { Header } from '@/components/Header';
 import { projects } from '@/lib/data';
 
+export async function generateStaticParams() {
+  return projects.map((project) => ({
+    id: project.id,
+  }));
+}
+
 type Props = {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 };
 
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const project = projects.find((project) => project.id === params.id);
-  
+  // ✅ Resolver la promesa de params
+  const { id } = await params;
+  const project = projects.find((project) => project.id === id);
+
   if (!project) {
     return {
       title: "Proyecto no encontrado",
     };
   }
-  
+
   return {
     title: `${project.title} | Equipo GC`,
     description: `${project.challenge.substring(0, 150)}...`,
   };
 }
 
-export default function ProjectDetailPage({ params }: Props) {
-  const project = projects.find((project) => project.id === params.id);
-  
+export default async function ProjectDetailPage({ params }: Props) {
+  // ✅ Resolver la promesa de params
+  const { id } = await params;
+  const project = projects.find((project) => project.id === id);
+
   if (!project) {
     notFound();
   }
+
 
   return (
     <div className="min-h-screen bg-white">

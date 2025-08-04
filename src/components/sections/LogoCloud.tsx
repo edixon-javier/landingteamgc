@@ -8,8 +8,6 @@ import { clientLogos } from '@/lib/content';
 interface LogoCloudProps {
   speed?: number; // Velocidad del slider en segundos (duración de la animación)
   pauseOnHover?: boolean; // Si debe pausar cuando el mouse pasa sobre el slider
-  showArrows?: boolean; // Mostrar flechas de navegación
-  showDots?: boolean; // Mostrar puntos de navegación
 }
 
 const sectionVariants = {
@@ -65,11 +63,9 @@ Logo.displayName = 'Logo'; // Para depuración en React DevTools
 
 export function LogoCloud({ 
   speed = 20, 
-  pauseOnHover = true,
-  showArrows = true,
-  showDots = true
+  pauseOnHover = true
 }: LogoCloudProps = {}) {
-  const [activeSlide, setActiveSlide] = useState(0);
+  const [activeSlide] = useState(0);
   const [autoplay, setAutoplay] = useState(true);
   const [visibleLogos, setVisibleLogos] = useState(5); // Default para desktop
   const [duplicatedLogos, setDuplicatedLogos] = useState([...clientLogos, ...clientLogos]);
