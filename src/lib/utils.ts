@@ -9,7 +9,13 @@ export function getImagePath(path: string) {
   const basePath = getBasePath();
   // Asegurarse de que la ruta comience con '/'
   const normalizedPath = path.startsWith('/') ? path : `/${path}`;
-  return `${basePath}${normalizedPath}`;
+  
+  // Convertir espacios a guiones y normalizar nombre de archivo
+  const formattedPath = normalizedPath.toLowerCase()
+    .replace(/\s+/g, '-')
+    .replace(/--/g, '-');
+    
+  return `${basePath}${formattedPath}`;
 }
 
 export function cn(...inputs: ClassValue[]) {
