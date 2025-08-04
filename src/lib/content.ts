@@ -1,4 +1,5 @@
 import { ClientLogo, Solution, MethodologyStep, CaseStudyPreview } from "@/types";
+import { getImagePath } from "./utils";
 
 export const solutionsData: Solution[] = [
   {
@@ -21,63 +22,63 @@ export const solutionsData: Solution[] = [
 export const clientLogos: ClientLogo = [
   {
     name: "Penguin Random House",
-    src: "/images/LOGO PENGUIN RANDOM HOUSE 1.png",
+    src: getImagePath("/images/logo-penguin-random-house-1.png"),
     width: 170,
     height: 70,
     yearStart: 2009
   },
   {
     name: "Philips",
-    src: "/images/LOGO PHILIPS 1.png",
+    src: getImagePath("/images/logo-philips-1.png"),
     width: 150,
     height: 60,
     yearStart: 2008
   },
   {
     name: "Corteva",
-    src: "/images/LOGO CORTEVA 1.png",
+    src: getImagePath("/images/logo-corteva-1.png"),
     width: 160,
     height: 65,
     yearStart: 2021
   },
   {
     name: "Legrand",
-    src: "/images/LOGO LEGRAND 1.png",
+    src: getImagePath("/images/logo-legrand-1.png"),
     width: 150,
     height: 60,
     yearStart: 2019
   },
   {
     name: "Astara",
-    src: "/images/astara.png",
+    src: getImagePath("/images/astara.png"),
     width: 140,
     height: 65,
     yearStart: 2018
   },
   {
     name: "La Libreria de Ana",
-    src: "/images/LOGO LA LIBRERIA DE ANA 1.png",
+    src: getImagePath("/images/logo-la-libreria-de-ana-1.png"),
     width: 160,
     height: 70,
     yearStart: 2019
   },
   {
     name: "Sin Fronteras",
-    src: "/images/LOGO SIN FRONTERAS 1.png",
+    src: getImagePath("/images/logo-sin-fronteras-1.png"),
     width: 150,
     height: 65,
     yearStart: 2022
   },
   {
     name: "Cobag",
-    src: "/images/LOGO COBAG 1.png",
+    src: getImagePath("/images/logo-cobag-1.png"),
     width: 50,
     height: 50,
     yearStart: 2018
   },
   {
     name: "Farmacol",
-    src: "/images/FARMACOL.png",
+    src: getImagePath("/images/farmacol.png"),
     width: 50,
     height: 50,
     yearStart: 2011,
@@ -85,28 +86,28 @@ export const clientLogos: ClientLogo = [
   },
   {
     name: "Menarini",
-    src: "/images/MENARINI.png",
+    src: getImagePath("/images/menarini.png"),
     width: 160,
     height: 70,
     yearStart: 2024
   },
   {
     name: "Inkas",
-    src: "/images/LOGO 14 INKAS 1.png",
+    src: getImagePath("/images/logo-14-inkas-1.png"),
     width: 140,
     height: 60,
     yearStart: 2017
   },
   {
     name: "Restaurante Nazca",
-    src: "/images/LOGO RESTAURANTE NAZCA 1.png",
+    src: getImagePath("/images/logo-restaurante-nazca-1.png"),
     width: 155,
     height: 65,
     yearStart: 2017
   },
   {
     name: "Tannic",
-    src: "/images/LOGO TANNIC 1.png",
+    src: getImagePath("/images/logo-tannic-1.png"),
     width: 145,
     height: 60,
     yearStart: 2022
@@ -146,30 +147,30 @@ export const caseStudiesData: CaseStudyPreview[] = [
     slug: "legrand-digital-transformation",
     client: "Legrand",
     title: "Transformación Digital del Proceso de Ventas",
-    imageUrl: "/projects/legrand/Screenshot 2025-07-08 144638.png"
+    imageUrl: getImagePath("/projects/legrand/screenshot-2025-07-08-144638.png")
   },
   {
     slug: "nazca-restaurant-management",
     client: "Restaurante Nazca",
     title: "Sistema de Gestión Integral para Restaurantes",
-    imageUrl: "/projects/professionalRestaurant/Screenshot 2025-07-08 101858.png"
+    imageUrl: getImagePath("/projects/professionalRestaurant/screenshot-2025-07-08-101858.png")
   },
   {
     slug: "qr-event-management",
     client: "QR Event",
     title: "Plataforma de Gestión de Eventos con Tecnología QR",
-    imageUrl: "/projects/QrEvent/Screenshot 2025-07-08 100400.png"
+    imageUrl: getImagePath("/projects/QrEvent/screenshot-2025-07-08-100400.png")
   },
   {
     slug: "prh-content-management",
     client: "Penguin Random House",
     title: "Sistema de Gestión de Contenido Editorial",
-    imageUrl: "/projects/rg7_prh/Screenshot 2025-07-08 115104.png"
+    imageUrl: getImagePath("/projects/rg7_prh/screenshot-2025-07-08-115104.png")
   },
   {
     slug: "dultos-consultans-platform",
     client: "Dultos Consultans",
     title: "Plataforma de Consultoría Empresarial",
-    imageUrl: "/projects/Dultos Consultans/Screenshot 2025-07-08 090621.png"
+    imageUrl: getImagePath("/projects/dultos-consultans/screenshot-2025-07-08-090621.png")
   }
 ];

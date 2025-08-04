@@ -8,10 +8,8 @@ export const projects: Project[] = [
   {
     id: "suvey_cibersegurity",
     title: "AI System for Cybersecurity Document Classification",
-    challenge:
-      "Cybersecurity organizations struggle with large volumes of unstructured documents. Manual search is slow, error-prone, and hinders quick decision-making during incidents.",
-    solution:
-      "RDI Document Processor automates document processing and segmentation, storing them in vector databases. Using LangChain, ChromaDB, and Pinecone, it enables fast semantic searches and reduces manual work and errors.",
+    challenge: "Cybersecurity organizations struggle with large volumes of unstructured documents. Manual search is slow, error-prone, and hinders quick decision-making during incidents.",
+    solution: "RDI Document Processor automates document processing and segmentation, storing them in vector databases. Using LangChain, ChromaDB, and Pinecone, it enables fast semantic searches and reduces manual work and errors.",
     tech: [
       "JavaScript",
       "Node.js",
@@ -33,21 +31,19 @@ export const projects: Project[] = [
     liveUrl: "https://app.rdishield.com/",
     repoUrl: "",
     galleryImages: [
-      getImagePath("/projects/suvey_cibersegurity/Screenshot 2025-07-08 093506.png"),
-      getImagePath("/projects/suvey_cibersegurity/Screenshot 2025-07-08 093523.png"),
-      getImagePath("/projects/suvey_cibersegurity/Screenshot 2025-07-08 093603.png"),
-      getImagePath("/projects/suvey_cibersegurity/Screenshot 2025-07-08 093911.png"),
-      getImagePath("/projects/suvey_cibersegurity/Screenshot 2025-07-08 094156.png"),
-      getImagePath("/projects/suvey_cibersegurity/Screenshot 2025-07-08 094256.png"),
+      getImagePath("/projects/suvey_cibersegurity/screenshot-2025-07-08-093506.png"),
+      getImagePath("/projects/suvey_cibersegurity/screenshot-2025-07-08-093523.png"),
+      getImagePath("/projects/suvey_cibersegurity/screenshot-2025-07-08-093603.png"),
+      getImagePath("/projects/suvey_cibersegurity/screenshot-2025-07-08-093911.png"),
+      getImagePath("/projects/suvey_cibersegurity/screenshot-2025-07-08-094156.png"),
+      getImagePath("/projects/suvey_cibersegurity/screenshot-2025-07-08-094256.png"),
     ],
   },
   {
     id: "n8n-dulton-consultans",
     title: "Automated Policy Renewal and Reporting System CRM",
-    challenge:
-      "Insurance companies manage policies, clients, and renewals using fragmented systems like spreadsheets and emails. This causes delays, errors, and makes it difficult to track opportunities and compliance effectively.",
-    solution:
-      "The platform centralizes policy and client data, automates renewals and notifications, and generates reports in a single environment. This improves accuracy, speeds up processes, and increases customer satisfaction.",
+    challenge: "Insurance companies manage policies, clients, and renewals using fragmented systems like spreadsheets and emails. This causes delays, errors, and makes it difficult to track opportunities and compliance effectively.",
+    solution: "The platform centralizes policy and client data, automates renewals and notifications, and generates reports in a single environment. This improves accuracy, speeds up processes, and increases customer satisfaction.",
     tech: [
       "TypeScript",
       "Vue.js",
@@ -69,19 +65,17 @@ export const projects: Project[] = [
     liveUrl: "https://appdulton.com",
     repoUrl: "https://github.com/rg7services/n8n-dulton-consultans",
     galleryImages: [
-      getImagePath("/projects/Dultos Consultans/Screenshot 2025-07-08 090621.png"),
-      getImagePath("/projects/Dultos Consultans/Screenshot 2025-07-08 090650.png"),
-      getImagePath("/projects/Dultos Consultans/Screenshot 2025-07-08 090832.png"),
-      getImagePath("/projects/Dultos Consultans/Screenshot 2025-07-08 091156.png"),
+      getImagePath("/projects/dultos-consultans/screenshot-2025-07-08-090621.png"),
+      getImagePath("/projects/dultos-consultans/screenshot-2025-07-08-090650.png"),
+      getImagePath("/projects/dultos-consultans/screenshot-2025-07-08-090832.png"),
+      getImagePath("/projects/dultos-consultans/screenshot-2025-07-08-091156.png"),
     ],
   },
   {
     id: "professionalRestaurant",
     title: "Digital Order and Table Management System",
-    challenge:
-      "Restaurants face manual order taking and fragmented communication between the dining area and kitchen, leading to delays, order errors, and lack of operational data visibility to improve service.",
-    solution:
-      "Elegant Dine digitizes orders, reservations, and table status with QR codes and real-time notifications. It provides actionable reports using Supabase to improve coordination, reduce mistakes, and enhance the customer experience.",
+    challenge: "Restaurants face manual order taking and fragmented communication between the dining area and kitchen, leading to delays, order errors, and lack of operational data visibility to improve service.",
+    solution: "Elegant Dine digitizes orders, reservations, and table status with QR codes and real-time notifications. It provides actionable reports using Supabase to improve coordination, reduce mistakes, and enhance the customer experience.",
     tech: [
       "TypeScript",
       "React",
@@ -104,20 +98,18 @@ export const projects: Project[] = [
     liveUrl: "https://especialdinner.netlify.app/",
     repoUrl: "",
     galleryImages: [
-      getImagePath("/projects/professionalRestaurant/Screenshot 2025-07-08 101858.png"),
-      getImagePath("/projects/professionalRestaurant/Screenshot 2025-07-08 101929.png"),
-      getImagePath("/projects/professionalRestaurant/Screenshot 2025-07-08 102023.png"),
-      getImagePath("/projects/professionalRestaurant/Screenshot 2025-07-08 102047.png"),
-      getImagePath("/projects/professionalRestaurant/Screenshot 2025-07-08 102303.png"),
+      getImagePath("/projects/professionalRestaurant/screenshot-2025-07-08-101858.png"),
+      getImagePath("/projects/professionalRestaurant/screenshot-2025-07-08-101929.png"),
+      getImagePath("/projects/professionalRestaurant/screenshot-2025-07-08-102023.png"),
+      getImagePath("/projects/professionalRestaurant/screenshot-2025-07-08-102047.png"),
+      getImagePath("/projects/professionalRestaurant/screenshot-2025-07-08-102303.png"),
     ],
   },
   {
     id: "QREventProject",
     title: "Streamlined Event Management and Analytics Tool",
-    challenge:
-      "Managing event registrations and access is often manual and scattered. The lack of real-time visibility and consolidated data hinders decision-making and attendee experience.",
-    solution:
-      "QREventProject centralizes attendee registration, generates and validates access with QR codes, and displays real-time metrics. This speeds up event management, reduces errors, and provides key data to improve events.",
+    challenge: "Managing event registrations and access is often manual and scattered. The lack of real-time visibility and consolidated data hinders decision-making and attendee experience.",
+    solution: "QREventProject centralizes attendee registration, generates and validates access with QR codes, and displays real-time metrics. This speeds up event management, reduces errors, and provides key data to improve events.",
     tech: [
       "TypeScript",
       "React",
@@ -137,23 +129,21 @@ export const projects: Project[] = [
     liveUrl: "https://formularios.equipogctrade.com/",
     repoUrl: "",
     galleryImages: [
-      getImagePath("/projects/QrEvent/Screenshot 2025-07-08 100400.png"),
-      getImagePath("/projects/QrEvent/Screenshot 2025-07-08 100421.png"),
-      getImagePath("/projects/QrEvent/Screenshot 2025-07-08 100441.png"),
-      getImagePath("/projects/QrEvent/Screenshot 2025-07-08 100858.png"),
-      getImagePath("/projects/QrEvent/Screenshot 2025-07-08 100911.png"),
-      getImagePath("/projects/QrEvent/Screenshot 2025-07-08 100923.png"),
-      getImagePath("/projects/QrEvent/Screenshot 2025-07-08 100934.png"),
-      getImagePath("/projects/QrEvent/Screenshot 2025-07-08 105905.png"),
+      getImagePath("/projects/QrEvent/screenshot-2025-07-08-100400.png"),
+      getImagePath("/projects/QrEvent/screenshot-2025-07-08-100421.png"),
+      getImagePath("/projects/QrEvent/screenshot-2025-07-08-100441.png"),
+      getImagePath("/projects/QrEvent/screenshot-2025-07-08-100858.png"),
+      getImagePath("/projects/QrEvent/screenshot-2025-07-08-100911.png"),
+      getImagePath("/projects/QrEvent/screenshot-2025-07-08-100923.png"),
+      getImagePath("/projects/QrEvent/screenshot-2025-07-08-100934.png"),
+      getImagePath("/projects/QrEvent/screenshot-2025-07-08-105905.png"),
     ],
   },
   {
     id: "rg7_prh_front",
     title: "Platform for Tracking POP Installations in Stores",
-    challenge:
-      "Managing HR processes with multiple tools and spreadsheets causes errors, scattered data, and delays in generating critical reports.",
-    solution:
-      "RG7 PRH Frontend unifies HR workflows: secure authentication, data management, and report generation (CSV, PDF, Excel). It improves traceability, efficiency, and the experience for both admins and employees.",
+    challenge: "Managing HR processes with multiple tools and spreadsheets causes errors, scattered data, and delays in generating critical reports.",
+    solution: "RG7 PRH Frontend unifies HR workflows: secure authentication, data management, and report generation (CSV, PDF, Excel). It improves traceability, efficiency, and the experience for both admins and employees.",
     tech: [
       "React",
       "Vite",
@@ -180,21 +170,19 @@ export const projects: Project[] = [
     liveUrl: "https://front-prh.equipogctrade.com/",
     repoUrl: "",
     galleryImages: [
-      getImagePath("/projects/rg7_prh/Screenshot 2025-07-08 115104.png"),
-      getImagePath("/projects/rg7_prh/Screenshot 2025-07-08 115125.png"),
-      getImagePath("/projects/rg7_prh/Screenshot 2025-07-08 115142.png"),
-      getImagePath("/projects/rg7_prh/Screenshot 2025-07-08 115209.png"),
-      getImagePath("/projects/rg7_prh/Screenshot 2025-07-08 115220.png"),
-      getImagePath("/projects/rg7_prh/Screenshot 2025-07-08 115232.png"),
+      getImagePath("/projects/rg7_prh/screenshot-2025-07-08-115104.png"),
+      getImagePath("/projects/rg7_prh/screenshot-2025-07-08-115125.png"),
+      getImagePath("/projects/rg7_prh/screenshot-2025-07-08-115142.png"),
+      getImagePath("/projects/rg7_prh/screenshot-2025-07-08-115209.png"),
+      getImagePath("/projects/rg7_prh/screenshot-2025-07-08-115220.png"),
+      getImagePath("/projects/rg7_prh/screenshot-2025-07-08-115232.png"),
     ],
   },
   {
     id: "La Oleada Roja Legrand",
     title: "Centralized POP Material Distribution and Analytics System",
-    challenge:
-      "Manual and decentralized management of branding campaigns and POP (Point of Purchase) material distribution across multiple stores causes major inefficiencies. This includes tracking issues, difficulty measuring campaign impact by area or agent, and missed opportunities for future installations. The lack of a consolidated view prevents strategic decision-making and efficient resource allocation.",
-    solution:
-      "The 'Legrand Oleada Roja' platform centralizes and digitizes branding and POP material distribution. It allows store geolocation, agent assignment, and detailed tracking of installed items (banners, floor stickers, displays, etc.). Dashboards show key metrics such as number of stores impacted, materials installed per store, and future installation opportunities. It improves transparency, logistics, performance evaluation by area and agent, and enhances brand visibility planning.",
+    challenge: "Manual and decentralized management of branding campaigns and POP (Point of Purchase) material distribution across multiple stores causes major inefficiencies. This includes tracking issues, difficulty measuring campaign impact by area or agent, and missed opportunities for future installations. The lack of a consolidated view prevents strategic decision-making and efficient resource allocation.",
+    solution: "The 'Legrand Oleada Roja' platform centralizes and digitizes branding and POP material distribution. It allows store geolocation, agent assignment, and detailed tracking of installed items (banners, floor stickers, displays, etc.). Dashboards show key metrics such as number of stores impacted, materials installed per store, and future installation opportunities. It improves transparency, logistics, performance evaluation by area and agent, and enhances brand visibility planning.",
     tech: [
       "React",
       "JavaScript",
@@ -211,14 +199,14 @@ export const projects: Project[] = [
     liveUrl: "https://front-legrand.equipogctrade.com/",
     repoUrl: "",
     galleryImages: [
-      getImagePath("/projects/legrand/Screenshot 2025-07-08 144638.png"),
-      getImagePath("/projects/legrand/Screenshot 2025-07-08 144651.png"),
-      getImagePath("/projects/legrand/Screenshot 2025-07-08 144705.png"),
-      getImagePath("/projects/legrand/Screenshot 2025-07-08 144824.png"),
-      getImagePath("/projects/legrand/Screenshot 2025-07-08 144848.png"),
-      getImagePath("/projects/legrand/Screenshot 2025-07-08 144857.png"),
-      getImagePath("/projects/legrand/Screenshot 2025-07-08 144911.png"),
-      getImagePath("/projects/legrand/Screenshot 2025-07-08 144923.png"),
+      getImagePath("/projects/legrand/screenshot-2025-07-08-144638.png"),
+      getImagePath("/projects/legrand/screenshot-2025-07-08-144651.png"),
+      getImagePath("/projects/legrand/screenshot-2025-07-08-144705.png"),
+      getImagePath("/projects/legrand/screenshot-2025-07-08-144824.png"),
+      getImagePath("/projects/legrand/screenshot-2025-07-08-144848.png"),
+      getImagePath("/projects/legrand/screenshot-2025-07-08-144857.png"),
+      getImagePath("/projects/legrand/screenshot-2025-07-08-144911.png"),
+      getImagePath("/projects/legrand/screenshot-2025-07-08-144923.png"),
     ],
   },
 ];

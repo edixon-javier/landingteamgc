@@ -1,13 +1,12 @@
 "use client";
-
 import { Button } from '@/components/ui/button';
 import { MoveRight } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { getVideoPath } from '@/lib/utils';
 
 export const HeroSection = () => {
   return (
     <section className="min-h-screen relative flex items-center justify-center text-center text-white overflow-hidden">
-      
       {/* Video de fondo */}
       <video
         autoPlay
@@ -16,16 +15,13 @@ export const HeroSection = () => {
         playsInline
         className="absolute inset-0 w-full h-full object-cover z-0 opacity-70"
       >
-        <source src="/videos/EquipoGc.mp4" type="video/mp4" />
+        <source src={getVideoPath("/videos/equipogc.mp4")} type="video/mp4" />
         Tu navegador no soporta el tag de video.
       </video>
-      
       {/* Overlay oscuro para mejorar legibilidad */}
       <div className="absolute inset-0 bg-black/60 z-10"></div>
-
       {/* Contenido principal */}
       <div className="relative z-20 px-4 max-w-4xl mx-auto">
-        
         {/* Título principal animado */}
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
@@ -35,7 +31,6 @@ export const HeroSection = () => {
         >
           Integramos Estrategia, Logística y Tecnología.
         </motion.h1>
-
         {/* Subtítulo animado */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -45,7 +40,6 @@ export const HeroSection = () => {
         >
           Resolvemos desafíos de negocio complejos aplicando Design Thinking para crear soluciones que generan resultados medibles.
         </motion.p>
-
         {/* Botones CTA */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
@@ -59,13 +53,11 @@ export const HeroSection = () => {
           >
             Agenda tu Sesión Estratégica
           </Button>
-
           <Button
             size="lg"
             variant="outline"
             className="text-white border-white hover:bg-white hover:text-black transition-colors duration-300"
-       
-       >
+          >
             <span>Ver Casos de Éxito</span>
             <MoveRight className="ml-2 h-5 w-5" />
           </Button>
