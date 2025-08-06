@@ -14,14 +14,15 @@ export async function generateStaticParams() {
 }
 
 type Props = {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 };
 
 // Generar metadata dinámica para SEO
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const project = caseStudiesData.find((p) => p.slug === params.slug);
+  const { slug } = await params;
+  const project = caseStudiesData.find((p) => p.slug === slug);
 
   if (!project) {
     return {
@@ -43,8 +44,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function ProjectPage({ params }: Props) {
-  const project = caseStudiesData.find((p) => p.slug === params.slug);
+export default async function ProjectPage({ params }: Props) {
+  const { slug } = await params;
+  const project = caseStudiesData.find((p) => p.slug === slug);
 
   if (!project) {
     notFound();

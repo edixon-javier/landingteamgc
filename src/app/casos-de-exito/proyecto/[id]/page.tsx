@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from 'next/image';
 import Link from 'next/link';
-import { Header } from '@/components/Header';
+import { Header } from "@/components/organisms/Header";
 import { projects } from '@/lib/data';
 
 export async function generateStaticParams() {

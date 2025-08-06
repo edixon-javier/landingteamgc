@@ -1,14 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import ProjectGrid from "@/components/portfolio/ProjectGrid";
 import { projects } from "@/lib/data";
-import { getImagePath } from "@/lib/utils";
 import { motion } from "framer-motion";
-import { Link } from "lucide-react";
-import { Button } from "./ui/button";
-import { caseStudiesData } from "@/lib/content";
 
 const sectionVariants = {
   hidden: { opacity: 0 },
@@ -29,8 +24,6 @@ const itemVariants = {
 
 export default function HomeClient() {
   const [isViewingProject, setIsViewingProject] = useState(false);
-    // Mostramos solo los primeros 3 casos en la página de inicio
-  const featuredStudies = caseStudiesData.slice(0, 3);
 
 
   return (
