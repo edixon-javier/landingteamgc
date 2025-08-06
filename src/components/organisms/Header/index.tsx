@@ -82,10 +82,11 @@ export function Header() {
             >
               <Image
                 className={`h-10 w-auto transition-all duration-300 ${isScrolled? 'filter-none' : 'brightness-0 invert'}`}
-                src={getImagePath("assets/icons/LogoGc.svg")}
+                src={getImagePath("LogoGc.svg")}
                 alt="Equipo GC Logo"
                 width={120}
                 height={40}
+                priority
               />
             </motion.div>
           </Link>
@@ -134,7 +135,7 @@ export function Header() {
           <div className="container mx-auto px-4 py-6">
             <div className="flex justify-between items-center mb-8">
               <Image 
-                src={getImagePath("assets/icons/LogoGc.svg")} 
+                src={getImagePath("LogoGc.svg")} 
                 alt="Equipo GC Logo" 
                 width={120} 
                 height={40} 

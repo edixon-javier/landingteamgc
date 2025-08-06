@@ -13,19 +13,35 @@ export function getImagePath(path: string) {
     ? path.substring(1) 
     : path;
   
-  // Normalizar la ruta
-  const formattedPath = normalizedPath.toLowerCase()
+  // Normalizar la ruta y asegurar que comience con /
+  const formattedPath = `/${normalizedPath}`
+    .toLowerCase()
     .replace(/\s+/g, '-')
-    .replace(/--+/g, '-');
+    .replace(/--+/g, '-')
+    .replace(/\/+/g, '/');
   
-  return `${basePath}/${formattedPath}`;
+  return `${basePath}${formattedPath}`;
 }
 
 /**
  * Función específica para recursos de video con las mismas normalizaciones
  */
 export function getVideoPath(path: string) {
-  return getImagePath(path);
+  const basePath = getBasePath();
+  
+  // Asegurar que la ruta no comience con '/' cuando hay un basePath
+  const normalizedPath = path.startsWith('/') 
+    ? path.substring(1) 
+    : path;
+  
+  // Normalizar la ruta y asegurar que comience con /
+  const formattedPath = `/${normalizedPath}`
+    .toLowerCase()
+    .replace(/\s+/g, '-')
+    .replace(/--+/g, '-')
+    .replace(/\/+/g, '/');
+  
+  return `${basePath}${formattedPath}`;
 }
 
 export function cn(...inputs: ClassValue[]) {
