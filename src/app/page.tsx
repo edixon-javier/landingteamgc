@@ -7,7 +7,7 @@ import { Methodology } from '@/components/sections/Methodology';
 import { CaseStudies } from '@/components/sections/CaseStudies';
 import { CTA } from '@/components/sections/CTA';
 import { Footer } from '@/components/organisms/Footer';
-import HomeClient from "@/components/HomeClient";
+// import HomeClient from "@/components/HomeClient";
 
 export const metadata: Metadata = {
   title: "Equipo GC: Agencia de Design Thinking para Marketing, Logística y Tecnología",
@@ -21,24 +21,34 @@ export default function HomePage() {
       <Header />
       <main>
         {/* Sección Hero */}
-        <HeroSection />
+        <section id="inicio">
+          <HeroSection />
+        </section>
 
         {/* Sección de logos de clientes */}
         <LogoCloud />
 
         {/* Sección de Soluciones */}
-        <Solutions />
+        <section id="soluciones">
+          <Solutions />
+        </section>
 
         {/* Sección de Metodología */}
-        <Methodology />
+        <section id="metodologia">
+          <Methodology />
+        </section>
 
         {/* Sección de Casos de Éxito */}
-        <CaseStudies />
+        <section id="casos-de-exito">
+          <CaseStudies />
+        </section>
 
-        <HomeClient />
+        {/* <HomeClient /> */}
 
         {/* Sección de Contacto */}
-        <CTA />
+        <section id="contacto">
+          <CTA />
+        </section>
       </main>
 
       {/* Footer */}

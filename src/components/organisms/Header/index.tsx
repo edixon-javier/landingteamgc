@@ -7,24 +7,62 @@ import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 
 const navLinks = [
-  { name: 'Inicio', href: '/' },
-  { name: 'Metodología', href: '/metodologia' },
-  { name: 'Soluciones', href: '/soluciones' },
-  { name: 'Casos de Éxito', href: '/casos-de-exito' },
-  { name: 'Contacto', href: '/contacto' }
+  { name: 'Inicio', href: '#inicio' },
+  { name: 'Metodología', href: '#metodologia' },
+  { name: 'Soluciones', href: '#soluciones' },
+  { name: 'Casos de Éxito', href: '#casos-de-exito' },
+  { name: 'Contacto', href: '#contacto' }
 ];
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('inicio');
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
+      
+      // Scroll Spy
+      const sections = navLinks.map(link => link.href.replace('#', ''));
+      const current = sections.find(section => {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          return rect.top <= 100 && rect.bottom >= 100;
+        }
+        return false;
+      });
+      
+      if (current) {
+        setActiveSection(current);
+      }
     };
+
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const targetId = href.replace('#', '');
+    const element = document.getElementById(targetId);
+    const headerOffset = 80;
+    
+    if (element) {
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+      
+      if (isMenuOpen) {
+        setIsMenuOpen(false);
+      }
+    }
+  };
 
   return (
     <header
@@ -62,9 +100,10 @@ export function Header() {
               >
                 <Link
                   href={link.href}
+                  onClick={(e) => scrollToSection(e, link.href)}
                   className={`text-sm font-semibold transition-colors duration-300 ${
-                    isScrolled? 'text-gray-800 hover:text-blue-600' : 'text-white hover:text-white/80'
-                  }`}
+                    isScrolled ? 'text-gray-800 hover:text-blue-600' : 'text-white hover:text-white/80'
+                  } ${activeSection === link.href.replace('#', '') ? 'text-blue-600' : ''}`}
                 >
                   {link.name}
                 </Link>
@@ -112,8 +151,12 @@ export function Header() {
                 <Link
                   key={link.name}
                   href={link.href}
-                  className="text-xl text-gray-800 hover:text-blue-600 font-semibold transition-colors duration-200"
-                  onClick={() => setIsMenuOpen(false)}
+                  className={`text-xl font-semibold transition-colors duration-200 ${
+                    activeSection === link.href.replace('#', '') 
+                    ? 'text-blue-600' 
+                    : 'text-gray-800 hover:text-blue-600'
+                  }`}
+                  onClick={(e) => scrollToSection(e, link.href)}
                 >
                   {link.name}
                 </Link>
