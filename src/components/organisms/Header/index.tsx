@@ -43,7 +43,7 @@ export function Header() {
             >
               <Image
                 className={`h-10 w-auto transition-all duration-300 ${isScrolled? 'filter-none' : 'brightness-0 invert'}`}
-                src="/LogoGc.svg"
+                src="/assets/icons/LogoGc.svg"
                 alt="Equipo GC Logo"
                 width={120}
                 height={40}
@@ -74,7 +74,10 @@ export function Header() {
 
           {/* Botón Menú Móvil */}
           <div className="md:hidden">
-            <button onClick={() => setIsMenuOpen(!isMenuOpen)}>
+            <button 
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-lg p-1"
+            >
               <Menu className={`h-6 w-6 ${isScrolled? 'text-gray-800' : 'text-white'}`} />
             </button>
           </div>
@@ -86,32 +89,37 @@ export function Header() {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="md:hidden absolute top-0 left-0 w-full bg-white p-4"
+          className="md:hidden fixed top-0 left-0 w-full h-screen bg-white z-50"
         >
-          <div className="flex justify-between items-center mb-6">
-            <Image 
-              src="/LogoGc.svg" 
-              alt="Equipo GC Logo" 
-              width={120} 
-              height={40} 
-              className="h-10 w-auto" 
-            />
-            <button onClick={() => setIsMenuOpen(false)}>
-              <X className="h-6 w-6 text-gray-800" />
-            </button>
-          </div>
-          <nav className="flex flex-col space-y-4">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                className="text-gray-800 hover:text-blue-600 font-semibold"
+          <div className="container mx-auto px-4 py-6">
+            <div className="flex justify-between items-center mb-8">
+              <Image 
+                src="/assets/icons/LogoGc.svg" 
+                alt="Equipo GC Logo" 
+                width={120} 
+                height={40} 
+                className="h-10 w-auto" 
+              />
+              <button 
                 onClick={() => setIsMenuOpen(false)}
+                className="focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-lg p-1"
               >
-                {link.name}
-              </Link>
-            ))}
-          </nav>
+                <X className="h-6 w-6 text-gray-800" />
+              </button>
+            </div>
+            <nav className="flex flex-col space-y-6">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  className="text-xl text-gray-800 hover:text-blue-600 font-semibold transition-colors duration-200"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {link.name}
+                </Link>
+              ))}
+            </nav>
+          </div>
         </motion.div>
       )}
     </header>

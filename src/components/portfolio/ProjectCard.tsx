@@ -54,35 +54,35 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         variants={containerVariants}
       >
         <motion.h2
-          className="text-3xl font-bold text-gray-900 dark:text-gray-100"
+          className="text-3xl font-bold text-gray-900"
           variants={itemVariants}
         >
           {project.title}
         </motion.h2>
 
         <motion.div variants={itemVariants}>
-          <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-2">
+          <h3 className="text-lg font-semibold text-gray-800  mb-2">
             The Challenge
           </h3>
-          <p className="text-gray-600 dark:text-gray-400">{project.challenge}</p>
+          <p className="text-gray-600">{project.challenge}</p>
         </motion.div>
 
         <motion.div variants={itemVariants}>
-          <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-2">
+          <h3 className="text-lg font-semibold text-gray-800 mb-2">
             Our Solution
           </h3>
-          <p className="text-gray-600 dark:text-gray-400">{project.solution}</p>
+          <p className="text-gray-600">{project.solution}</p>
         </motion.div>
 
         <motion.div variants={itemVariants}>
-          <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-2">
+          <h3 className="text-lg font-semibold text-gray-800  mb-2">
             Technologies Used
           </h3>
           <div className="flex flex-wrap gap-2">
             {project.tech.map((tech) => (
               <span
                 key={tech}
-                className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full text-sm"
+                className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm"
               >
                 {tech}
               </span>

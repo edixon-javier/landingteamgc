@@ -55,7 +55,7 @@ const ProjectGalleryModal: React.FC<ProjectGalleryModalProps> = ({
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
             transition={{ type: "spring", damping: 20 }}
-            className="relative w-full max-w-5xl max-h-[85vh] bg-white dark:bg-gray-900 rounded-lg overflow-hidden shadow-xl"
+            className="relative w-full max-w-5xl max-h-[85vh] bg-white rounded-lg overflow-hidden shadow-xl"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Botón de cierre */}
@@ -103,7 +103,7 @@ const ProjectGalleryModal: React.FC<ProjectGalleryModalProps> = ({
             </div>
             
             {/* Miniaturas de imágenes */}
-            <div className="flex overflow-x-auto p-2 bg-gray-100 dark:bg-gray-800">
+            <div className="flex overflow-x-auto p-2 bg-gray-100">
               {images.map((image, index) => (
                 <div
                   key={index}

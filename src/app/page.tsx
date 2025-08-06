@@ -1,12 +1,13 @@
 import { Metadata } from "next";
-import { Header } from '@/components/Header';
+import { Header } from '@/components/organisms/Header';
 import { HeroSection } from '@/components/home/HeroSection';
 import { LogoCloud } from '@/components/sections/LogoCloud';
 import { Solutions } from '@/components/sections/Solutions';
 import { Methodology } from '@/components/sections/Methodology';
 import { CaseStudies } from '@/components/sections/CaseStudies';
 import { CTA } from '@/components/sections/CTA';
-import { Footer } from '@/components/Footer';
+import { Footer } from '@/components/organisms/Footer';
+import HomeClient from "@/components/HomeClient";
 
 export const metadata: Metadata = {
   title: "Equipo GC: Agencia de Design Thinking para Marketing, Logística y Tecnología",
@@ -33,6 +34,8 @@ export default function HomePage() {
 
         {/* Sección de Casos de Éxito */}
         <CaseStudies />
+
+        <HomeClient />
 
         {/* Sección de Contacto */}
         <CTA />

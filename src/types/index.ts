@@ -54,4 +54,12 @@ export type CaseStudyPreview = {
   client: string;      // Nombre del cliente
   title: string;       // Título del proyecto o caso de éxito
   imageUrl: string;    // URL de la imagen de vista previa
+  description?: string; // Descripción general del caso de éxito
+  challenge?: string;   // Descripción del desafío abordado
+  solution?: string;    // Descripción de la solución implementada
+  results?: string;     // Resultados obtenidos
+  technologies?: string[]; // Tecnologías utilizadas
+  year?: string;        // Año del proyecto
+  duration?: string;    // Duración del proyecto
+  projectUrl?: string;  // URL del proyecto en vivo
 };

@@ -23,14 +23,14 @@ const BrowserMockup: React.FC<BrowserMockupProps> = ({ imageUrl, onClick, alt = 
       }}
     >
       {/* Barra superior del navegador */}
-      <div className="flex items-center h-8 bg-gray-200 dark:bg-gray-800 px-3">
+      <div className="flex items-center h-8 bg-gray-200  px-3">
         <div className="flex space-x-2">
           <div className="w-3 h-3 bg-red-500 rounded-full"></div>
           <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
           <div className="w-3 h-3 bg-green-500 rounded-full"></div>
         </div>
         <div className="flex-grow mx-4">
-          <div className="w-full max-w-xs mx-auto h-5 bg-gray-100 dark:bg-gray-700 rounded-full"></div>
+          <div className="w-full max-w-xs mx-auto h-5 bg-gray-100  rounded-full"></div>
         </div>
       </div>
       

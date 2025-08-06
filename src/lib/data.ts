@@ -7,9 +7,9 @@ import { getImagePath } from "./utils";
 export const projects: Project[] = [
   {
     id: "suvey_cibersegurity",
-    title: "AI System for Cybersecurity Document Classification",
-    challenge: "Cybersecurity organizations struggle with large volumes of unstructured documents. Manual search is slow, error-prone, and hinders quick decision-making during incidents.",
-    solution: "RDI Document Processor automates document processing and segmentation, storing them in vector databases. Using LangChain, ChromaDB, and Pinecone, it enables fast semantic searches and reduces manual work and errors.",
+    title: "Sistema de IA para Clasificación de Documentos de Ciberseguridad",
+    challenge: "Las organizaciones de ciberseguridad enfrentan dificultades con grandes volúmenes de documentos no estructurados. La búsqueda manual es lenta, propensa a errores y obstaculiza la toma de decisiones rápidas durante incidentes.",
+    solution: "RDI Document Processor automatiza el procesamiento y segmentación de documentos, almacenándolos en bases de datos vectoriales. Utilizando LangChain, ChromaDB y Pinecone, permite búsquedas semánticas rápidas y reduce el trabajo manual y los errores.",
     tech: [
       "JavaScript",
       "Node.js",
@@ -41,9 +41,9 @@ export const projects: Project[] = [
   },
   {
     id: "n8n-dulton-consultans",
-    title: "Automated Policy Renewal and Reporting System CRM",
-    challenge: "Insurance companies manage policies, clients, and renewals using fragmented systems like spreadsheets and emails. This causes delays, errors, and makes it difficult to track opportunities and compliance effectively.",
-    solution: "The platform centralizes policy and client data, automates renewals and notifications, and generates reports in a single environment. This improves accuracy, speeds up processes, and increases customer satisfaction.",
+    title: "Sistema CRM para Renovación Automatizada de Pólizas y Reportes",
+    challenge: "Las compañías de seguros gestionan pólizas, clientes y renovaciones con sistemas fragmentados como hojas de cálculo y correos electrónicos. Esto causa demoras, errores y dificulta el seguimiento de oportunidades y el cumplimiento normativo.",
+    solution: "La plataforma centraliza los datos de pólizas y clientes, automatiza renovaciones y notificaciones, y genera reportes en un solo entorno. Esto mejora la precisión, agiliza los procesos y aumenta la satisfacción del cliente.",
     tech: [
       "TypeScript",
       "Vue.js",
@@ -73,9 +73,9 @@ export const projects: Project[] = [
   },
   {
     id: "professionalRestaurant",
-    title: "Digital Order and Table Management System",
-    challenge: "Restaurants face manual order taking and fragmented communication between the dining area and kitchen, leading to delays, order errors, and lack of operational data visibility to improve service.",
-    solution: "Elegant Dine digitizes orders, reservations, and table status with QR codes and real-time notifications. It provides actionable reports using Supabase to improve coordination, reduce mistakes, and enhance the customer experience.",
+    title: "Sistema Digital de Gestión de Pedidos y Mesas",
+    challenge: "Los restaurantes enfrentan problemas con la toma manual de pedidos y la comunicación fragmentada entre el comedor y la cocina, lo que genera demoras, errores en los pedidos y falta de visibilidad de datos operativos para mejorar el servicio.",
+    solution: "Elegant Dine digitaliza pedidos, reservas y el estado de las mesas con códigos QR y notificaciones en tiempo real. Proporciona reportes accionables utilizando Supabase para mejorar la coordinación, reducir errores y optimizar la experiencia del cliente.",
     tech: [
       "TypeScript",
       "React",
@@ -107,9 +107,9 @@ export const projects: Project[] = [
   },
   {
     id: "QREventProject",
-    title: "Streamlined Event Management and Analytics Tool",
-    challenge: "Managing event registrations and access is often manual and scattered. The lack of real-time visibility and consolidated data hinders decision-making and attendee experience.",
-    solution: "QREventProject centralizes attendee registration, generates and validates access with QR codes, and displays real-time metrics. This speeds up event management, reduces errors, and provides key data to improve events.",
+    title: "Herramienta Simplificada de Gestión de Eventos y Análisis",
+    challenge: "La gestión de registros y accesos a eventos suele ser manual y dispersa. La falta de visibilidad en tiempo real y datos consolidados dificulta la toma de decisiones y la experiencia de los asistentes.",
+    solution: "QREventProject centraliza el registro de asistentes, genera y valida accesos con códigos QR y muestra métricas en tiempo real. Esto agiliza la gestión de eventos, reduce errores y proporciona datos clave para mejorar los eventos.",
     tech: [
       "TypeScript",
       "React",
@@ -141,9 +141,9 @@ export const projects: Project[] = [
   },
   {
     id: "rg7_prh_front",
-    title: "Platform for Tracking POP Installations in Stores",
-    challenge: "Managing HR processes with multiple tools and spreadsheets causes errors, scattered data, and delays in generating critical reports.",
-    solution: "RG7 PRH Frontend unifies HR workflows: secure authentication, data management, and report generation (CSV, PDF, Excel). It improves traceability, efficiency, and the experience for both admins and employees.",
+    title: "Plataforma para Seguimiento de Instalaciones POP en Tiendas",
+    challenge: "La gestión de procesos de recursos humanos con múltiples herramientas y hojas de cálculo genera errores, datos dispersos y demoras en la generación de reportes críticos.",
+    solution: "RG7 PRH Frontend unifica los flujos de trabajo de recursos humanos: autenticación segura, gestión de datos y generación de reportes (CSV, PDF, Excel). Mejora la trazabilidad, la eficiencia y la experiencia tanto para administradores como para empleados.",
     tech: [
       "React",
       "Vite",
@@ -180,9 +180,9 @@ export const projects: Project[] = [
   },
   {
     id: "La Oleada Roja Legrand",
-    title: "Centralized POP Material Distribution and Analytics System",
-    challenge: "Manual and decentralized management of branding campaigns and POP (Point of Purchase) material distribution across multiple stores causes major inefficiencies. This includes tracking issues, difficulty measuring campaign impact by area or agent, and missed opportunities for future installations. The lack of a consolidated view prevents strategic decision-making and efficient resource allocation.",
-    solution: "The 'Legrand Oleada Roja' platform centralizes and digitizes branding and POP material distribution. It allows store geolocation, agent assignment, and detailed tracking of installed items (banners, floor stickers, displays, etc.). Dashboards show key metrics such as number of stores impacted, materials installed per store, and future installation opportunities. It improves transparency, logistics, performance evaluation by area and agent, and enhances brand visibility planning.",
+    title: "Sistema Centralizado de Distribución y Análisis de Material POP",
+    challenge: "La gestión manual y descentralizada de campañas de branding y distribución de material POP (Punto de Venta) en múltiples tiendas genera ineficiencias. Esto incluye problemas de seguimiento, dificultad para medir el impacto de las campañas por área o agente, y oportunidades perdidas para futuras instalaciones. La falta de una visión consolidada impide la toma de decisiones estratégicas y la asignación eficiente de recursos.",
+    solution: "La plataforma 'Legrand Oleada Roja' centraliza y digitaliza la distribución de materiales de branding y POP. Permite la geolocalización de tiendas, la asignación de agentes y el seguimiento detallado de los elementos instalados (banners, adhesivos de suelo, displays, etc.). Los paneles de control muestran métricas clave como el número de tiendas impactadas, materiales instalados por tienda y oportunidades para futuras instalaciones. Mejora la transparencia, la logística, la evaluación de rendimiento por área y agente, y optimiza la planificación de la visibilidad de la marca.",
     tech: [
       "React",
       "JavaScript",

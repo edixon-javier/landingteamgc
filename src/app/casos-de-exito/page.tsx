@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { Header } from '@/components/Header';
+import { Header } from '@/components/organisms/Header';
 import { caseStudiesData } from '@/lib/content';
 import { projects } from '@/lib/data';
 import { FeaturedCases, DetailedProjects } from '@/components/portfolio/AnimatedSection';

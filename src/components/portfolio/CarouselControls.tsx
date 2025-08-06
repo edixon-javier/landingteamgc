@@ -44,7 +44,7 @@ const CarouselControls: React.FC<CarouselControlsProps> = ({
               className={`w-3 h-3 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 ${
                 currentIndex === index
                   ? "bg-blue-600"
-                  : "bg-gray-300 dark:bg-gray-600"
+                  : "bg-gray-300 "
               }`}
               whileHover={{ scale: 1.2 }}
               whileTap={{ scale: 0.9 }}
