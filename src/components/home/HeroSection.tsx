@@ -15,7 +15,7 @@ export const HeroSection = () => {
         playsInline
         className="absolute inset-0 w-full h-full object-cover z-0 opacity-70"
       >
-        <source src={getVideoPath("/videos/equipogc.mp4")} type="video/mp4" />
+        <source src={getVideoPath("videos/equipogc.mp4")} type="video/mp4" />
         Tu navegador no soporta el tag de video.
       </video>
       {/* Overlay oscuro para mejorar legibilidad */}

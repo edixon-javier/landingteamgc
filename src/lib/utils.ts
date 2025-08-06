@@ -8,18 +8,17 @@ export function getBasePath() {
 export function getImagePath(path: string) {
   const basePath = getBasePath();
   
-  // Asegurarse de que la ruta comience con '/'
-  const normalizedPath = path.startsWith('/') ? path : `/${path}`;
+  // Asegurar que la ruta no comience con '/' cuando hay un basePath
+  const normalizedPath = path.startsWith('/') 
+    ? path.substring(1) 
+    : path;
   
-  // Normalizar la ruta: 
-  // 1. Convertir a minúsculas
-  // 2. Reemplazar espacios con guiones
-  // 3. Reemplazar múltiples guiones con uno solo
+  // Normalizar la ruta
   const formattedPath = normalizedPath.toLowerCase()
     .replace(/\s+/g, '-')
     .replace(/--+/g, '-');
   
-  return `${basePath}${formattedPath}`;
+  return `${basePath}/${formattedPath}`;
 }
 
 /**

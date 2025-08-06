@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import { getImagePath } from '@/lib/utils';
 
 const navLinks = [
   { name: 'Inicio', href: '#inicio' },
@@ -81,7 +82,7 @@ export function Header() {
             >
               <Image
                 className={`h-10 w-auto transition-all duration-300 ${isScrolled? 'filter-none' : 'brightness-0 invert'}`}
-                src="/assets/icons/LogoGc.svg"
+                src={getImagePath("assets/icons/LogoGc.svg")}
                 alt="Equipo GC Logo"
                 width={120}
                 height={40}
@@ -133,7 +134,7 @@ export function Header() {
           <div className="container mx-auto px-4 py-6">
             <div className="flex justify-between items-center mb-8">
               <Image 
-                src="/assets/icons/LogoGc.svg" 
+                src={getImagePath("assets/icons/LogoGc.svg")} 
                 alt="Equipo GC Logo" 
                 width={120} 
                 height={40} 

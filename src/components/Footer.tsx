@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Facebook, Instagram, MessageSquare } from 'lucide-react'; 
+import { getImagePath } from '@/lib/utils';
 
 export function Footer() {
   const socialLinks = [
@@ -30,7 +31,7 @@ export function Footer() {
             <Link href="/">
               <Image
                 className="h-10 w-auto mx-auto md:mx-0 filter brightness-0 invert"
-                src="/LogoGc.svg"
+                src={getImagePath("LogoGc.svg")}
                 alt="Equipo GC Logo"
                 width={120}
                 height={40}
