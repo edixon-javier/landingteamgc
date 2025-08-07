@@ -31,7 +31,7 @@ export function Footer() {
             <Link href="/">
               <Image
                 className="h-10 w-auto mx-auto md:mx-0 filter brightness-0 invert"
-                src={getImagePath("/assets/icons/logogc.svg")}
+                src={getImagePath("/images/logogc.svg")}
                 alt="Equipo GC Logo"
                 width={120}
                 height={40}
