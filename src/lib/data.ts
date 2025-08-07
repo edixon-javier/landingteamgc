@@ -65,10 +65,10 @@ export const projects: Project[] = [
     liveUrl: "https://appdulton.com",
     repoUrl: "https://github.com/rg7services/n8n-dulton-consultans",
     galleryImages: [
-      getImagePath("projects/dultos-consultans/screenshot-2025-07-08-090621.png"),
-      getImagePath("projects/dultos-consultans/screenshot-2025-07-08-090650.png"),
-      getImagePath("projects/dultos-consultans/screenshot-2025-07-08-090832.png"),
-      getImagePath("projects/dultos-consultans/screenshot-2025-07-08-091156.png"),
+      getImagePath("/images/projects/dultos-consultans/screenshot-2025-07-08-090621.png"),
+      getImagePath("/images/projects/dultos-consultans/screenshot-2025-07-08-090650.png"),
+      getImagePath("/images/projects/dultos-consultans/screenshot-2025-07-08-090832.png"),
+      getImagePath("/images/projects/dultos-consultans/screenshot-2025-07-08-091156.png"),
     ],
   },
   {
