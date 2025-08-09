@@ -138,9 +138,9 @@ export const methodologySteps: MethodologyStep[] = [
 export const caseStudiesData: CaseStudyPreview[] = [
   {
     slug: "suvey_cibersegurity",
-    client: "Cybersecurity",
-    title: "Sistema de IA para Clasificación de Documentos de Ciberseguridad",
-    imageUrl: getImagePath("/images/suvey_cibersegurity/screenshot-2025-07-08-093506.png"),
+    client: "Administra campañas comerciales, productos, entregas y remisiones de forma centralizada y segura.",
+    title: "Nuestra plataforma automatiza documentos, organiza la información y agiliza procesos comerciales y logísticos en tiempo real, para que tu empresa crezca con confianza y control.",
+    imageUrl: getImagePath("/images/suvey_cibersegurity/logo.webp"),
     description: "Plataforma para la clasificación y búsqueda semántica de documentos de ciberseguridad utilizando inteligencia artificial.",
     challenge: "Las organizaciones de ciberseguridad enfrentaban problemas con grandes volúmenes de documentos no estructurados, lo que hacía que las búsquedas manuales fueran lentas y propensas a errores.",
     solution: "Desarrollamos RDI Document Processor, una solución que automatiza el procesamiento y segmentación de documentos, almacenándolos en bases de datos vectoriales para búsquedas semánticas rápidas con LangChain, ChromaDB y Pinecone.",
@@ -152,9 +152,9 @@ export const caseStudiesData: CaseStudyPreview[] = [
   },
     {
     slug: "dultos-consultans-platform",
-    client: "Dultos Consultans",
-    title: "Sistema CRM para Renovación Automatizada de Pólizas y Reportes",
-    imageUrl: getImagePath("/images/dultos-consultans/screenshot-2025-07-08-090621.png"),
+    client: "Gestiona pólizas, clientes y renovaciones de forma automática y segura.",
+    title: "Nuestro CRM especializado para el sector asegurador centraliza la información, agiliza procesos y genera reportes en tiempo real, para que tu negocio crezca con confianza.",
+    imageUrl: getImagePath("/images/dultos-consultans/logo.webp"),
     description: "Sistema CRM para la gestión automatizada de pólizas y clientes en el sector de seguros.",
     challenge: "Las compañías de seguros manejaban pólizas y clientes con sistemas fragmentados como hojas de cálculo y correos, lo que causaba demoras, errores y dificultades en el seguimiento de oportunidades.",
     solution: "Creamos una plataforma que centraliza datos de pólizas y clientes, automatiza renovaciones y notificaciones, y genera reportes en un entorno unificado, mejorando la precisión y la eficiencia.",
@@ -166,9 +166,9 @@ export const caseStudiesData: CaseStudyPreview[] = [
   },
    {
     slug: "prh-content-management",
-    client: "Penguin Random House",
-    title: "Plataforma para Seguimiento de Instalaciones POP en Tiendas",
-    imageUrl: getImagePath("/images/rg7_prh/screenshot-2025-07-08-115104.png"),
+    client: "Administra campañas comerciales, productos, entregas y remisiones de forma centralizada y segura.",
+    title: "Nuestra plataforma automatiza documentos, organiza la información y agiliza procesos comerciales y logísticos en tiempo real, para que tu empresa crezca con confianza y control.",
+    imageUrl: getImagePath("/images/rg7_prh/logo.webp"),
     description: "Plataforma para la gestión eficiente de procesos de recursos humanos y generación de reportes en Penguin Random House.",
     challenge: "La gestión de procesos de recursos humanos con múltiples herramientas y hojas de cálculo generaba errores, datos dispersos y demoras en la generación de reportes críticos.",
     solution: "Desarrollamos RG7 PRH Frontend, una plataforma que unifica flujos de trabajo de recursos humanos, incluyendo autenticación segura, gestión de datos y generación de reportes en formatos CSV, PDF y Excel.",

@@ -31,7 +31,7 @@ export const projects: Project[] = [
     liveUrl: "https://app.rdishield.com/",
     repoUrl: "",
     galleryImages: [
-      getImagePath("/images/suvey_cibersegurity/screenshot-2025-07-08-093506.png"),
+      getImagePath("/images/suvey_cibersegurity/logo.webp"),
       getImagePath("/images/suvey_cibersegurity/screenshot-2025-07-08-093523.png"),
       getImagePath("/images/suvey_cibersegurity/screenshot-2025-07-08-093603.png"),
       getImagePath("/images/suvey_cibersegurity/screenshot-2025-07-08-093911.png"),

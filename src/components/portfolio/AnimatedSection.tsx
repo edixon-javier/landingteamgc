@@ -27,6 +27,26 @@ interface FeaturedCasesProps {
 }
 
 export function FeaturedCases({ caseStudies }: FeaturedCasesProps) {
+  // Mapeo de slug a componente
+  const getComponentRoute = (slug: string) => {
+    switch (slug) {
+      case 'suvey_cibersegurity':
+        return '/casos-de-exito/CyberSecurityLanding';
+      case 'dultos-consultans-platform':
+        return '/casos-de-exito/crm-insurance-landing';
+      case 'prh-content-management':
+        return '/casos-de-exito/PrhLanding';
+      case 'legrand-digital-transformation':
+        return '/casos-de-exito/LegrandLanding';
+      case 'nazca-restaurant-management':
+        return '/casos-de-exito/RestaurantLanding';
+      case 'qr-event-management':
+        return '/casos-de-exito/QrEventLanding';
+      default:
+        return `/casos-de-exito/${slug}`;
+    }
+  };
+
   return (
     <motion.div
       initial="hidden"
@@ -36,7 +56,7 @@ export function FeaturedCases({ caseStudies }: FeaturedCasesProps) {
     >
       {caseStudies.map((study) => (
         <motion.div key={study.slug} variants={itemVariants}>
-          <Link href={`/casos-de-exito/${study.slug}`} className="block group text-left">
+          <Link href={getComponentRoute(study.slug)} className="block group text-left">
             <div className="overflow-hidden rounded-lg shadow-md">
               <Image
                 src={study.imageUrl}

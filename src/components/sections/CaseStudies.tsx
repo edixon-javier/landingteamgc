@@ -27,6 +27,26 @@ export function CaseStudies() {
   // Mostramos solo los primeros 3 casos en la página de inicio
   const featuredStudies = caseStudiesData.slice(0, 3);
 
+  // Mapeo de slug a componente
+  const getComponentRoute = (slug: string) => {
+    switch (slug) {
+      case 'suvey_cibersegurity':
+        return '/casos-de-exito/CyberSecurityLanding';
+      case 'dultos-consultans-platform':
+        return '/casos-de-exito/crm-insurance-landing';
+      case 'prh-content-management':
+        return '/casos-de-exito/PrhLanding';
+      case 'legrand-digital-transformation':
+        return '/casos-de-exito/LegrandLanding';
+      case 'nazca-restaurant-management':
+        return '/casos-de-exito/RestaurantLanding';
+      case 'qr-event-management':
+        return '/casos-de-exito/QrEventLanding';
+      default:
+        return `/casos-de-exito/${slug}`;
+    }
+  };
+
   return (
     <section className="bg-gray-50  py-16 sm:py-24">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -53,7 +73,10 @@ export function CaseStudies() {
           <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {featuredStudies.map((study) => (
               <motion.div key={study.slug} variants={itemVariants}>
-                <Link href={`/casos-de-exito/${study.slug}`} className="block group text-left">
+                <Link 
+                  href={getComponentRoute(study.slug)}
+                  className="block group text-left"
+                >
                   <div className="overflow-hidden rounded-lg shadow-md">
                     <Image
                       src={study.imageUrl}
@@ -70,12 +93,14 @@ export function CaseStudies() {
             ))}
           </div>
 
-          <motion.div variants={itemVariants} className="mt-16">
-            <Link href="/casos-de-exito">
-              <Button size="lg" variant="outline" className="text-white border-gray-800 hover:bg-gray-800 hover:text-white">
-                Ver todos los proyectos
-              </Button>
-            </Link>
+          <motion.div variants={itemVariants} className="mt-16 space-y-4">
+            <div>
+              <Link href="/casos-de-exito">
+                <Button size="lg" variant="outline" className="text-white border-gray-800 hover:bg-gray-800 hover:text-white">
+                  Ver todos los proyectos
+                </Button>
+              </Link>
+            </div>
           </motion.div>
         </motion.div>
       </div>

@@ -30,11 +30,11 @@ export default function CasosDeExitoPage() {
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">Casos destacados</h2>
             <FeaturedCases caseStudies={caseStudiesData} />
           </div>
-
+{/* 
           <div>
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">Proyectos detallados</h2>
             <DetailedProjects projects={projects} />
-          </div>
+          </div> */}
         </div>
       </main>
     </div>
