@@ -1,8 +1,7 @@
 import { Metadata } from "next";
 import { Header } from '@/components/organisms/Header';
 import { caseStudiesData } from '@/lib/content';
-import { projects } from '@/lib/data';
-import { FeaturedCases, DetailedProjects } from '@/components/portfolio/AnimatedSection';
+import { FeaturedCases } from '@/components/portfolio/AnimatedSection';
 
 export const metadata: Metadata = {
   title: "Casos de Éxito | Equipo GC",
@@ -30,11 +29,7 @@ export default function CasosDeExitoPage() {
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">Casos destacados</h2>
             <FeaturedCases caseStudies={caseStudiesData} />
           </div>
-{/* 
-          <div>
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">Proyectos detallados</h2>
-            <DetailedProjects projects={projects} />
-          </div> */}
+
         </div>
       </main>
     </div>

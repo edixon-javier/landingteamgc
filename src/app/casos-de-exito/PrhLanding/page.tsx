@@ -14,7 +14,7 @@ import { getImagePath } from "@/lib/utils";
 // --- Animación y Componentes Auxiliares ---
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" as const } },
 };
 const staggerContainer = {
   hidden: {},
@@ -40,32 +40,40 @@ const AnimatedSection = ({ children }: { children: ReactNode }) => {
 };
 
 // --- Landing Page Principal ---
-const PrhLanding = () => {
-  const [activeTab, setActiveTab] = useState("campaigns");
 
-  const tabContent = {
-    campaigns: {
-      icon: <Database className="w-8 h-8 mr-4 text-indigo-600" />,
-      title: "Gestión de Campañas y Productos",
-      description:
-        "Crea y administra tus campañas comerciales desde un solo lugar. Asocia productos, clientes, zonas y asesores con facilidad, manteniendo una base de datos centralizada y libre de errores.",
-      image: "/images/prh-tab-campaigns.png",
-    },
-    pdf: {
-      icon: <FileText className="w-8 h-8 mr-4 text-indigo-600" />,
-      title: "Generación de Documentos PDF",
-      description:
-        "Automatiza la creación de remisiones, cotizaciones y rótulos. Nuestra plataforma toma los datos de tus campañas y genera documentos profesionales y estandarizados en segundos.",
-      image: "/images/prh-tab-pdf.png",
-    },
-    deliveries: {
-      icon: <Truck className="w-8 h-8 mr-4 text-indigo-600" />,
-      title: "Control de Entregas y Remisiones",
-      description:
-        "Lleva un seguimiento preciso del estado de cada entrega. Registra la recepción, gestiona las remisiones asociadas y mantén una trazabilidad completa de tu operación logística.",
-      image: "/images/prh-tab-deliveries.png",
-    },
-  };
+type TabId = "campaigns" | "pdf" | "deliveries";
+const tabContent: Record<TabId, {
+  icon: React.ReactElement;
+  title: string;
+  description: string;
+  image: string;
+}> = {
+  campaigns: {
+    icon: <Database className="w-8 h-8 mr-4 text-indigo-600" />,
+    title: "Gestión de Campañas y Productos",
+    description:
+      "Crea y administra tus campañas comerciales desde un solo lugar. Asocia productos, clientes, zonas y asesores con facilidad, manteniendo una base de datos centralizada y libre de errores.",
+    image: "/images/prh-tab-campaigns.png",
+  },
+  pdf: {
+    icon: <FileText className="w-8 h-8 mr-4 text-indigo-600" />,
+    title: "Generación de Documentos PDF",
+    description:
+      "Automatiza la creación de remisiones, cotizaciones y rótulos. Nuestra plataforma toma los datos de tus campañas y genera documentos profesionales y estandarizados en segundos.",
+    image: "/images/prh-tab-pdf.png",
+  },
+  deliveries: {
+    icon: <Truck className="w-8 h-8 mr-4 text-indigo-600" />,
+    title: "Control de Entregas y Remisiones",
+    description:
+      "Lleva un seguimiento preciso del estado de cada entrega. Registra la recepción, gestiona las remisiones asociadas y mantén una trazabilidad completa de tu operación logística.",
+    image: "/images/prh-tab-deliveries.png",
+  },
+};
+
+const PrhLanding = () => {
+  const [activeTab, setActiveTab] = useState<TabId>("campaigns");
+  const tabIds: TabId[] = ["campaigns", "pdf", "deliveries"];
 
   return (
     <div className="bg-[#F9FAFB] font-sans text-slate-800">
@@ -170,7 +178,7 @@ const PrhLanding = () => {
               variants={fadeIn}
               className="flex justify-center border-b border-slate-200"
             >
-              {Object.keys(tabContent).map((tabId) => (
+              {tabIds.map((tabId) => (
                 <button
                   key={tabId}
                   onClick={() => setActiveTab(tabId)}
