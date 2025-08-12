@@ -7,6 +7,8 @@ import Image from "next/image";
 import { getImagePath } from "@/lib/utils";
 import { Header } from "@/components/organisms/Header";
 import { Footer } from "@/components/organisms/Footer";
+import { useAgendaDemoScroll } from "@/hooks/useAgendaDemoScroll";
+
 import {
   CheckCircle,
   BarChart3,
@@ -88,6 +90,7 @@ const FeatureCard = ({
 
 // --- Componente principal de la Landing Page ---
 const CrmInsuranceLanding = () => {
+  const handleAgendaDemoClick = useAgendaDemoScroll('contacto');
   return (
     <div className="bg-black">
       <Header />
@@ -119,7 +122,9 @@ const CrmInsuranceLanding = () => {
                   whileTap={{ scale: 0.95 }}
                   className="mt-8 px-8 py-4 bg-blue-600 text-white font-bold text-lg rounded-lg shadow-lg hover:bg-blue-700 transition-all duration-300"
                 >
-                  Agenda una Demo Estratégica
+                  <button onClick={handleAgendaDemoClick}>
+                    Agenda una Demo Estratégica
+                  </button>
                 </motion.button>
               </motion.div>
               <Image
@@ -435,7 +440,9 @@ const CrmInsuranceLanding = () => {
                     whileTap={{ scale: 0.95 }}
                     className="mt-8 px-10 py-4 bg-emerald-600 text-white font-bold text-lg rounded-lg shadow-lg hover:bg-emerald-700 transition-all duration-300"
                   >
-                    Agenda una Demo Estratégica
+                    <button onClick={handleAgendaDemoClick} >
+                      Agenda una Demo Estratégica
+                    </button>
                   </motion.button>
                 </motion.div>
               </AnimatedSection>

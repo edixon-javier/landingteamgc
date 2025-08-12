@@ -96,7 +96,7 @@ export function CaseStudies() {
           <motion.div variants={itemVariants} className="mt-16 space-y-4">
             <div>
               <Link href="/casos-de-exito">
-                <Button size="lg" variant="outline" className="text-white border-gray-800 hover:bg-gray-800 hover:text-white">
+                <Button size="lg" variant="outline" className="outline">
                   Ver todos los proyectos
                 </Button>
               </Link>

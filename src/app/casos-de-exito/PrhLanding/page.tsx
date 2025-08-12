@@ -10,6 +10,7 @@ import { Database, FileText, Truck, FileX2, Clock, EyeOff } from "lucide-react";
 import { Header } from "@/components/organisms/Header";
 import { Footer } from "@/components/organisms/Footer";
 import { getImagePath } from "@/lib/utils";
+import { useAgendaDemoScroll } from "@/hooks/useAgendaDemoScroll";
 
 // --- Animación y Componentes Auxiliares ---
 const fadeIn = {
@@ -75,6 +76,8 @@ const PrhLanding = () => {
   const [activeTab, setActiveTab] = useState<TabId>("campaigns");
   const tabIds: TabId[] = ["campaigns", "pdf", "deliveries"];
 
+  const handleAgendaDemoClick = useAgendaDemoScroll('contacto');
+
   return (
     <div className="bg-[#F9FAFB] font-sans text-slate-800">
       <Header />
@@ -106,6 +109,7 @@ const PrhLanding = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="mt-8 px-8 py-4 bg-indigo-600 text-white font-bold text-lg rounded-lg shadow-lg hover:bg-indigo-700 transition-colors duration-300"
+                onClick={handleAgendaDemoClick}
               >
                 Solicita una Demostración
               </motion.button>
@@ -256,6 +260,7 @@ const PrhLanding = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className="mt-8 px-10 py-4 bg-emerald-600 text-white font-bold text-lg rounded-lg shadow-lg hover:bg-emerald-700 transition-all duration-300"
+                  onClick={handleAgendaDemoClick}
                 >
                   Agenda una Demo Estratégica
                 </motion.button>

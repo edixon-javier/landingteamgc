@@ -16,6 +16,7 @@ import {
 import { Header } from "@/components/organisms/Header";
 import { Footer } from "@/components/Footer";
 import { getImagePath } from "@/lib/utils";
+import { useAgendaDemoScroll } from "@/hooks/useAgendaDemoScroll";
 
 // --- Variantes de Animación ---
 const fadeIn = {
@@ -77,6 +78,7 @@ const SolutionCard = ({
 
 // --- Landing Page Principal ---
 const CyberSecurityLanding = () => {
+  const handleAgendaDemoClick = useAgendaDemoScroll('contacto');
   return (
     <div className="bg-gray-900 font-sans">
       <Header />
@@ -107,7 +109,9 @@ const CyberSecurityLanding = () => {
                 whileTap={{ scale: 0.95 }}
                 className="mt-8 px-8 py-4 bg-emerald-600 text-white font-bold text-lg rounded-lg shadow-lg hover:bg-emerald-700 transition-all duration-300"
               >
-                Agenda una Demo Estratégica
+                <button onClick={handleAgendaDemoClick} >
+                  Agenda una Demo Estratégica
+                </button>
               </motion.button>
             </motion.div>
             <motion.div
@@ -394,7 +398,9 @@ const CyberSecurityLanding = () => {
                   whileTap={{ scale: 0.95 }}
                   className="mt-8 px-10 py-4 bg-emerald-600 text-white font-bold text-lg rounded-lg shadow-lg hover:bg-emerald-700 transition-all duration-300"
                 >
-                  Agenda una Demo Estratégica
+                  <button onClick={handleAgendaDemoClick} >
+                    Agenda una Demo Estratégica
+                  </button>
                 </motion.button>
               </motion.div>
             </AnimatedSection>

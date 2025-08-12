@@ -1,33 +1,56 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { getImagePath } from '@/lib/utils';
+import { useAgendaDemoScroll } from '@/hooks/useAgendaDemoScroll';
 
-const navLinks = [
-  { name: 'Inicio', href: '#inicio' },
-  { name: 'Metodología', href: '#metodologia' },
-  { name: 'Soluciones', href: '#soluciones' },
-  { name: 'Casos de Éxito', href: '#casos-de-exito' },
-  { name: 'Contacto', href: '#contacto' }
+type NavSection = 'inicio' | 'metodologia' | 'soluciones' | 'casos-de-exito' | 'contacto';
+
+interface NavLink {
+  name: string;
+  id: NavSection;
+}
+
+const navLinks: NavLink[] = [
+  { name: 'Inicio', id: 'inicio' },
+  { name: 'Metodología', id: 'metodologia' },
+  { name: 'Soluciones', id: 'soluciones' },
+  { name: 'Casos de Éxito', id: 'casos-de-exito' },
+  { name: 'Contacto', id: 'contacto' }
 ];
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('inicio');
+  const [activeSection, setActiveSection] = useState<NavSection>('inicio');
+
+  // Crear instancias de los hooks de scroll para cada sección
+  const scrollToInicio = useAgendaDemoScroll('inicio');
+  const scrollToMetodologia = useAgendaDemoScroll('metodologia');
+  const scrollToSoluciones = useAgendaDemoScroll('soluciones');
+  const scrollToCasosExito = useAgendaDemoScroll('casos-de-exito');
+  const scrollToContacto = useAgendaDemoScroll('contacto');
+
+  // Mapear las secciones a sus funciones de scroll usando useMemo
+  const scrollFunctions = useMemo(() => ({
+    'inicio': scrollToInicio,
+    'metodologia': scrollToMetodologia,
+    'soluciones': scrollToSoluciones,
+    'casos-de-exito': scrollToCasosExito,
+    'contacto': scrollToContacto
+  }), [scrollToInicio, scrollToMetodologia, scrollToSoluciones, scrollToCasosExito, scrollToContacto]);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
       
       // Scroll Spy
-      const sections = navLinks.map(link => link.href.replace('#', ''));
-      const current = sections.find(section => {
-        const element = document.getElementById(section);
+      const current = navLinks.find(link => {
+        const element = document.getElementById(link.id);
         if (element) {
           const rect = element.getBoundingClientRect();
           return rect.top <= 100 && rect.bottom >= 100;
@@ -36,7 +59,7 @@ export function Header() {
       });
       
       if (current) {
-        setActiveSection(current);
+        setActiveSection(current.id);
       }
     };
 
@@ -44,21 +67,11 @@ export function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: NavSection) => {
     e.preventDefault();
-    const targetId = href.replace('#', '');
-    const element = document.getElementById(targetId);
-    const headerOffset = 80;
-    
-    if (element) {
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-      
+    const scrollFn = scrollFunctions[sectionId];
+    if (scrollFn) {
+      scrollFn(e);
       if (isMenuOpen) {
         setIsMenuOpen(false);
       }
@@ -101,11 +114,11 @@ export function Header() {
                 transition={{ duration: 0.5, delay: 0.1 * index }}
               >
                 <Link
-                  href={link.href}
-                  onClick={(e) => scrollToSection(e, link.href)}
+                  href={`#${link.id}`}
+                  onClick={(e) => handleNavClick(e, link.id)}
                   className={`text-sm font-semibold transition-colors duration-300 ${
                     isScrolled ? 'text-gray-800 hover:text-blue-600' : 'text-white hover:text-white/80'
-                  } ${activeSection === link.href.replace('#', '') ? 'text-blue-600' : ''}`}
+                  } ${activeSection === link.id ? 'text-blue-600' : ''}`}
                 >
                   {link.name}
                 </Link>
@@ -152,13 +165,13 @@ export function Header() {
               {navLinks.map((link) => (
                 <Link
                   key={link.name}
-                  href={link.href}
+                  href={`#${link.id}`}
                   className={`text-xl font-semibold transition-colors duration-200 ${
-                    activeSection === link.href.replace('#', '') 
+                    activeSection === link.id
                     ? 'text-blue-600' 
                     : 'text-gray-800 hover:text-blue-600'
                   }`}
-                  onClick={(e) => scrollToSection(e, link.href)}
+                  onClick={(e) => handleNavClick(e, link.id)}
                 >
                   {link.name}
                 </Link>

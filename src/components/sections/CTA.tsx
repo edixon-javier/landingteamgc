@@ -1,12 +1,21 @@
 "use client";
 
-import { motion, easeOut  } from "framer-motion";
+import { motion, easeOut, Variants } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { MapPin, Mail, Phone } from "lucide-react";
 
 const sectionVariants = {
   hidden: { opacity: 0, y: 50 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: easeOut  } },
+};
+
+const fadeIn: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { 
+    opacity: 1, 
+    y: 0, 
+    transition: { duration: 0.7, ease: easeOut } 
+  },
 };
 
 export function CTA() {
@@ -22,13 +31,14 @@ export function CTA() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Columna de Información */}
           <div className="text-gray-900">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tighter">
-              ¿Listo para transformar tu próximo desafío?
-            </h2>
-            <p className="mt-4 text-lg text-gray-600">
-              Hablemos. Nuestro equipo de estrategas está listo para escuchar tus ideas y convertirlas en proyectos de alto impacto. 
-              Completa el formulario o contáctanos directamente.
-            </p>
+             <motion.div variants={fadeIn}>
+                <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
+                    Hablemos de tu <br/><span className="text-indigo-600">próximo gran proyecto.</span>
+                </h2>
+                <p className="mt-5 text-lg text-slate-600 max-w-lg">
+                    Nuestro equipo está listo para escuchar tus ideas y convertirlas en soluciones de alto impacto. Completa el formulario o contáctanos directamente.
+                </p>
+            </motion.div>
             <div className="mt-8 space-y-6">
               <div className="flex items-start gap-4">
                 <MapPin className="h-6 w-6 text-blue-600 mt-1 flex-shrink-0" />
@@ -66,44 +76,6 @@ export function CTA() {
           {/* Columna del Formulario Mejorada */}
           <div className="bg-white p-10 rounded-2xl shadow-xl border border-gray-100">
             <form action="#" method="POST" className="space-y-6">
-              <div>
-                <label
-                  htmlFor="full-name"
-                  className="block text-sm font-semibold text-gray-700 mb-1"
-                >
-                  Nombre Completo
-                </label>
-                <input
-                  type="text"
-                  name="full-name"
-                  id="full-name"
-                  autoComplete="name"
-                  placeholder="Ingresa tu nombre completo"
-                  className="block w-full px-4 py-3 text-gray-900 placeholder-gray-400 
-                  border border-gray-300 rounded-lg shadow-sm 
-                  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
-                />
-              </div>
-
-              <div>
-                <label
-                  htmlFor="company"
-                  className="block text-sm font-semibold text-gray-700 mb-1"
-                >
-                  Empresa
-                </label>
-                <input
-                  type="text"
-                  name="company"
-                  id="company"
-                  autoComplete="organization"
-                  placeholder="Nombre de tu empresa"
-                  className="block w-full px-4 py-3 text-gray-900 placeholder-gray-400 
-                  border border-gray-300 rounded-lg shadow-sm 
-                  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
-                />
-              </div>
-
               <div>
                 <label
                   htmlFor="email"
