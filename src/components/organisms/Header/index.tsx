@@ -7,6 +7,9 @@ import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { getImagePath } from '@/lib/utils';
 import { useAgendaDemoScroll } from '@/hooks/useAgendaDemoScroll';
+import { caseStudiesData } from '@/lib/content';
+import { DropdownMenu } from './DropdownMenu';
+import { MobileDropdown } from './MobileDropdown';
 
 type NavSection = 'inicio' | 'metodologia' | 'soluciones' | 'casos-de-exito' | 'contacto';
 
@@ -27,6 +30,20 @@ export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<NavSection>('inicio');
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isMobileDropdownOpen, setIsMobileDropdownOpen] = useState(false);
+
+  const handleDropdownEnter = () => {
+    setIsDropdownOpen(true);
+  };
+
+  const handleDropdownLeave = () => {
+    setIsDropdownOpen(false);
+  };
+
+  const toggleMobileDropdown = () => {
+    setIsMobileDropdownOpen(!isMobileDropdownOpen);
+  };
 
   // Crear instancias de los hooks de scroll para cada sección
   const scrollToInicio = useAgendaDemoScroll('inicio');
@@ -112,6 +129,9 @@ export function Header() {
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 * index }}
+                className="relative"
+                onMouseEnter={link.id === 'casos-de-exito' ? handleDropdownEnter : undefined}
+                onMouseLeave={link.id === 'casos-de-exito' ? handleDropdownLeave : undefined}
               >
                 <Link
                   href={`#${link.id}`}
@@ -122,6 +142,15 @@ export function Header() {
                 >
                   {link.name}
                 </Link>
+                {link.id === 'casos-de-exito' && (
+                  <DropdownMenu
+                    isOpen={isDropdownOpen}
+                    projects={caseStudiesData}
+                    isScrolled={isScrolled}
+                    onMouseEnter={handleDropdownEnter}
+                    onMouseLeave={handleDropdownLeave}
+                  />
+                )}
               </motion.div>
             ))}
           </nav>
@@ -163,18 +192,27 @@ export function Header() {
             </div>
             <nav className="flex flex-col space-y-6">
               {navLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  href={`#${link.id}`}
-                  className={`text-xl font-semibold transition-colors duration-200 ${
-                    activeSection === link.id
-                    ? 'text-blue-600' 
-                    : 'text-gray-800 hover:text-blue-600'
-                  }`}
-                  onClick={(e) => handleNavClick(e, link.id)}
-                >
-                  {link.name}
-                </Link>
+                <div key={link.name}>
+                  <Link
+                    href={`#${link.id}`}
+                    className={`text-xl font-semibold transition-colors duration-200 ${
+                      activeSection === link.id
+                      ? 'text-blue-600' 
+                      : 'text-gray-800 hover:text-blue-600'
+                    }`}
+                    onClick={(e) => handleNavClick(e, link.id)}
+                  >
+                    {link.name}
+                  </Link>
+                  {link.id === 'casos-de-exito' && (
+                    <MobileDropdown
+                      isOpen={isMobileDropdownOpen}
+                      projects={caseStudiesData}
+                      onToggle={toggleMobileDropdown}
+                      activeSection={activeSection}
+                    />
+                  )}
+                </div>
               ))}
             </nav>
           </div>

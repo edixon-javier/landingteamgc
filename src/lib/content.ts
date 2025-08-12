@@ -151,6 +151,7 @@ export const methodologySteps: MethodologyStep[] = [
 export const caseStudiesData: CaseStudyPreview[] = [
   {
     slug: "suvey_cibersegurity",
+    name: "Suvey Ciberseguridad",
     client:
       "Administra campañas comerciales, productos, entregas y remisiones de forma centralizada y segura.",
     title:
@@ -180,6 +181,7 @@ export const caseStudiesData: CaseStudyPreview[] = [
   },
   {
     slug: "dultos-consultans-platform",
+    name: "Dultos Consultans Platform",
     client:
       "Gestiona pólizas, clientes y renovaciones de forma automática y segura.",
     title:
@@ -207,6 +209,7 @@ export const caseStudiesData: CaseStudyPreview[] = [
   },
   {
     slug: "nazca-restaurant-management",
+    name: "Restaurant Management",
     client: "Menú Digital y Gestión de Pedidos para Restaurantes",
     title:
       "Digitaliza tu restaurante con menús QR, pedidos en línea y administración centralizada. Optimiza la experiencia de tus clientes y simplifica la gestión de mesas, productos y órdenes en tiempo real.",
@@ -228,6 +231,7 @@ export const caseStudiesData: CaseStudyPreview[] = [
   },
   {
     slug: "prh-content-management",
+    name: "PRH Content Management",
     client:
       "Administra campañas comerciales, productos, entregas y remisiones de forma centralizada y segura.",
     title:
@@ -258,6 +262,7 @@ export const caseStudiesData: CaseStudyPreview[] = [
   },
   {
     slug: "legrand-digital-transformation",
+    name: "Legrand Digital Transformation",
     client: "Legrand",
     title: "Transformación Digital del Proceso de Ventas",
     imageUrl: getImagePath("/images/legrand/screenshot-2025-07-08-144638.png"),
@@ -277,6 +282,7 @@ export const caseStudiesData: CaseStudyPreview[] = [
 
   {
     slug: "qr-event-management",
+    name: "Event Management",
     client: "Corteva",
     title: "Herramienta Simplificada de Gestión de Eventos y Análisis",
     imageUrl: getImagePath("/images/QrEvent/screenshot-2025-07-08-100400.png"),

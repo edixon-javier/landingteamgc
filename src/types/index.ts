@@ -51,6 +51,7 @@ export type Solution = {
  */
 export type CaseStudyPreview = {
   slug: string;        // Identificador único en la URL
+  name: string;        // Nombre del proyecto o caso de éxito
   client: string;      // Nombre del cliente
   title: string;       // Título del proyecto o caso de éxito
   imageUrl: string;    // URL de la imagen de vista previa
