@@ -81,7 +81,7 @@ const RestaurantLanding = () => {
             >
                <Image
                 src={getImagePath(
-                  "/images/dultos-consultans/dulto_dashboard_aspects.webp"
+                  "/images/restaurant/pedidos.webp"
                 )}
                 alt="Estado anterior del proceso"
                 width={800}
@@ -134,7 +134,15 @@ const RestaurantLanding = () => {
           <AnimatedSection>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-24">
               <motion.div variants={fadeIn}>
-                <Image src="/images/professionalRestaurant/screenshot-2025-07-08-102023.png" alt="Editor de menú digital" width={1000} height={800} className="rounded-xl shadow-2xl shadow-stone-200" />
+               <Image
+                src={getImagePath(
+                  "/images/restaurant/menu.webp"
+                )}
+                alt="Estado anterior del proceso"
+                width={800}
+                height={600}
+                className="rounded-lg mb-4 opacity-80"
+              />
               </motion.div>
               <motion.div variants={fadeIn}>
                 <h2 className="font-serif text-3xl font-bold text-slate-900">Un menú que enamora a tus clientes</h2>
@@ -151,7 +159,15 @@ const RestaurantLanding = () => {
           <AnimatedSection>
              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <motion.div variants={fadeIn} className="lg:order-last">
-                <Image src="/images/professionalRestaurant/screenshot-2025-07-08-102303.png" alt="Panel de gestión de pedidos" width={1000} height={800} className="rounded-xl shadow-2xl shadow-stone-200" />
+                <Image
+                src={getImagePath(
+                  "/images/restaurant/ordenes.webp"
+                )}
+                alt="Estado anterior del proceso"
+                width={800}
+                height={600}
+                className="rounded-lg mb-4 opacity-80"
+              />
               </motion.div>
               <motion.div variants={fadeIn}>
                 <h2 className="font-serif text-3xl font-bold text-slate-900">Control total de tu operación en tiempo real</h2>
