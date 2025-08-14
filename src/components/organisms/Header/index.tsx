@@ -1,10 +1,10 @@
 "use client";
 
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useRef, useCallback } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import { getImagePath } from '@/lib/utils';
 import { useAgendaDemoScroll } from '@/hooks/useAgendaDemoScroll';
 import { caseStudiesData } from '@/lib/content';
@@ -16,43 +16,119 @@ type NavSection = 'inicio' | 'metodologia' | 'soluciones' | 'casos-de-exito' | '
 interface NavLink {
   name: string;
   id: NavSection;
+  hasDropdown?: boolean;
 }
 
 const navLinks: NavLink[] = [
   { name: 'Inicio', id: 'inicio' },
-  { name: 'Metodología', id: 'metodologia' },
   { name: 'Soluciones', id: 'soluciones' },
-  { name: 'Casos de Éxito', id: 'casos-de-exito' },
+  { name: 'Metodología', id: 'metodologia' },
+  { name: 'Casos de Éxito', id: 'casos-de-exito', hasDropdown: true },
   { name: 'Contacto', id: 'contacto' }
 ];
 
+// Variantes de animación optimizadas
+const headerVariants = {
+  transparent: {
+    backgroundColor: 'rgba(0, 0, 0, 0)',
+    backdropFilter: 'blur(0px)',
+    boxShadow: '0 0 0 0 rgba(0, 0, 0, 0)',
+    transition: { 
+      duration: 0.4, 
+      ease: [0.25, 0.1, 0.25, 1]
+    }
+  },
+  solid: {
+    backgroundColor: 'rgba(255, 255, 255, 0.95)',
+    backdropFilter: 'blur(16px)',
+    boxShadow: '0 4px 20px -2px rgba(0, 0, 0, 0.1)',
+    transition: { 
+      duration: 0.4, 
+      ease: [0.25, 0.1, 0.25, 1]
+    }
+  }
+};
+
+const navItemVariants = {
+  hidden: { 
+    opacity: 0, 
+    y: -16,
+    scale: 0.95
+  },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.5,
+      delay: 0.1 + (i * 0.1),
+      ease: [0.25, 0.1, 0.25, 1]
+    }
+  })
+};
+
+const mobileMenuVariants = {
+  closed: {
+    opacity: 0,
+    x: '100%',
+    scale: 0.95,
+    transition: {
+      duration: 0.3,
+      ease: [0.4, 0, 1, 1]
+    }
+  },
+  open: {
+    opacity: 1,
+    x: '0%',
+    scale: 1,
+    transition: {
+      duration: 0.4,
+      ease: [0.25, 0.1, 0.25, 1],
+      staggerChildren: 0.08,
+      delayChildren: 0.1
+    }
+  }
+};
+
+const mobileItemVariants = {
+  closed: { 
+    opacity: 0, 
+    x: 30, 
+    scale: 0.9 
+  },
+  open: { 
+    opacity: 1, 
+    x: 0, 
+    scale: 1,
+    transition: {
+      duration: 0.3,
+      ease: [0.25, 0.1, 0.25, 1]
+    }
+  }
+};
+
 export function Header() {
+  // Estados principales
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<NavSection>('inicio');
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isMobileDropdownOpen, setIsMobileDropdownOpen] = useState(false);
+  const [isHoveringDropdown, setIsHoveringDropdown] = useState(false);
+  
+  // Refs para manejo de foco y timeouts
+  const dropdownTriggerRef = useRef<HTMLAnchorElement>(null);
+  const mobileMenuButtonRef = useRef<HTMLButtonElement>(null);
+  const dropdownTimeoutRef = useRef<NodeJS.Timeout>();
+  const scrollTimeoutRef = useRef<NodeJS.Timeout>();
 
-  const handleDropdownEnter = () => {
-    setIsDropdownOpen(true);
-  };
-
-  const handleDropdownLeave = () => {
-    setIsDropdownOpen(false);
-  };
-
-  const toggleMobileDropdown = () => {
-    setIsMobileDropdownOpen(!isMobileDropdownOpen);
-  };
-
-  // Crear instancias de los hooks de scroll para cada sección
+  // Funciones de scroll
   const scrollToInicio = useAgendaDemoScroll('inicio');
   const scrollToMetodologia = useAgendaDemoScroll('metodologia');
   const scrollToSoluciones = useAgendaDemoScroll('soluciones');
   const scrollToCasosExito = useAgendaDemoScroll('casos-de-exito');
   const scrollToContacto = useAgendaDemoScroll('contacto');
 
-  // Mapear las secciones a sus funciones de scroll usando useMemo
   const scrollFunctions = useMemo(() => ({
     'inicio': scrollToInicio,
     'metodologia': scrollToMetodologia,
@@ -61,163 +137,410 @@ export function Header() {
     'contacto': scrollToContacto
   }), [scrollToInicio, scrollToMetodologia, scrollToSoluciones, scrollToCasosExito, scrollToContacto]);
 
+  // Manejo del dropdown con timeout mejorado
+  const handleDropdownEnter = useCallback(() => {
+    if (dropdownTimeoutRef.current) {
+      clearTimeout(dropdownTimeoutRef.current);
+    }
+    setIsHoveringDropdown(true);
+    setIsDropdownOpen(true);
+  }, []);
+
+  const handleDropdownLeave = useCallback(() => {
+    setIsHoveringDropdown(false);
+    dropdownTimeoutRef.current = setTimeout(() => {
+      setIsDropdownOpen(false);
+    }, 150);
+  }, []);
+
+  const closeDropdown = useCallback(() => {
+    setIsDropdownOpen(false);
+    setIsHoveringDropdown(false);
+    if (dropdownTimeoutRef.current) {
+      clearTimeout(dropdownTimeoutRef.current);
+    }
+  }, []);
+
+  // Manejo del menú móvil
+  const toggleMobileMenu = useCallback(() => {
+    setIsMenuOpen(prev => {
+      const newState = !prev;
+      if (!newState) {
+        setIsMobileDropdownOpen(false);
+        setTimeout(() => mobileMenuButtonRef.current?.focus(), 200);
+      }
+      return newState;
+    });
+  }, []);
+
+  const closeMobileMenu = useCallback(() => {
+    setIsMenuOpen(false);
+    setIsMobileDropdownOpen(false);
+    setTimeout(() => mobileMenuButtonRef.current?.focus(), 200);
+  }, []);
+
+  const toggleMobileDropdown = useCallback(() => {
+    setIsMobileDropdownOpen(prev => !prev);
+  }, []);
+
+  // Optimized scroll handler
   useEffect(() => {
+    let ticking = false;
+    
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
+      if (ticking) return;
       
-      // Scroll Spy
-      const current = navLinks.find(link => {
-        const element = document.getElementById(link.id);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          return rect.top <= 100 && rect.bottom >= 100;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const scrollY = window.scrollY;
+        const shouldBeScrolled = scrollY > 20;
+        
+        if (shouldBeScrolled !== isScrolled) {
+          setIsScrolled(shouldBeScrolled);
         }
-        return false;
+        
+        // Optimized scroll spy
+        if (scrollTimeoutRef.current) {
+          clearTimeout(scrollTimeoutRef.current);
+        }
+        
+        scrollTimeoutRef.current = setTimeout(() => {
+          const viewportCenter = scrollY + (window.innerHeight / 2);
+          let closestSection: NavSection | null = null;
+          let closestDistance = Infinity;
+          
+          navLinks.forEach(link => {
+            const element = document.getElementById(link.id);
+            if (element) {
+              const rect = element.getBoundingClientRect();
+              const elementTop = rect.top + scrollY;
+              const elementCenter = elementTop + (rect.height / 2);
+              const distance = Math.abs(elementCenter - viewportCenter);
+              
+              if (distance < closestDistance) {
+                closestDistance = distance;
+                closestSection = link.id;
+              }
+            }
+          });
+          
+          if (closestSection && closestSection !== activeSection) {
+            setActiveSection(closestSection);
+          }
+        }, 100);
+        
+        ticking = false;
       });
-      
-      if (current) {
-        setActiveSection(current.id);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (dropdownTimeoutRef.current) clearTimeout(dropdownTimeoutRef.current);
+      if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
+    };
+  }, [isScrolled, activeSection]);
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        if (isDropdownOpen) {
+          closeDropdown();
+          dropdownTriggerRef.current?.focus();
+        } else if (isMenuOpen) {
+          closeMobileMenu();
+        }
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [isDropdownOpen, isMenuOpen, closeDropdown, closeMobileMenu]);
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: NavSection) => {
+  // Body scroll lock
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+      document.body.style.paddingRight = 'var(--scrollbar-width, 0px)';
+    } else {
+      document.body.style.overflow = '';
+      document.body.style.paddingRight = '';
+    }
+    
+    return () => {
+      document.body.style.overflow = '';
+      document.body.style.paddingRight = '';
+    };
+  }, [isMenuOpen]);
+
+  const handleNavClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>, sectionId: NavSection) => {
     e.preventDefault();
     const scrollFn = scrollFunctions[sectionId];
     if (scrollFn) {
       scrollFn(e);
-      if (isMenuOpen) {
-        setIsMenuOpen(false);
-      }
+      closeMobileMenu();
+      closeDropdown();
     }
-  };
+  }, [scrollFunctions, closeMobileMenu, closeDropdown]);
+
+  // Improved styling functions with modern design
+  const getNavLinkStyles = useCallback((linkId: NavSection, isActive: boolean) => {
+    const baseStyles = `
+      relative flex items-center px-4 py-2 text-sm font-semibold rounded-xl
+      transition-all duration-300 ease-out group
+      focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:ring-offset-2
+    `;
+    
+    if (isScrolled) {
+      return `${baseStyles} ${
+        isActive 
+          ? 'text-blue-600 bg-blue-50 shadow-sm' 
+          : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50 hover:shadow-sm'
+      }`;
+    } else {
+      return `${baseStyles} ${
+        isActive 
+          ? 'text-blue-300 bg-white/10 shadow-lg backdrop-blur-sm' 
+          : 'text-white/90 hover:text-white hover:bg-white/10 hover:backdrop-blur-sm hover:shadow-lg'
+      }`;
+    }
+  }, [isScrolled]);
+
+  const getLogoFilter = useCallback(() => {
+    return isScrolled ? 'filter-none' : 'brightness-0 invert drop-shadow-sm';
+  }, [isScrolled]);
+
+  const getHeaderBorder = useCallback(() => {
+    return isScrolled 
+      ? 'border-b border-gray-200/50' 
+      : 'border-b border-transparent';
+  }, [isScrolled]);
 
   return (
-    <header
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        isScrolled? 'bg-white/90 shadow-md backdrop-blur-sm' : 'bg-transparent'
-      }`}
-    >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <Link href="/" className="flex-shrink-0">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
+    <>
+      <motion.header
+        variants={headerVariants}
+        animate={isScrolled ? 'solid' : 'transparent'}
+        className={`fixed top-0 left-0 w-full z-50 ${getHeaderBorder()}`}
+      >
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-20">
+            {/* Logo */}
+            <Link 
+              href="/" 
+              className="flex-shrink-0 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:ring-offset-2 rounded-xl p-1 -m-1"
             >
-              <Image
-                className={`h-10 w-auto transition-all duration-300 ${isScrolled? 'filter-none' : 'brightness-0 invert'}`}
-                src={getImagePath("/images/logogc.svg")}
-                alt="Equipo GC Logo"
-                width={120}
-                height={40}
-                priority
-              />
-            </motion.div>
-          </Link>
-
-          {/* Navegación Desktop */}
-          <nav className="hidden md:flex md:space-x-8">
-            {navLinks.map((link, index) => (
               <motion.div
-                key={link.name}
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 * index }}
-                className="relative"
-                onMouseEnter={link.id === 'casos-de-exito' ? handleDropdownEnter : undefined}
-                onMouseLeave={link.id === 'casos-de-exito' ? handleDropdownLeave : undefined}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
               >
-                <Link
-                  href={`#${link.id}`}
-                  onClick={(e) => handleNavClick(e, link.id)}
-                  className={`text-sm font-semibold transition-colors duration-300 ${
-                    isScrolled ? 'text-gray-800 hover:text-blue-600' : 'text-white hover:text-white/80'
-                  } ${activeSection === link.id ? 'text-blue-600' : ''}`}
-                >
-                  {link.name}
-                </Link>
-                {link.id === 'casos-de-exito' && (
-                  <DropdownMenu
-                    isOpen={isDropdownOpen}
-                    projects={caseStudiesData}
-                    isScrolled={isScrolled}
-                    onMouseEnter={handleDropdownEnter}
-                    onMouseLeave={handleDropdownLeave}
-                  />
-                )}
+                <Image
+                  className={`h-10 w-auto transition-all duration-500 ease-out ${getLogoFilter()}`}
+                  src={getImagePath("/images/logogc.svg")}
+                  alt="Equipo GC - Desarrollo de Software"
+                  width={120}
+                  height={40}
+                  priority
+                />
               </motion.div>
-            ))}
-          </nav>
+            </Link>
 
-          {/* Botón Menú Móvil */}
-          <div className="md:hidden">
-            <button 
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-lg p-1"
-            >
-              <Menu className={`h-6 w-6 ${isScrolled? 'text-gray-800' : 'text-white'}`} />
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* Panel Menú Móvil */}
-      {isMenuOpen && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="md:hidden fixed top-0 left-0 w-full h-screen bg-white z-50"
-        >
-          <div className="container mx-auto px-4 py-6">
-            <div className="flex justify-between items-center mb-8">
-              <Image 
-                src={getImagePath("/images/logogc.svg")} 
-                alt="Equipo GC Logo" 
-                width={120} 
-                height={40} 
-                className="h-10 w-auto" 
-              />
-              <button 
-                onClick={() => setIsMenuOpen(false)}
-                className="focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-lg p-1"
-              >
-                <X className="h-6 w-6 text-gray-800" />
-              </button>
-            </div>
-            <nav className="flex flex-col space-y-6">
-              {navLinks.map((link) => (
-                <div key={link.name}>
+            {/* Desktop Navigation */}
+            <nav className="hidden md:flex md:items-center md:space-x-2">
+              {navLinks.map((link, index) => (
+                <motion.div
+                  key={link.name}
+                  custom={index}
+                  initial="hidden"
+                  animate="visible"
+                  variants={navItemVariants}
+                  className="relative"
+                  onMouseEnter={link.hasDropdown ? handleDropdownEnter : undefined}
+                  onMouseLeave={link.hasDropdown ? handleDropdownLeave : undefined}
+                >
                   <Link
+                    ref={link.hasDropdown ? dropdownTriggerRef : undefined}
                     href={`#${link.id}`}
-                    className={`text-xl font-semibold transition-colors duration-200 ${
-                      activeSection === link.id
-                      ? 'text-blue-600' 
-                      : 'text-gray-800 hover:text-blue-600'
-                    }`}
                     onClick={(e) => handleNavClick(e, link.id)}
+                    className={getNavLinkStyles(link.id, activeSection === link.id)}
+                    aria-expanded={link.hasDropdown ? isDropdownOpen : undefined}
+                    aria-haspopup={link.hasDropdown ? "menu" : undefined}
                   >
-                    {link.name}
+                    <span>{link.name}</span>
+                    {link.hasDropdown && (
+                      <ChevronDown 
+                        className={`ml-1 h-4 w-4 transition-all duration-300 ${
+                          isDropdownOpen ? 'rotate-180 scale-110' : 'rotate-0 scale-100'
+                        } group-hover:scale-110`}
+                        aria-hidden="true"
+                      />
+                    )}
+                    
                   </Link>
-                  {link.id === 'casos-de-exito' && (
-                    <MobileDropdown
-                      isOpen={isMobileDropdownOpen}
+                  
+                  {link.hasDropdown && (
+                    <DropdownMenu
+                      isOpen={isDropdownOpen}
                       projects={caseStudiesData}
-                      onToggle={toggleMobileDropdown}
-                      activeSection={activeSection}
+                      isScrolled={isScrolled}
+                      onMouseEnter={handleDropdownEnter}
+                      onMouseLeave={handleDropdownLeave}
+                      onClose={closeDropdown}
+                      triggerRef={dropdownTriggerRef}
                     />
                   )}
-                </div>
+                </motion.div>
               ))}
             </nav>
+
+            {/* Mobile Menu Button */}
+            <div className="md:hidden">
+              <button 
+                ref={mobileMenuButtonRef}
+                onClick={toggleMobileMenu}
+                className={`
+                  p-2 rounded-xl transition-all duration-300 ease-out
+                  focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:ring-offset-2
+                  ${isScrolled 
+                    ? 'hover:bg-gray-100 active:bg-gray-200 active:scale-95' 
+                    : 'hover:bg-white/10 active:bg-white/20 active:scale-95 backdrop-blur-sm'
+                  }
+                `}
+                aria-expanded={isMenuOpen}
+                aria-label={isMenuOpen ? "Cerrar menú" : "Abrir menú"}
+              >
+                <AnimatePresence mode="wait" initial={false}>
+                  <motion.div
+                    key={isMenuOpen ? "close" : "menu"}
+                    initial={{ opacity: 0, rotate: -90, scale: 0.8 }}
+                    animate={{ opacity: 1, rotate: 0, scale: 1 }}
+                    exit={{ opacity: 0, rotate: 90, scale: 0.8 }}
+                    transition={{ duration: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
+                  >
+                    {isMenuOpen ? (
+                      <X className={`h-6 w-6 ${isScrolled ? 'text-gray-800' : 'text-white'}`} />
+                    ) : (
+                      <Menu className={`h-6 w-6 ${isScrolled ? 'text-gray-800' : 'text-white'}`} />
+                    )}
+                  </motion.div>
+                </AnimatePresence>
+              </button>
+            </div>
           </div>
-        </motion.div>
-      )}
-    </header>
+        </div>
+      </motion.header>
+
+      {/* Mobile Menu Overlay */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="md:hidden fixed inset-0 bg-black/30 backdrop-blur-sm z-40"
+            onClick={closeMobileMenu}
+          />
+        )}
+      </AnimatePresence>
+
+      {/* Mobile Menu Panel */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            initial="closed"
+            animate="open"
+            exit="closed"
+            variants={mobileMenuVariants}
+            className="md:hidden fixed top-0 right-0 w-80 max-w-[85vw] h-full bg-white shadow-2xl z-50 overflow-y-auto"
+          >
+            <div className="px-6 py-8">
+              {/* Mobile Menu Header */}
+              <motion.div 
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 }}
+                className="flex justify-between items-center mb-8 pb-6 border-b border-gray-200"
+              >
+                <Image 
+                  src={getImagePath("/images/logogc.svg")} 
+                  alt="Equipo GC Logo" 
+                  width={120} 
+                  height={40} 
+                  className="h-10 w-auto" 
+                />
+                <button 
+                  onClick={closeMobileMenu}
+                  className="p-2 rounded-xl hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-colors duration-200"
+                  aria-label="Cerrar menú"
+                >
+                  <X className="h-6 w-6 text-gray-800" />
+                </button>
+              </motion.div>
+
+              {/* Mobile Navigation */}
+              <nav className="space-y-2">
+                {navLinks.map((link, index) => (
+                  <motion.div 
+                    key={link.name}
+                    variants={mobileItemVariants}
+                    className="relative"
+                  >
+                    <Link
+                      href={`#${link.id}`}
+                      className={`
+                        block px-4 py-4 text-lg font-semibold rounded-xl transition-all duration-300
+                        focus:outline-none focus:ring-2 focus:ring-blue-500/50
+                        ${activeSection === link.id
+                          ? 'text-blue-600 bg-blue-50 shadow-sm border-l-4 border-blue-600' 
+                          : 'text-gray-800 hover:text-blue-600 hover:bg-gray-50 hover:shadow-sm hover:translate-x-1'
+                        }
+                      `}
+                      onClick={(e) => handleNavClick(e, link.id)}
+                    >
+                      <div className="flex items-center justify-between">
+                        <span>{link.name}</span>
+                        {activeSection === link.id && (
+                          <motion.div
+                            initial={{ scale: 0 }}
+                            animate={{ scale: 1 }}
+                            className="w-2 h-2 bg-blue-600 rounded-full"
+                          />
+                        )}
+                      </div>
+                    </Link>
+                    
+                    {link.hasDropdown && (
+                      <MobileDropdown
+                        isOpen={isMobileDropdownOpen}
+                        projects={caseStudiesData}
+                        onToggle={toggleMobileDropdown}
+                        activeSection={activeSection}
+                      />
+                    )}
+                  </motion.div>
+                ))}
+              </nav>
+
+              {/* Mobile Menu Footer */}
+              <motion.div 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.4 }}
+                className="mt-8 pt-8 border-t border-gray-200"
+              >
+                <p className="text-sm text-gray-500 text-center leading-relaxed">
+                  Desarrollamos soluciones tecnológicas innovadoras para impulsar tu negocio
+                </p>
+              </motion.div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 }

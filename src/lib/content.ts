@@ -260,32 +260,32 @@ export const caseStudiesData: CaseStudyPreview[] = [
     duration: "7 meses",
     projectUrl: "https://front-prh.equipogctrade.com/",
   },
-  {
-    slug: "legrand-digital-transformation",
-    name: "Legrand Digital Transformation",
-    client: "Legrand",
-    title: "Transformación Digital del Proceso de Ventas",
-    imageUrl: getImagePath("/images/legrand/screenshot-2025-07-08-144638.png"),
-    description:
-      "Transformación integral del proceso de ventas de Legrand mediante la implementación de herramientas digitales y automatización.",
-    challenge:
-      "Legrand necesitaba modernizar su proceso de ventas, que era principalmente manual y consumía mucho tiempo. Los vendedores dedicaban demasiadas horas a tareas administrativas en lugar de enfocarse en las relaciones con los clientes.",
-    solution:
-      "Desarrollamos una plataforma digital integral que automatiza el proceso de ventas, desde la generación de cotizaciones hasta el seguimiento post-venta. Implementamos un CRM personalizado y herramientas de análisis de datos en tiempo real.",
-    results:
-      "Reducción del 60% en tiempo dedicado a tareas administrativas, aumento del 35% en conversión de leads y mejora del 45% en satisfacción del cliente.",
-    technologies: ["React", "Node.js", "MongoDB", "AWS", "Salesforce API"],
-    year: "2024",
-    duration: "8 meses",
-    projectUrl: "https://ventas.legrand.com.co",
-  },
+  // {
+  //   slug: "legrand-digital-transformation",
+  //   name: "Legrand Digital Transformation",
+  //   client: "Legrand",
+  //   title: "Transformación Digital del Proceso de Ventas",
+  //   imageUrl: getImagePath("/images/legrand/screenshot-2025-07-08-144638.png"),
+  //   description:
+  //     "Transformación integral del proceso de ventas de Legrand mediante la implementación de herramientas digitales y automatización.",
+  //   challenge:
+  //     "Legrand necesitaba modernizar su proceso de ventas, que era principalmente manual y consumía mucho tiempo. Los vendedores dedicaban demasiadas horas a tareas administrativas en lugar de enfocarse en las relaciones con los clientes.",
+  //   solution:
+  //     "Desarrollamos una plataforma digital integral que automatiza el proceso de ventas, desde la generación de cotizaciones hasta el seguimiento post-venta. Implementamos un CRM personalizado y herramientas de análisis de datos en tiempo real.",
+  //   results:
+  //     "Reducción del 60% en tiempo dedicado a tareas administrativas, aumento del 35% en conversión de leads y mejora del 45% en satisfacción del cliente.",
+  //   technologies: ["React", "Node.js", "MongoDB", "AWS", "Salesforce API"],
+  //   year: "2024",
+  //   duration: "8 meses",
+  //   projectUrl: "https://ventas.legrand.com.co",
+  // },
 
   {
     slug: "qr-event-management",
     name: "Event Management",
-    client: "Corteva",
-    title: "Herramienta Simplificada de Gestión de Eventos y Análisis",
-    imageUrl: getImagePath("/images/QrEvent/screenshot-2025-07-08-100400.png"),
+    client: "Gestiona campañas comerciales y capta información en campo mediante formularios inteligentes con códigos QR.",
+    title: "Nuestra plataforma centraliza y automatiza el registro de datos, facilita el análisis de resultados en tiempo real y potencia el crecimiento de tu empresa con eficiencia, control y seguridad.",
+    imageUrl: getImagePath("/images/QrEvent/profesional_form.webp"),
     description:
       "Sistema innovador de gestión de eventos que utiliza códigos QR para optimizar el registro y seguimiento de asistentes.",
     challenge:

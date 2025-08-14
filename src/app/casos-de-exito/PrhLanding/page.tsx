@@ -75,6 +75,7 @@ const tabContent: Record<TabId, {
 const PrhLanding = () => {
   const [activeTab, setActiveTab] = useState<TabId>("campaigns");
   const tabIds: TabId[] = ["campaigns", "pdf", "deliveries"];
+  
 
   const handleAgendaDemoClick = useAgendaDemoScroll('contacto');
 
@@ -82,29 +83,30 @@ const PrhLanding = () => {
     <div className="bg-[#F9FAFB] font-sans text-slate-800">
       <Header />
       {/* 1. Hero Principal */}
-      <section className="text-center py-20 lg:py-32 bg-[#101828] text-white">
-        <div className="container mx-auto px-6">
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={staggerContainer}
-          >
-            <motion.h1
-              variants={fadeIn}
-              className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-100 leading-tight"
+      {/* 1. Hero Principal (Nuevo Diseño) */}
+      <section className="min-h-screen flex items-center bg-[#101828] text-white relative overflow-hidden">
+        {/* Fondo decorativo de rejilla */}
+        <div className="absolute inset-0 bg-grid-slate-700/20 [mask-image:linear-gradient(to_bottom,white_5%,transparent_90%)]"></div>
+
+        <div className="container mx-auto px-6 py-20 lg:py-0 z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            
+            {/* Columna de Texto */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="text-center lg:text-left"
             >
-              Tu Centro de Mando para la <br />
-              <span className="text-indigo-400">Gestión Comercial</span>
-            </motion.h1>
-            <motion.p
-              variants={fadeIn}
-              className="mt-6 text-lg md:text-xl text-slate-300 max-w-3xl mx-auto"
-            >
-              Desde la campaña inicial hasta la entrega final, nuestra
-              plataforma integra tus procesos para darte control, eficiencia y
-              precisión.
-            </motion.p>
-            <motion.div variants={fadeIn}>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-100 leading-tight">
+                Tu Centro de Mando para la <br />
+                <span className="text-indigo-400">Gestión Comercial</span>
+              </h1>
+              <p className="mt-6 text-lg md:text-xl text-slate-300 max-w-xl mx-auto lg:mx-0">
+                Desde la campaña inicial hasta la entrega final, nuestra
+                plataforma integra tus procesos para darte control, eficiencia y
+                precisión.
+              </p>
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -114,8 +116,27 @@ const PrhLanding = () => {
                 Solicita una Demostración
               </motion.button>
             </motion.div>
-            
-          </motion.div>
+
+            {/* Columna de la Imagen */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+              className="flex justify-center items-center"
+            >
+              <Image
+                src={getImagePath(
+                  "/images/rg7_prh/screenshot-2025-07-08-115104.png"
+                )}
+                alt="Dashboard de Gestión Comercial"
+                width={1200}
+                height={850}
+                className="rounded-xl shadow-2xl transform hover:scale-105 transition-transform duration-500"
+                priority
+              />
+            </motion.div>
+
+          </div>
         </div>
       </section>
 
@@ -166,72 +187,73 @@ const PrhLanding = () => {
         </AnimatedSection>
       </section>
 
-      {/* 3. Feature Tabs */}
+    {/* 3. Capacidades Clave (Diseño con Acordeón) */}
       <section className="py-20 lg:py-28 bg-white">
         <AnimatedSection>
           <div className="container mx-auto px-6">
-            <div className="text-center mb-12">
-              <motion.h2
+            <div className="text-center mb-16">
+               <motion.h2
                 variants={fadeIn}
                 className="text-3xl md:text-4xl font-bold text-slate-900"
               >
                 Capacidades que transforman tu flujo de trabajo
               </motion.h2>
             </div>
-            <motion.div
-              variants={fadeIn}
-              className="flex justify-center border-b border-slate-200"
-            >
-              {tabIds.map((tabId) => (
-                <button
-                  key={tabId}
-                  onClick={() => setActiveTab(tabId)}
-                  className={`px-4 py-3 text-lg font-semibold transition-colors duration-300 ${
-                    activeTab === tabId
-                      ? "border-b-2 border-indigo-600 text-indigo-600"
-                      : "text-slate-500 hover:text-indigo-600"
-                  }`}
-                >
-                  {tabContent[tabId].title.split(" y ")[0]}
-                </button>
-              ))}
-            </motion.div>
-            <div className="mt-12">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={activeTab}
-                  initial={{ y: 10, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  exit={{ y: -10, opacity: 0 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                    <div>
-                      <div className="flex items-center mb-4">
-                        {tabContent[activeTab].icon}
-                        <h3 className="text-2xl font-bold text-slate-900">
-                          {tabContent[activeTab].title}
-                        </h3>
-                      </div>
-                      <p className="text-lg text-slate-600">
-                        {tabContent[activeTab].description}
-                      </p>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+              {/* Columna de la Imagen */}
+              <motion.div variants={fadeIn} className="mt-2">
+                <Image
+                  src={getImagePath(
+                    "/images/rg7_prh/screenshot-2025-07-08-115104.png"
+                  )}
+                  alt="Dashboard de Gestión Comercial"
+                  width={1200}
+                  height={850}
+                  className="rounded-xl shadow-2xl"
+                  priority
+                />
+              </motion.div>
+
+              {/* Columna del Acordeón */}
+              <motion.div variants={fadeIn} className="space-y-4">
+                {tabIds.map((tabId) => {
+                  const feature = tabContent[tabId];
+                  const isActive = activeTab === tabId;
+                  return (
+                    <div key={tabId} className="border-b border-slate-200 last:border-b-0">
+                      <button
+                        onClick={() => setActiveTab(tabId)}
+                        className="w-full text-left py-4 flex justify-between items-center"
+                      >
+                        <div className="flex items-center">
+                          {feature.icon}
+                          <h3 className="text-xl font-bold text-slate-800">
+                            {feature.title}
+                          </h3>
+                        </div>
+                        <motion.div animate={{ rotate: isActive ? 180 : 0 }}>
+                          <svg className="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+                        </motion.div>
+                      </button>
+                      <AnimatePresence>
+                        {isActive && (
+                          <motion.div
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: "auto" }}
+                            exit={{ opacity: 0, height: 0 }}
+                            transition={{ duration: 0.3, ease: "easeInOut" }}
+                            className="overflow-hidden"
+                          >
+                            <p className="pb-5 pr-8 text-lg text-slate-600">
+                              {feature.description}
+                            </p>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
                     </div>
-                    <div>
-                     <Image
-                                  src={getImagePath(
-                                    "/images/rg7_prh/screenshot-2025-07-08-115104.png"
-                                  )}
-                                  alt="Dashboard con aspectos destacados"
-                                  width={1200}
-                                  height={850}
-                                  className="rounded-xl shadow-2xl transform hover:scale-105 transition-transform duration-500"
-                                  priority
-                                />
-                    </div>
-                  </div>
-                </motion.div>
-              </AnimatePresence>
+                  );
+                })}
+              </motion.div>
             </div>
           </div>
         </AnimatedSection>

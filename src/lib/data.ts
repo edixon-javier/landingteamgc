@@ -129,7 +129,7 @@ export const projects: Project[] = [
     liveUrl: "https://formularios.equipogctrade.com/",
     repoUrl: "",
     galleryImages: [
-      getImagePath("/images/QrEvent/screenshot-2025-07-08-100400.png"),
+      getImagePath("/images/QrEvent/profesional_form.webp"),
       getImagePath("/images/QrEvent/screenshot-2025-07-08-100421.png"),
       getImagePath("/images/QrEvent/screenshot-2025-07-08-100441.png"),
       getImagePath("/images/QrEvent/screenshot-2025-07-08-100858.png"),

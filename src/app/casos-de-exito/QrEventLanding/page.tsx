@@ -7,6 +7,7 @@ import Image from 'next/image';
 import { QrCode, ClipboardEdit, BarChartBig, CheckCircle } from 'lucide-react';
 import { Header } from '@/components/organisms/Header';
 import { Footer } from '@/components/organisms/Footer';
+import { getImagePath } from '@/lib/utils';
 
 // --- Animación y Componentes Auxiliares ---
 const fadeIn = {
@@ -68,12 +69,14 @@ const QrEventLanding: React.FC = () => {
               initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.8, delay: 0.2 }}
               className="flex justify-center"
             >
-              <Image 
-                src="/images/qr-hero-mockup.png"
+              <Image
+                src="/images/QrEvent/form_phone.webp"
                 alt="Plataforma de análisis de datos con QR"
-                width={500} height={500}
+                width={300}
+                height={300}
+                className="rounded-xl shadow-2xl transform hover:scale-105 transition-transform duration-500  max-w-sm h-auto mx-auto"
               />
-            </motion.div>
+           </motion.div>
           </div>
         </div>
       </section>
@@ -115,7 +118,16 @@ const QrEventLanding: React.FC = () => {
         <AnimatedSection>
           <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <motion.div variants={fadeIn}>
-              <Image src="/images/qr-dashboard-map.png" alt="Dashboard de análisis de campañas" width={1000} height={800} className="rounded-xl shadow-lg border border-slate-200" />
+              <Image
+                  src={getImagePath(
+                    "/images/QrEvent/dashboard.png"
+                  )}
+                  alt="Dashboard con aspectos destacados"
+                  width={1200}
+                  height={850}
+                  className="rounded-xl shadow-2xl transform hover:scale-105 transition-transform duration-500"
+                  priority
+                />
             </motion.div>
             <motion.div variants={fadeIn}>
                 <h2 className="text-3xl font-bold text-slate-900">Una Plataforma con Todo lo que Necesitas</h2>
