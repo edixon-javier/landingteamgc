@@ -17,6 +17,9 @@ export const metadata: Metadata = {
   description: "Soluciones tecnológicas innovadoras para transformar ideas en realidades digitales impactantes.",
 };
 
+import { UIProvider } from "@/contexts/UIContext";
+import { AppProvider } from "@/contexts/AppContext";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -28,7 +31,11 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         suppressHydrationWarning
       >
-        {children}
+        <UIProvider>
+          <AppProvider>
+            {children}
+          </AppProvider>
+        </UIProvider>
       </body>
     </html>
   );
