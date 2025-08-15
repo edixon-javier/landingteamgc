@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { CaseStudyPreview, Project } from '@/types';
+import { CaseStudy, Project } from '@/types';
 
 const sectionVariants = {
   hidden: { opacity: 0 },
@@ -23,7 +23,7 @@ const itemVariants = {
 };
 
 interface FeaturedCasesProps {
-  caseStudies: CaseStudyPreview[];
+  caseStudies: CaseStudy[];
 }
 
 export function FeaturedCases({ caseStudies }: FeaturedCasesProps) {

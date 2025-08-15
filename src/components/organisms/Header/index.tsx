@@ -3,7 +3,7 @@
 import { useState, useEffect, useMemo, useRef, useCallback } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, Variants } from 'framer-motion';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { getImagePath } from '@/lib/utils';
 import { useAgendaDemoScroll } from '@/hooks/useAgendaDemoScroll';
@@ -28,14 +28,14 @@ const navLinks: NavLink[] = [
 ];
 
 // Variantes de animación optimizadas
-const headerVariants = {
+const headerVariants: Variants = {
   transparent: {
     backgroundColor: 'rgba(0, 0, 0, 0)',
     backdropFilter: 'blur(0px)',
     boxShadow: '0 0 0 0 rgba(0, 0, 0, 0)',
     transition: { 
       duration: 0.4, 
-      ease: [0.25, 0.1, 0.25, 1]
+      ease: "easeInOut"
     }
   },
   solid: {
@@ -44,37 +44,37 @@ const headerVariants = {
     boxShadow: '0 4px 20px -2px rgba(0, 0, 0, 0.1)',
     transition: { 
       duration: 0.4, 
-      ease: [0.25, 0.1, 0.25, 1]
+      ease: "easeInOut"
     }
   }
 };
 
-const navItemVariants = {
+const navItemVariants: Variants = {
   hidden: { 
     opacity: 0, 
     y: -16,
     scale: 0.95
   },
-  visible: (i: number) => ({
+  visible: {
     opacity: 1,
     y: 0,
     scale: 1,
     transition: {
       duration: 0.5,
-      delay: 0.1 + (i * 0.1),
-      ease: [0.25, 0.1, 0.25, 1]
+      delay: 0.1,
+      ease: "easeOut"
     }
-  })
+  }
 };
 
-const mobileMenuVariants = {
+const mobileMenuVariants: Variants = {
   closed: {
     opacity: 0,
     x: '100%',
     scale: 0.95,
     transition: {
       duration: 0.3,
-      ease: [0.4, 0, 1, 1]
+      ease: "easeIn"
     }
   },
   open: {
@@ -83,14 +83,14 @@ const mobileMenuVariants = {
     scale: 1,
     transition: {
       duration: 0.4,
-      ease: [0.25, 0.1, 0.25, 1],
+      ease: "easeOut",
       staggerChildren: 0.08,
       delayChildren: 0.1
     }
   }
 };
 
-const mobileItemVariants = {
+const mobileItemVariants: Variants = {
   closed: { 
     opacity: 0, 
     x: 30, 
@@ -102,7 +102,7 @@ const mobileItemVariants = {
     scale: 1,
     transition: {
       duration: 0.3,
-      ease: [0.25, 0.1, 0.25, 1]
+      ease: "easeOut"
     }
   }
 };
@@ -114,13 +114,11 @@ export function Header() {
   const [activeSection, setActiveSection] = useState<NavSection>('inicio');
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isMobileDropdownOpen, setIsMobileDropdownOpen] = useState(false);
-  const [isHoveringDropdown, setIsHoveringDropdown] = useState(false);
-  
   // Refs para manejo de foco y timeouts
   const dropdownTriggerRef = useRef<HTMLAnchorElement>(null);
   const mobileMenuButtonRef = useRef<HTMLButtonElement>(null);
-  const dropdownTimeoutRef = useRef<NodeJS.Timeout>();
-  const scrollTimeoutRef = useRef<NodeJS.Timeout>();
+  const dropdownTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   // Funciones de scroll
   const scrollToInicio = useAgendaDemoScroll('inicio');
@@ -142,12 +140,10 @@ export function Header() {
     if (dropdownTimeoutRef.current) {
       clearTimeout(dropdownTimeoutRef.current);
     }
-    setIsHoveringDropdown(true);
     setIsDropdownOpen(true);
   }, []);
 
   const handleDropdownLeave = useCallback(() => {
-    setIsHoveringDropdown(false);
     dropdownTimeoutRef.current = setTimeout(() => {
       setIsDropdownOpen(false);
     }, 150);
@@ -155,7 +151,6 @@ export function Header() {
 
   const closeDropdown = useCallback(() => {
     setIsDropdownOpen(false);
-    setIsHoveringDropdown(false);
     if (dropdownTimeoutRef.current) {
       clearTimeout(dropdownTimeoutRef.current);
     }
@@ -484,7 +479,7 @@ export function Header() {
 
               {/* Mobile Navigation */}
               <nav className="space-y-2">
-                {navLinks.map((link, index) => (
+                {navLinks.map(link => (
                   <motion.div 
                     key={link.name}
                     variants={mobileItemVariants}

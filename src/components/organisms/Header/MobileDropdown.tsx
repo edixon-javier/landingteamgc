@@ -2,11 +2,11 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { ChevronDown } from 'lucide-react';
-import { CaseStudyPreview } from '@/types';
+import { CaseStudy } from '@/types';
 
 interface MobileDropdownProps {
   isOpen: boolean;
-  projects: CaseStudyPreview[];
+  projects: CaseStudy[];
   onToggle: () => void;
   activeSection: string;
 }

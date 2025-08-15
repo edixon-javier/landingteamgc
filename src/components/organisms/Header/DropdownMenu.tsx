@@ -1,27 +1,27 @@
 import React, { useRef, useEffect, useState, useCallback } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, Variants } from 'framer-motion';
 import Link from 'next/link';
-import { CaseStudyPreview } from '@/types';
+import { CaseStudy } from '@/types';
 
 interface DropdownMenuProps {
   isOpen: boolean;
-  projects: CaseStudyPreview[];
+  projects: CaseStudy[];
   isScrolled: boolean;
   onMouseEnter: () => void;
   onMouseLeave: () => void;
   onClose?: () => void;
-  triggerRef?: React.RefObject<HTMLElement>;
+  triggerRef?: React.RefObject<HTMLElement | null>;
 }
 
 // Variantes de animación mejoradas
-const menuVariants = {
+const menuVariants: Variants = {
   hidden: {
     opacity: 0,
     y: -8,
     scale: 0.96,
     transition: {
       duration: 0.2,
-      ease: [0.4, 0.0, 0.2, 1]
+      ease: "easeInOut"
     }
   },
   visible: {
@@ -30,7 +30,7 @@ const menuVariants = {
     scale: 1,
     transition: {
       duration: 0.3,
-      ease: [0.0, 0.0, 0.2, 1],
+      ease: "easeOut",
       staggerChildren: 0.04,
       delayChildren: 0.05
     }
@@ -41,12 +41,12 @@ const menuVariants = {
     scale: 0.96,
     transition: {
       duration: 0.15,
-      ease: [0.4, 0.0, 1, 1]
+      ease: "easeInOut"
     }
   }
 };
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { 
     opacity: 0, 
     y: -4,
@@ -58,7 +58,7 @@ const itemVariants = {
     x: 0,
     transition: {
       duration: 0.2,
-      ease: [0.0, 0.0, 0.2, 1]
+      ease: "easeOut"
     }
   }
 };

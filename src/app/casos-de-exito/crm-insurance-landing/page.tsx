@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, ReactNode } from "react";
-import { motion, useAnimation } from "framer-motion";
+import { motion, useAnimation, Variants } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Image from "next/image";
 import { getImagePath } from "@/lib/utils";
@@ -22,30 +22,30 @@ import {
 } from "lucide-react";
 
 // --- Variantes de Animación para Framer Motion ---
-const fadeIn = {
+const fadeIn: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: [0.43, 0.13, 0.23, 0.96] },
+    transition: { duration: 0.6, ease: "easeOut" },
   },
-} as const;
+};
 
-const fadeInLeft = {
+const fadeInLeft: Variants = {
   hidden: { opacity: 0, x: -50 },
   visible: {
     opacity: 1,
     x: 0,
-    transition: { duration: 0.8, ease: [0.43, 0.13, 0.23, 0.96] },
+    transition: { duration: 0.8, ease: "easeOut" },
   },
 };
 
-const scaleIn = {
+const scaleIn: Variants = {
   hidden: { opacity: 0, scale: 0.8 },
   visible: {
     opacity: 1,
     scale: 1,
-    transition: { duration: 0.8, delay: 0.2, ease: [0.43, 0.13, 0.23, 0.96] },
+    transition: { duration: 0.8, delay: 0.2, ease: "easeOut" },
   },
 };
 
