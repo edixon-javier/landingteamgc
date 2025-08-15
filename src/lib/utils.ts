@@ -13,14 +13,16 @@ export function getImagePath(path: string) {
     ? path.substring(1) 
     : path;
   
-  // Normalizar la ruta y asegurar que comience con /
+  // Mantener las mayúsculas/minúsculas originales y solo normalizar los separadores
   const formattedPath = `/${normalizedPath}`
-    .toLowerCase()
     .replace(/\s+/g, '-')
     .replace(/--+/g, '-')
     .replace(/\/+/g, '/');
   
-  return `${basePath}${formattedPath}`;
+  // Asegurar que no haya doble slash entre basePath y la ruta
+  return basePath 
+    ? `${basePath}${formattedPath}` 
+    : formattedPath;
 }
 
 /**

@@ -73,7 +73,9 @@ const QrEventLanding: React.FC = () => {
               className="flex justify-center"
             >
               <Image
-                src="/images/QrEvent/form_phone.webp"
+                src={getImagePath(
+                                  "/images/QrEvent/form_phone.webp"
+                                )}
                 alt="Plataforma de análisis de datos con QR"
                 width={300}
                 height={300}

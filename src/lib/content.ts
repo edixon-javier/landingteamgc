@@ -76,21 +76,21 @@ export const clientLogos: ClientLogo = [
     height: 50,
     yearStart: 2018,
   },
-  {
-    name: "Farmacol",
-    src: getImagePath("/images/farmacol.png"),
-    width: 50,
-    height: 50,
-    yearStart: 2011,
-    yearEnd: 2018,
-  },
-  {
-    name: "Menarini",
-    src: getImagePath("/images/menarini.png"),
-    width: 160,
-    height: 70,
-    yearStart: 2024,
-  },
+  // {
+  //   name: "Farmacol",
+  //   src: getImagePath("/images/farmacol.png"),
+  //   width: 50,
+  //   height: 50,
+  //   yearStart: 2011,
+  //   yearEnd: 2018,
+  // },
+  // {
+  //   name: "Menarini",
+  //   src: getImagePath("/images/menarini.png"),
+  //   width: 160,
+  //   height: 70,
+  //   yearStart: 2024,
+  // },
   {
     name: "Inkas",
     src: getImagePath("/images/logo-14-inkas-1.png"),
@@ -150,7 +150,7 @@ export const methodologySteps: MethodologyStep[] = [
 export const caseStudiesData = [
   {
     slug: "suvey_cibersegurity",
-    name: "Suvey Ciberseguridad",
+    name: "Plataforma de Ciberseguridad con IA", // Modificado
     client:
       "Administra campañas comerciales, productos, entregas y remisiones de forma centralizada y segura.",
     title:
@@ -180,7 +180,7 @@ export const caseStudiesData = [
   },
   {
     slug: "dultos-consultans-platform",
-    name: "Dultos Consultans Platform",
+    name: "CRM para el Sector Asegurador", // Modificado
     client:
       "Gestiona pólizas, clientes y renovaciones de forma automática y segura.",
     title:
@@ -208,7 +208,7 @@ export const caseStudiesData = [
   },
   {
     slug: "nazca-restaurant-management",
-    name: "Restaurant Management",
+    name: "Gestión Integral para Restaurantes", // Modificado
     client: "Menú Digital y Gestión de Pedidos para Restaurantes",
     title:
       "Digitaliza tu restaurante con menús QR, pedidos en línea y administración centralizada. Optimiza la experiencia de tus clientes y simplifica la gestión de mesas, productos y órdenes en tiempo real.",
@@ -230,7 +230,7 @@ export const caseStudiesData = [
   },
   {
     slug: "prh-content-management",
-    name: "PRH Content Management",
+    name: "Plataforma de Gestión de RRHH", // Modificado
     client:
       "Administra campañas comerciales, productos, entregas y remisiones de forma centralizada y segura.",
     title:
@@ -259,29 +259,9 @@ export const caseStudiesData = [
     duration: "7 meses",
     projectUrl: "https://front-prh.equipogctrade.com/",
   },
-  // {
-  //   slug: "legrand-digital-transformation",
-  //   name: "Legrand Digital Transformation",
-  //   client: "Legrand",
-  //   title: "Transformación Digital del Proceso de Ventas",
-  //   imageUrl: getImagePath("/images/legrand/screenshot-2025-07-08-144638.png"),
-  //   description:
-  //     "Transformación integral del proceso de ventas de Legrand mediante la implementación de herramientas digitales y automatización.",
-  //   challenge:
-  //     "Legrand necesitaba modernizar su proceso de ventas, que era principalmente manual y consumía mucho tiempo. Los vendedores dedicaban demasiadas horas a tareas administrativas en lugar de enfocarse en las relaciones con los clientes.",
-  //   solution:
-  //     "Desarrollamos una plataforma digital integral que automatiza el proceso de ventas, desde la generación de cotizaciones hasta el seguimiento post-venta. Implementamos un CRM personalizado y herramientas de análisis de datos en tiempo real.",
-  //   results:
-  //     "Reducción del 60% en tiempo dedicado a tareas administrativas, aumento del 35% en conversión de leads y mejora del 45% en satisfacción del cliente.",
-  //   technologies: ["React", "Node.js", "MongoDB", "AWS", "Salesforce API"],
-  //   year: "2024",
-  //   duration: "8 meses",
-  //   projectUrl: "https://ventas.legrand.com.co",
-  // },
-
   {
     slug: "qr-event-management",
-    name: "Event Management",
+    name: "Gestión de Eventos con Códigos QR", // Modificado
     client: "Gestiona campañas comerciales y capta información en campo mediante formularios inteligentes con códigos QR.",
     title: "Nuestra plataforma centraliza y automatiza el registro de datos, facilita el análisis de resultados en tiempo real y potencia el crecimiento de tu empresa con eficiencia, control y seguridad.",
     imageUrl: getImagePath("/images/QrEvent/profesional_form.webp"),
@@ -304,4 +284,23 @@ export const caseStudiesData = [
     duration: "4 meses",
     projectUrl: "https://qrevent.app",
   },
+    // {
+  //   slug: "legrand-digital-transformation",
+  //   name: "Legrand Digital Transformation",
+  //   client: "Legrand",
+  //   title: "Transformación Digital del Proceso de Ventas",
+  //   imageUrl: getImagePath("/images/legrand/screenshot-2025-07-08-144638.png"),
+  //   description:
+  //     "Transformación integral del proceso de ventas de Legrand mediante la implementación de herramientas digitales y automatización.",
+  //   challenge:
+  //     "Legrand necesitaba modernizar su proceso de ventas, que era principalmente manual y consumía mucho tiempo. Los vendedores dedicaban demasiadas horas a tareas administrativas en lugar de enfocarse en las relaciones con los clientes.",
+  //   solution:
+  //     "Desarrollamos una plataforma digital integral que automatiza el proceso de ventas, desde la generación de cotizaciones hasta el seguimiento post-venta. Implementamos un CRM personalizado y herramientas de análisis de datos en tiempo real.",
+  //   results:
+  //     "Reducción del 60% en tiempo dedicado a tareas administrativas, aumento del 35% en conversión de leads y mejora del 45% en satisfacción del cliente.",
+  //   technologies: ["React", "Node.js", "MongoDB", "AWS", "Salesforce API"],
+  //   year: "2024",
+  //   duration: "8 meses",
+  //   projectUrl: "https://ventas.legrand.com.co",
+  // },
 ];
