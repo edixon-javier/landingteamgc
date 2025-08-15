@@ -3,23 +3,7 @@
 import { motion } from 'framer-motion';
 import { solutionsData } from '@/lib/content';
 import { Card } from '@/components/ui/Card';
-
-const sectionVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      duration: 0.5,
-      when: "beforeChildren",
-      staggerChildren: 0.15,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 },
-};
+import { staggerContainer as sectionVariants, fadeIn as itemVariants } from '@/animations/variants';
 
 export function Solutions() {
   return (
