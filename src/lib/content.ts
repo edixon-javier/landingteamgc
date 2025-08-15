@@ -2,7 +2,6 @@ import {
   ClientLogo,
   Solution,
   MethodologyStep,
-  CaseStudyPreview,
 } from "@/types";
 import { getImagePath } from "./utils";
 
@@ -148,7 +147,7 @@ export const methodologySteps: MethodologyStep[] = [
   },
 ];
 
-export const caseStudiesData: CaseStudyPreview[] = [
+export const caseStudiesData = [
   {
     slug: "suvey_cibersegurity",
     name: "Suvey Ciberseguridad",

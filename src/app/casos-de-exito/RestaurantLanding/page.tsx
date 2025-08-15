@@ -141,7 +141,7 @@ const RestaurantLanding = () => {
                 alt="Estado anterior del proceso"
                 width={800}
                 height={600}
-                className="rounded-lg mb-4 opacity-80"
+                className="rounded-lg mb-4 opacity-90"
               />
               </motion.div>
               <motion.div variants={fadeIn}>

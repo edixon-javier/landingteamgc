@@ -14,7 +14,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { Header } from "@/components/organisms/Header";
-import { Footer } from "@/components/Footer";
+import { Footer } from "@/components/organisms/Footer";
 import { getImagePath } from "@/lib/utils";
 import { useAgendaDemoScroll } from "@/hooks/useAgendaDemoScroll";
 
@@ -30,6 +30,24 @@ const fadeIn = {
     },
   },
 } as const;
+
+const fadeInLeft = {
+  hidden: { opacity: 0, x: -50 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.8, ease: [0.43, 0.13, 0.23, 0.96] },
+  },
+};
+
+const scaleIn = {
+  hidden: { opacity: 0, scale: 0.8 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 0.8, ease: [0.43, 0.13, 0.23, 0.96] },
+  },
+};
 
 const staggerContainer = {
   hidden: {},
@@ -68,31 +86,35 @@ const SolutionCard = ({
   children: ReactNode;
 }) => (
   <motion.div variants={fadeIn}>
-    <div className="flex items-center text-emerald-400 mb-3">
+    <div className="flex items-center text-emerald-600 mb-3">
       {icon}
-      <h3 className="ml-3 text-xl font-bold text-white">{title}</h3>
+      <h3 className="ml-3 text-xl font-bold text-gray-900">{title}</h3>
     </div>
-    <p className="text-gray-400">{children}</p>
+    <p className="text-gray-600">{children}</p>
   </motion.div>
 );
 
 // --- Landing Page Principal ---
 const CyberSecurityLanding = () => {
-  const handleAgendaDemoClick = useAgendaDemoScroll('contacto');
+  const handleAgendaDemoClick = useAgendaDemoScroll("contacto");
+
   return (
     <div className="bg-gray-900 font-sans">
       <Header />
-      {/* 1. Hero Principal */}
-      <section className="min-h-screen flex items-center bg-[#111827] text-white relative overflow-hidden">
+
+      {/* 1. Hero Principal (Fondo oscuro principal) */}
+      <section className="min-h-screen flex items-center bg-[#101828] text-white relative overflow-hidden">
         {/* Fondo decorativo */}
         <div className="absolute inset-0 bg-grid-gray-700/20 [mask-image:linear-gradient(to_bottom,white_5%,transparent_90%)]"></div>
-
         <div className="container mx-auto px-6 py-12 z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={staggerContainer}
+            className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
+          >
             <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
+              variants={fadeInLeft}
               className="text-center lg:text-left"
             >
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight">
@@ -105,19 +127,17 @@ const CyberSecurityLanding = () => {
                 y clara.
               </p>
               <motion.button
+                variants={fadeIn}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                onClick={handleAgendaDemoClick}
                 className="mt-8 px-8 py-4 bg-emerald-600 text-white font-bold text-lg rounded-lg shadow-lg hover:bg-emerald-700 transition-all duration-300"
               >
-                <button onClick={handleAgendaDemoClick} >
-                  Agenda una Demo Estratégica
-                </button>
+                Agenda una Demo Estratégica
               </motion.button>
             </motion.div>
             <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              variants={scaleIn}
               className="flex justify-center items-center"
             >
               <Image
@@ -131,22 +151,28 @@ const CyberSecurityLanding = () => {
                 priority
               />
             </motion.div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* 2. Problema / Solución */}
-      <section className="py-20 lg:py-28 bg-[#111827] text-white">
+      {/* 2. Problema / Solución (Fondo gris claro para contraste) */}
+      <section className="py-20 lg:py-28 bg-slate-50 text-gray-900">
         <div className="container mx-auto px-6">
           <AnimatedSection>
             <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold">
+              <motion.h2
+                variants={fadeIn}
+                className="text-3xl md:text-4xl font-bold"
+              >
                 ¿Tu estrategia de seguridad es proactiva o reactiva?
-              </h2>
-              <p className="text-gray-400 mt-4 text-lg">
+              </motion.h2>
+              <motion.p
+                variants={fadeIn}
+                className="text-gray-600 mt-4 text-lg"
+              >
                 Dejamos atrás las suposiciones para dar paso a la inteligencia
                 accionable.
-              </p>
+              </motion.p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
               <SolutionCard
@@ -182,20 +208,25 @@ const CyberSecurityLanding = () => {
         </div>
       </section>
 
-      {/* 3. Cómo Funciona: Antes y Después */}
-      <section className="py-20 lg:py-28 bg-slate-50">
+      {/* 3. Cómo Funciona: Antes y Después (Fondo blanco para nueva separación) */}
+      <section className="py-20 lg:py-28 bg-white">
         <div className="container mx-auto px-6">
           <AnimatedSection>
             <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+              <motion.h2
+                variants={fadeIn}
+                className="text-3xl md:text-4xl font-bold text-gray-900"
+              >
                 Del Caos de Datos a la Claridad Estratégica
-              </h2>
-              <p className="text-gray-600 mt-4 text-lg">
+              </motion.h2>
+              <motion.p
+                variants={fadeIn}
+                className="text-gray-600 mt-4 text-lg"
+              >
                 Así transformamos la gestión de ciberseguridad.
-              </p>
+              </motion.p>
             </div>
             <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-8 items-center">
-              {/* ANTES */}
               <motion.div
                 variants={fadeIn}
                 className="bg-white rounded-xl shadow-lg p-8 border-l-4 border-amber-500 h-full"
@@ -224,16 +255,12 @@ const CyberSecurityLanding = () => {
                   </li>
                 </ul>
               </motion.div>
-
-              {/* FLECHA */}
               <motion.div
                 variants={fadeIn}
-                className="hidden lg:block text-gray-300"
+                className="hidden lg:flex justify-center items-center text-gray-300"
               >
                 <ArrowRight size={60} />
               </motion.div>
-
-              {/* DESPUÉS */}
               <motion.div
                 variants={fadeIn}
                 className="bg-white rounded-xl shadow-xl p-8 border-l-4 border-emerald-500 h-full"
@@ -268,8 +295,8 @@ const CyberSecurityLanding = () => {
         </div>
       </section>
 
-      {/* 4. Dashboard Preview */}
-      <section className="py-20 lg:py-28 bg-[#111827]">
+      {/* 4. Dashboard Preview (Vuelve a fondo oscuro) */}
+      <section className="py-20 lg:py-28 bg-[#101828]">
         <div className="container mx-auto px-6">
           <AnimatedSection>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -282,7 +309,6 @@ const CyberSecurityLanding = () => {
                   width={1200}
                   height={850}
                   className="rounded-xl shadow-2xl transform hover:scale-105 transition-transform duration-500"
-                  priority
                 />
               </motion.div>
               <motion.div variants={fadeIn}>
@@ -375,38 +401,36 @@ const CyberSecurityLanding = () => {
       </section>
 
       {/* 6. Llamado a la acción final */}
-      <section className="bg-emerald-900/20">
-        <div className="bg-gradient-to-t from-[#111827] via-[#111827]/80 to-transparent">
-          <div className="container mx-auto px-6 py-20 text-center">
-            <AnimatedSection>
-              <motion.h2
-                variants={fadeIn}
-                className="text-3xl md:text-4xl font-bold text-white"
+      <section className="bg-gradient-to-b from-slate-50 to-[#101828]">
+        <div className="container mx-auto px-6 py-20 text-center">
+          <AnimatedSection>
+            <motion.h2
+              variants={fadeIn}
+              className="text-3xl md:text-4xl font-bold text-white"
+            >
+              Deja de reaccionar. Empieza a anticipar.
+            </motion.h2>
+            <motion.p
+              variants={fadeIn}
+              className="mt-4 text-lg text-gray-300 max-w-2xl mx-auto"
+            >
+              Descubre tu verdadera postura de seguridad y obtén un plan de
+              acción claro en tu primera demo.
+            </motion.p>
+            <motion.div variants={fadeIn}>
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={handleAgendaDemoClick}
+                className="mt-8 px-10 py-4 bg-emerald-600 text-white font-bold text-lg rounded-lg shadow-lg hover:bg-emerald-700 transition-all duration-300"
               >
-                Deja de reaccionar. Empieza a anticipar.
-              </motion.h2>
-              <motion.p
-                variants={fadeIn}
-                className="mt-4 text-lg text-gray-300 max-w-2xl mx-auto"
-              >
-                Descubre tu verdadera postura de seguridad y obtén un plan de
-                acción claro en tu primera demo.
-              </motion.p>
-              <motion.div variants={fadeIn}>
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="mt-8 px-10 py-4 bg-emerald-600 text-white font-bold text-lg rounded-lg shadow-lg hover:bg-emerald-700 transition-all duration-300"
-                >
-                  <button onClick={handleAgendaDemoClick} >
-                    Agenda una Demo Estratégica
-                  </button>
-                </motion.button>
-              </motion.div>
-            </AnimatedSection>
-          </div>
+                Agenda una Demo Estratégica
+              </motion.button>
+            </motion.div>
+          </AnimatedSection>
         </div>
       </section>
+
       <Footer />
     </div>
   );

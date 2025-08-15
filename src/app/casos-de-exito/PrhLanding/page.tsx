@@ -113,7 +113,7 @@ const PrhLanding = () => {
                 className="mt-8 px-8 py-4 bg-indigo-600 text-white font-bold text-lg rounded-lg shadow-lg hover:bg-indigo-700 transition-colors duration-300"
                 onClick={handleAgendaDemoClick}
               >
-                Solicita una Demostración
+                Agenda una Demo Estratégica
               </motion.button>
             </motion.div>
 
@@ -126,7 +126,7 @@ const PrhLanding = () => {
             >
               <Image
                 src={getImagePath(
-                  "/images/rg7_prh/screenshot-2025-07-08-115104.png"
+                  "/images/rg7_prh/dashboard.png"
                 )}
                 alt="Dashboard de Gestión Comercial"
                 width={1200}
@@ -204,12 +204,12 @@ const PrhLanding = () => {
               <motion.div variants={fadeIn} className="mt-2">
                 <Image
                   src={getImagePath(
-                    "/images/rg7_prh/screenshot-2025-07-08-115104.png"
+                    "/images/rg7_prh/entregas.png"
                   )}
                   alt="Dashboard de Gestión Comercial"
                   width={1200}
                   height={850}
-                  className="rounded-xl shadow-2xl"
+                  className=""
                   priority
                 />
               </motion.div>

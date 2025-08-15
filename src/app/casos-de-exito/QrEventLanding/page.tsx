@@ -8,6 +8,7 @@ import { QrCode, ClipboardEdit, BarChartBig, CheckCircle } from 'lucide-react';
 import { Header } from '@/components/organisms/Header';
 import { Footer } from '@/components/organisms/Footer';
 import { getImagePath } from '@/lib/utils';
+import { useAgendaDemoScroll } from '@/hooks/useAgendaDemoScroll';
 
 // --- Animación y Componentes Auxiliares ---
 const fadeIn = {
@@ -41,6 +42,7 @@ const AnimatedSection = ({ children }: { children: ReactNode }) => {
 
 // --- Landing Page Principal ---
 const QrEventLanding: React.FC = () => {
+  const handleAgendaDemoClick = useAgendaDemoScroll("contacto");
   return (
     <div className="bg-[#F9FAFB] font-sans text-slate-800">
       <Header />
@@ -59,10 +61,11 @@ const QrEventLanding: React.FC = () => {
                 Nuestra plataforma usa códigos QR para capturar datos de tus campañas en tiempo real y transformarlos en análisis accionables.
               </p>
               <motion.button 
+                onClick={handleAgendaDemoClick}
                 whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
                 className="mt-8 px-8 py-4 bg-[#1447E6] text-white font-bold text-lg rounded-lg shadow-lg hover:opacity-90 transition-opacity duration-300"
               >
-                Optimiza mis Campañas
+                Agenda una Demo Estratégica
               </motion.button>
             </motion.div>
             <motion.div
@@ -125,7 +128,7 @@ const QrEventLanding: React.FC = () => {
                   alt="Dashboard con aspectos destacados"
                   width={1200}
                   height={850}
-                  className="rounded-xl shadow-2xl transform hover:scale-105 transition-transform duration-500"
+                  className="rounded-xl transform hover:scale-105 transition-transform duration-500"
                   priority
                 />
             </motion.div>
@@ -173,10 +176,11 @@ const QrEventLanding: React.FC = () => {
               </motion.p>
               <motion.div variants={fadeIn}>
                 <motion.button
+                onClick={handleAgendaDemoClick}
                   whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
                   className="mt-8 px-10 py-4 bg-[#1447E6] text-white font-bold text-lg rounded-lg shadow-lg hover:opacity-90 transition-opacity duration-300"
                 >
-                  Contactar con un experto
+                  Agenda una Demo Estratégica
                 </motion.button>
               </motion.div>
             </div>

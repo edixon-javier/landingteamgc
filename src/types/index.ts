@@ -47,15 +47,15 @@ export type Solution = {
 };
 
 /**
- * Tipo para representar una vista previa de caso de éxito
+ * Tipo para representar un caso de éxito
  */
-export type CaseStudyPreview = {
+export type CaseStudy = {
   slug: string;        // Identificador único en la URL
   name: string;        // Nombre del proyecto o caso de éxito
   client: string;      // Nombre del cliente
   title: string;       // Título del proyecto o caso de éxito
   imageUrl: string;    // URL de la imagen de vista previa
-  description?: string; // Descripción general del caso de éxito
+  description: string; // Descripción general del caso de éxito
   challenge?: string;   // Descripción del desafío abordado
   solution?: string;    // Descripción de la solución implementada
   results?: string;     // Resultados obtenidos
