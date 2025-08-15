@@ -179,7 +179,7 @@ const PrhLanding = () => {
               <motion.div variants={fadeIn} className="mt-2">
                 <Image
                   src={getImagePath(
-                    "/images/rg7_prh/entregas.png"
+                    "/images/rg7_prh/entregas.webp"
                   )}
                   alt="Dashboard de Gestión Comercial"
                   width={1200}
