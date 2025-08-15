@@ -15,17 +15,17 @@ export function CaseStudies() {
   const getComponentRoute = (slug: string) => {
     switch (slug) {
       case 'suvey_cibersegurity':
-        return '/casos-de-exito/CyberSecurityLanding';
+        return '/casos-de-exito/cyber-security-landing';
       case 'dultos-consultans-platform':
         return '/casos-de-exito/crm-insurance-landing';
       case 'prh-content-management':
-        return '/casos-de-exito/PrhLanding';
+        return '/casos-de-exito/prh-landing';
       case 'legrand-digital-transformation':
-        return '/casos-de-exito/LegrandLanding';
+        return '/casos-de-exito/legrand-landing';
       case 'nazca-restaurant-management':
-        return '/casos-de-exito/RestaurantLanding';
+        return '/casos-de-exito/restaurant-landing';
       case 'qr-event-management':
-        return '/casos-de-exito/QrEventLanding';
+        return '/casos-de-exito/qr-event-landing';
       default:
         return `/casos-de-exito/${slug}`;
     }

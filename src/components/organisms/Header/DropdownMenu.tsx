@@ -108,12 +108,12 @@ export function DropdownMenu({
   // Mapeo de rutas mejorado con validación
   const getProjectRoute = useCallback((slug: string): string => {
     const routeMap: Record<string, string> = {
-      'suvey_cibersegurity': '/casos-de-exito/CyberSecurityLanding',
+      'suvey_cibersegurity': '/casos-de-exito/cyber-security-landing',
       'dultos-consultans-platform': '/casos-de-exito/crm-insurance-landing',
-      'prh-content-management': '/casos-de-exito/PrhLanding',
-      'legrand-digital-transformation': '/casos-de-exito/LegrandLanding',
-      'nazca-restaurant-management': '/casos-de-exito/RestaurantLanding',
-      'qr-event-management': '/casos-de-exito/QrEventLanding',
+      'prh-content-management': '/casos-de-exito/prh-landing',
+      'legrand-digital-transformation': '/casos-de-exito/legrand-landing',
+      'nazca-restaurant-management': '/casos-de-exito/restaurant-landing',
+      'qr-event-management': '/casos-de-exito/qr-event-landing',
     };
     
     return routeMap[slug] || `/casos-de-exito/${slug}`;
