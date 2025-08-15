@@ -1,8 +1,7 @@
 "use client";
 
-import React, { useEffect, ReactNode } from 'react';
-import { motion, useAnimation } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
+import React from 'react';
+import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { QrCode, ClipboardEdit, BarChartBig, CheckCircle } from 'lucide-react';
 import { Header } from '@/components/organisms/Header';
@@ -10,35 +9,9 @@ import { Footer } from '@/components/organisms/Footer';
 import { getImagePath } from '@/lib/utils';
 import { useAgendaDemoScroll } from '@/hooks/useAgendaDemoScroll';
 
-// --- Animación y Componentes Auxiliares ---
-const fadeIn = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { 
-    opacity: 1, 
-    y: 0, 
-    transition: { 
-      duration: 0.7, 
-      ease: [0.43, 0.13, 0.23, 0.96] 
-    } 
-  }
-} as const;
-const staggerContainer = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.2, delayChildren: 0.1 } },
-};
+import { fadeIn } from '@/animations/variants';
 
-const AnimatedSection = ({ children }: { children: ReactNode }) => {
-  const controls = useAnimation();
-  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
-  useEffect(() => {
-    if (inView) controls.start('visible');
-  }, [controls, inView]);
-  return (
-    <motion.div ref={ref} initial="hidden" animate={controls} variants={staggerContainer}>
-      {children}
-    </motion.div>
-  );
-};
+import { AnimatedSection } from '@/components/ui/AnimatedSection';
 
 // --- Landing Page Principal ---
 const QrEventLanding: React.FC = () => {

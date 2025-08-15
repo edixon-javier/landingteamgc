@@ -2,9 +2,8 @@
 
 "use client";
 
-import React, { useState, useEffect, ReactNode } from "react";
-import { motion, AnimatePresence, useAnimation } from "framer-motion";
-import { useInView } from "react-intersection-observer";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { Database, FileText, Truck, FileX2, Clock, EyeOff } from "lucide-react";
 import { Header } from "@/components/organisms/Header";
@@ -12,33 +11,9 @@ import { Footer } from "@/components/organisms/Footer";
 import { getImagePath } from "@/lib/utils";
 import { useAgendaDemoScroll } from "@/hooks/useAgendaDemoScroll";
 
-// --- Animación y Componentes Auxiliares ---
-const fadeIn = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" as const } },
-};
-const staggerContainer = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.2, delayChildren: 0.1 } },
-};
+import { fadeIn } from '@/animations/variants';
 
-const AnimatedSection = ({ children }: { children: ReactNode }) => {
-  const controls = useAnimation();
-  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
-  useEffect(() => {
-    if (inView) controls.start("visible");
-  }, [controls, inView]);
-  return (
-    <motion.div
-      ref={ref}
-      initial="hidden"
-      animate={controls}
-      variants={staggerContainer}
-    >
-      {children}
-    </motion.div>
-  );
-};
+import { AnimatedSection } from '@/components/ui/AnimatedSection';
 
 // --- Landing Page Principal ---
 

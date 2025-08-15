@@ -4,19 +4,10 @@ import { motion, easeOut, Variants } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { MapPin, Mail, Phone } from "lucide-react";
 
-const sectionVariants = {
-  hidden: { opacity: 0, y: 50 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: easeOut  } },
-};
-
-const fadeIn: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { 
-    opacity: 1, 
-    y: 0, 
-    transition: { duration: 0.7, ease: easeOut } 
-  },
-};
+import {
+  fadeIn,
+  slideUp as sectionVariants
+} from '@/animations/variants';
 
 export function CTA() {
   return (

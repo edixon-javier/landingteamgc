@@ -21,42 +21,12 @@ import {
   Target,
 } from "lucide-react";
 
-// --- Variantes de Animación para Framer Motion ---
-const fadeIn: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: "easeOut" },
-  },
-};
-
-const fadeInLeft: Variants = {
-  hidden: { opacity: 0, x: -50 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: { duration: 0.8, ease: "easeOut" },
-  },
-};
-
-const scaleIn: Variants = {
-  hidden: { opacity: 0, scale: 0.8 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: { duration: 0.8, delay: 0.2, ease: "easeOut" },
-  },
-};
-
-const staggerContainer = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.2,
-    },
-  },
-};
+import {
+  fadeIn,
+  fadeInLeft,
+  scaleIn,
+  staggerContainer
+} from '@/animations/variants';
 
 // --- Componente Auxiliar para controlar animaciones en Scroll ---
 const AnimatedSection = ({ children }: { children: ReactNode }) => {
