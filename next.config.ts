@@ -9,6 +9,9 @@ const nextConfig: NextConfig = {
     unoptimized: true,
     remotePatterns: [],
     path: `${basePath}/_next/image`,
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    formats: ['image/avif', 'image/webp'],
   },
   // Configuración para GitHub Pages
   basePath: basePath,
@@ -17,6 +20,8 @@ const nextConfig: NextConfig = {
   trailingSlash: true,
   // Configuración para mejorar el rendimiento y optimización
   reactStrictMode: true,
+  poweredByHeader: false,
+  compress: true,
   // Configuración adicional para manejo de assets
   webpack: (config) => {
     config.module.rules.push({
