@@ -64,13 +64,13 @@ export function CaseStudies() {
                   <div className="overflow-hidden rounded-lg shadow-md">
                     <Image
                       src={study.imageUrl}
-                      alt={`Caso de éxito de ${study.client}`}
+                      alt={`Caso de éxito de ${study.title}`}
                       width={600}
                       height={400}
                       className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-105"
                     />
                   </div>
-                  <h3 className="mt-5 text-lg font-bold text-gray-900">{study.client}</h3>
+                  <h3 className="mt-5 text-lg font-bold text-gray-900">{study.subtitle}</h3>
                   <p className="mt-1 text-base text-gray-600">{study.title}</p>
                 </Link>
               </motion.div>

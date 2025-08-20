@@ -43,7 +43,6 @@ export default function HomePage() {
           <CaseStudies />
         </section>
 
-        {/* <HomeClient /> */}
 
         {/* Sección de Contacto */}
         <section id="contacto">

@@ -82,7 +82,7 @@ export function MobileDropdown({
                 href={getProjectRoute(project.slug)}
                 className="block py-1 text-gray-600 hover:text-blue-600 transition-colors duration-200"
               >
-                {project.client}
+                {project.subtitle}
               </Link>
             </motion.li>
           ))}

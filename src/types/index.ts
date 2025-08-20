@@ -8,12 +8,6 @@
 export type Project = {
   id: string;          // Identificador único del proyecto
   title: string;       // Título del proyecto
-  challenge: string;   // Descripción del desafío abordado
-  solution: string;    // Descripción de la solución implementada
-  tech: string[];      // Tecnologías utilizadas
-  liveUrl: string;     // URL del sitio en vivo
-  repoUrl: string;     // URL del repositorio de código
-  galleryImages: string[]; // URLs de las imágenes para la galería
 };
 
 /**
@@ -25,7 +19,7 @@ export type ClientLogo = {
   width?: number;      // Ancho del logo en píxeles (opcional)
   height?: number;     // Alto del logo en píxeles (opcional)
   yearStart: string | number; // Año de inicio de la relación comercial
-  yearEnd?: string | number;  // Año de finalización (opcional, para relaciones finalizadas)
+  yearEnd?: string | number;  // Año de finalización (opcional)
 }[];
 
 /**
@@ -52,15 +46,8 @@ export type Solution = {
 export type CaseStudy = {
   slug: string;        // Identificador único en la URL
   name: string;        // Nombre del proyecto o caso de éxito
-  client: string;      // Nombre del cliente
   title: string;       // Título del proyecto o caso de éxito
+  subtitle: string;      // Subtítulo del proyecto o caso de éxito
   imageUrl: string;    // URL de la imagen de vista previa
   description: string; // Descripción general del caso de éxito
-  challenge?: string;   // Descripción del desafío abordado
-  solution?: string;    // Descripción de la solución implementada
-  results?: string;     // Resultados obtenidos
-  technologies?: string[]; // Tecnologías utilizadas
-  year?: string;        // Año del proyecto
-  duration?: string;    // Duración del proyecto
-  projectUrl?: string;  // URL del proyecto en vivo
 };

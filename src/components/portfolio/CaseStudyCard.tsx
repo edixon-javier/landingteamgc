@@ -32,8 +32,8 @@ interface CaseStudyCardProps {
   caseStudy: {
     slug: string;
     name: string;
-    client: string;
     title: string;
+    subtitle: string;
     imageUrl: string;
     description: string;
     technologies?: string[];
@@ -58,7 +58,7 @@ export function CaseStudyCard({ caseStudy, isReversed = false, priority = false 
           <div className="relative overflow-hidden rounded-xl shadow-lg transition-transform duration-300 hover:scale-[1.02] group">
             <Image
               src={caseStudy.imageUrl}
-              alt={`${caseStudy.client} - ${caseStudy.title}`}
+              alt={`${caseStudy.title} - ${caseStudy.title}`}
               width={600}
               height={400}
               priority={priority}
@@ -78,7 +78,7 @@ export function CaseStudyCard({ caseStudy, isReversed = false, priority = false 
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <h3 className="text-xl lg:text-2xl font-bold text-[#101828] mb-2">{caseStudy.client}</h3>
+          <h3 className="text-xl lg:text-2xl font-bold text-[#101828] mb-2">{caseStudy.subtitle}</h3>
           <p className="text-gray-600 mb-6 leading-relaxed text-sm lg:text-base max-w-xl">
             {caseStudy.description}
           </p>

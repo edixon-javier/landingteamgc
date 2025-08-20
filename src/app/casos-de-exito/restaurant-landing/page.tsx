@@ -4,7 +4,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { QrCode, Smartphone, ChefHat, CheckCircle } from 'lucide-react';
-import { Footer } from '@/components/Footer';
+// Update the import path below if Footer is located elsewhere, e.g.:
+import { Footer } from '@/components/organisms/Footer';
 import { Header } from '@/components/organisms/Header';
 import { getImagePath } from '@/lib/utils';
 import { useAgendaDemoScroll } from "@/hooks/useAgendaDemoScroll";
