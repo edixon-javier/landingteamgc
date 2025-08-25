@@ -13,19 +13,19 @@
   --color-primary-800: #075985;
   --color-primary-900: #0c4a6e;
 
-  /* Colores de fondo y texto */
+  /* Colores */
   --color-background: #ffffff;
   --color-foreground: #171717;
   --color-gray-50: #f8fafc;
   --color-gray-900: #0f172a;
 
   /* Tipografía */
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-  --font-heading: var(--font-geist-sans);
-  --font-body: var(--font-geist-sans);
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-inter);
+  --font-heading: var(--font-inter);
+  --font-body: var(--font-inter);
 
-  /* Espaciado y dimensiones */
+  /* Dimensiones */
   --header-height: 80px;
 }
 
@@ -37,11 +37,10 @@
   }
 }
 
-/* Configuración global */
 html {
   scroll-behavior: smooth;
   scroll-padding-top: var(--header-height);
-  font-family: var(--font-sans);
+  font-family: 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -49,6 +48,6 @@ html {
 body {
   background: var(--color-background);
   color: var(--color-foreground);
-  font-family: var(--font-sans);
+  font-family: 'Roboto', sans-serif;
   line-height: 1.5;
 }

@@ -58,6 +58,10 @@ describe('Contexts', () => {
         technologies: ['React', 'TypeScript'],
         industry: 'Technology',
         date: '2025-08-15',
+        slug: 'test-case-study',
+        name: 'Test Case Study Name',
+        subtitle: 'Test Subtitle',
+        imageUrl: '/images/test.jpg',
       },
     ];
 

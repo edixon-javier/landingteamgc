@@ -34,13 +34,13 @@ export const theme = {
     }
   },
   fonts: {
-    sans: 'var(--font-geist-sans)',
-    mono: 'var(--font-geist-mono)',
-    heading: 'var(--font-geist-sans)',
-    body: 'var(--font-geist-sans)',
+    sans: "'Roboto', sans-serif",
+    mono: "'Roboto', sans-serif",
+    heading: "'Roboto', sans-serif",
+    body: "'Roboto', sans-serif",
   },
   spacing: {
-    header: '80px', // Altura del header para scroll-padding
+    header: '80px',
   },
   transitions: {
     base: '0.2s ease-in-out',
