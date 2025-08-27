@@ -1,10 +1,7 @@
 "use client";
 
-import React, { useEffect, ReactNode } from "react";
-import { motion, useAnimation, Variants } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-import Image from "next/image";
-import { getImagePath } from "@/lib/utils";
+import React from "react";
+import { motion } from "framer-motion";
 import {
   Store,
   Users,
@@ -13,107 +10,18 @@ import {
 } from "lucide-react";
 import { Header } from "@/components/organisms/Header";
 import { Footer } from "@/components/organisms/Footer";
-
-// --- Variantes de Animación para Framer Motion ---
-const fadeIn: Variants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.7, ease: "easeOut" },
-  },
-};
-
-const fadeInLeft: Variants = {
-  hidden: { opacity: 0, x: -50 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: { duration: 0.8, ease: "easeOut" },
-  },
-};
-
-const fadeInRight: Variants = {
-  hidden: { opacity: 0, x: 50 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: { duration: 0.8, ease: "easeOut" },
-  },
-};
-
-const scaleIn: Variants = {
-  hidden: { opacity: 0, scale: 0.9 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
-  },
-};
-
-const staggerContainer: Variants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.2,
-    },
-  },
-};
-
-// --- Componente Auxiliar para controlar animaciones en Scroll ---
-const AnimatedSection = ({
-  children,
-  className,
-}: {
-  children: ReactNode;
-  className?: string;
-}) => {
-  const controls = useAnimation();
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
-
-  useEffect(() => {
-    if (inView) {
-      controls.start("visible");
-    }
-  }, [controls, inView]);
-
-  return (
-    <motion.div
-      ref={ref}
-      initial="hidden"
-      animate={controls}
-      variants={staggerContainer}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  );
-};
-
-// --- Componente de Tarjeta de Proceso ---
-const FeatureCard = ({
-  icon,
-  title,
-  children,
-}: {
-  icon: ReactNode;
-  title: string;
-  children: ReactNode;
-}) => (
-  <motion.div
-    variants={fadeIn}
-    className="bg-white p-8 rounded-lg shadow-md hover:shadow-yellow-500/20 hover:shadow-lg transition-shadow duration-300 border border-gray-100 h-full"
-  >
-    <div className="flex items-center justify-center h-14 w-14 rounded-lg bg-yellow-400 text-black mb-5">
-      {icon}
-    </div>
-    <h3 className="text-xl font-bold text-gray-900 mb-2">{title}</h3>
-    <p className="text-gray-600">{children}</p>
-  </motion.div>
-);
+import {
+  fadeIn,
+  fadeInLeft,
+  scaleIn,
+  staggerContainer
+} from '@/animations/variants';
+import { 
+  AnimatedSection, 
+  OptimizedImage, 
+  FeatureCard,
+  CtaSection
+} from '@/components/shared';
 
 // --- Componente principal de la página del proyecto FILBO Éxito ---
 const FilboExitoPage = () => {
@@ -144,13 +52,16 @@ const FilboExitoPage = () => {
                     </p>
                   </motion.div>
                   <motion.div variants={scaleIn}>
-                      <Image
-                        src={getImagePath("/images/filbo/filbo3.png")}
+                      <OptimizedImage
+                        src="/images/filbo/filbo3.png"
                         alt="Stand de FILBO en Almacenes Éxito"
                         width={800}
                         height={600}
-                        className="relative rounded-xl shadow-2xl w-full mx-auto"
+                        className="relative rounded-xl w-full mx-auto"
                         priority
+                        withShadow
+                        useMotion
+                        variants={scaleIn}
                       />
                   </motion.div>
                 </motion.div>
@@ -172,24 +83,28 @@ const FilboExitoPage = () => {
               <motion.div variants={fadeIn}>
                 <h3 className="text-xl font-bold text-center mb-4 text-gray-500">1. Modelo Conceptual</h3>
                 <div className="relative rounded-xl overflow-hidden shadow-lg border-4 border-gray-100 p-2 bg-gray-100">
-                  <Image
-                    src={getImagePath("/images/filbo/filbov1.png")}
+                  <OptimizedImage
+                    src="/images/filbo/filbov1.png"
                     alt="Modelo 3D conceptual del stand"
                     width={800}
                     height={600}
                     className="w-full rounded-lg"
+                    useMotion
+                    variants={fadeIn}
                   />
                 </div>
               </motion.div>
               <motion.div variants={fadeIn}>
                  <h3 className="text-xl font-bold text-center mb-4 text-gray-700">2. Render Fotorrealista</h3>
                 <div className="relative rounded-xl overflow-hidden shadow-xl border-4 border-gray-200 p-2 bg-gray-200">
-                  <Image
-                    src={getImagePath("/images/filbo/filbov2.png")}
+                  <OptimizedImage
+                    src="/images/filbo/filbov2.png"
                     alt="Render 3D fotorrealista del stand"
                     width={800}
                     height={600}
                     className="w-full rounded-lg"
+                    useMotion
+                    variants={fadeIn}
                   />
                 </div>
               </motion.div>
@@ -210,30 +125,39 @@ const FilboExitoPage = () => {
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-5 gap-6 h-[500px]">
                     <motion.div variants={scaleIn} className="md:col-span-3 md:row-span-2 rounded-xl overflow-hidden shadow-lg">
-                        <Image
-                          src={getImagePath("/images/filbo/filbo3.png")}
+                        <OptimizedImage
+                          src="/images/filbo/filbo3.png"
                           alt="Vista frontal del stand de FILBO en Éxito"
                           width={800}
                           height={600}
-                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                          className="w-full h-full object-cover"
+                          hoverEffect="scale"
+                          useMotion
+                          variants={scaleIn}
                         />
                     </motion.div>
                     <motion.div variants={scaleIn} className="md:col-span-2 rounded-xl overflow-hidden shadow-lg">
-                        <Image
-                          src={getImagePath("/images/filbo/filbo4.png")}
+                        <OptimizedImage
+                          src="/images/filbo/filbo4.png"
                           alt="Vista lateral del stand con exhibición de libros"
                           width={800}
                           height={600}
-                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                          className="w-full h-full object-cover"
+                          hoverEffect="scale"
+                          useMotion
+                          variants={scaleIn}
                         />
                     </motion.div>
                     <motion.div variants={scaleIn} className="md:col-span-2 rounded-xl overflow-hidden shadow-lg">
-                        <Image
-                          src={getImagePath("/images/filbo/filbo1.png")}
+                        <OptimizedImage
+                          src="/images/filbo/filbo1.png"
                           alt="Vista panorámica del stand en el almacén"
                           width={800}
                           height={600}
-                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                          className="w-full h-full object-cover"
+                          hoverEffect="scale"
+                          useMotion
+                          variants={scaleIn}
                         />
                     </motion.div>
                 </div>
@@ -261,18 +185,24 @@ const FilboExitoPage = () => {
               <FeatureCard
                 icon={<Users size={32} />}
                 title="Alianza Estratégica"
+                className="bg-white p-8 rounded-lg shadow-md hover:shadow-yellow-500/20 hover:shadow-lg transition-shadow duration-300 border border-gray-100 h-full"
+                iconClassName="flex items-center justify-center h-14 w-14 rounded-lg bg-yellow-400 text-black mb-5"
               >
                 Colaboramos con Penguin Random House, Planeta y Sin Fronteras para unificar su presencia y potenciar su impacto.
               </FeatureCard>
               <FeatureCard
                 icon={<Store size={32} />}
                 title="Integración al Retail"
+                className="bg-white p-8 rounded-lg shadow-md hover:shadow-yellow-500/20 hover:shadow-lg transition-shadow duration-300 border border-gray-100 h-full"
+                iconClassName="flex items-center justify-center h-14 w-14 rounded-lg bg-yellow-400 text-black mb-5"
               >
                 Diseñamos stands que no solo armonizan con el ambiente de la tienda, sino que lo transforman en un destino cultural.
               </FeatureCard>
               <FeatureCard
                 icon={<BrainCircuit size={32} />}
                 title="Design Thinking Aplicado"
+                className="bg-white p-8 rounded-lg shadow-md hover:shadow-yellow-500/20 hover:shadow-lg transition-shadow duration-300 border border-gray-100 h-full"
+                iconClassName="flex items-center justify-center h-14 w-14 rounded-lg bg-yellow-400 text-black mb-5"
               >
                 Cada detalle fue pensado para maximizar la visibilidad y las ventas, culminando en un éxito notable para nuestros clientes.
               </FeatureCard>
@@ -280,28 +210,18 @@ const FilboExitoPage = () => {
           </div>
         </AnimatedSection>
         
-        {/* 5. Conclusión del Proyecto (MODIFICADO) */}
-        <section className="bg-gray-800">
-          <div className="container mx-auto px-6 py-20 text-center">
-            <AnimatedSection>
-              <motion.div variants={fadeIn}>
-                <CheckCircle className="mx-auto h-16 w-16 text-yellow-400" />
-              </motion.div>
-              <motion.h2
-                variants={fadeIn}
-                className="text-3xl md:text-4xl font-bold text-white mt-6"
-              >
-                Éxito Literario y Comercial
-              </motion.h2>
-              <motion.p
-                variants={fadeIn}
-                className="mt-4 text-lg text-gray-300 max-w-3xl mx-auto"
-              >
-                Implementados en Bogotá y Antioquia, los stands atrajeron a entusiastas y curiosos, generando una experiencia enriquecedora para los visitantes y un éxito de ventas para las editoriales.
-              </motion.p>
-            </AnimatedSection>
-          </div>
-        </section>
+        {/* 5. Conclusión del Proyecto */}
+        <CtaSection
+          title="Éxito Literario y Comercial"
+          description="Implementados en Bogotá y Antioquia, los stands atrajeron a entusiastas y curiosos, generando una experiencia enriquecedora para los visitantes y un éxito de ventas para las editoriales."
+          bgClassName="bg-gray-800"
+          titleClassName="text-3xl md:text-4xl font-bold text-white mt-6"
+          descriptionClassName="mt-4 text-lg text-gray-300 max-w-3xl mx-auto"
+        >
+          <motion.div variants={fadeIn}>
+            <CheckCircle className="mx-auto h-16 w-16 text-yellow-400" />
+          </motion.div>
+        </CtaSection>
 
       </main>
       <Footer />

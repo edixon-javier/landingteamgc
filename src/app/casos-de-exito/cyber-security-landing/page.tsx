@@ -1,9 +1,7 @@
 "use client";
 
-import React, { useEffect, ReactNode } from "react";
-import { motion, useAnimation, Variants } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-import Image from "next/image";
+import React, { ReactNode } from "react";
+import { motion } from "framer-motion";
 import {
   ShieldCheck,
   BrainCircuit,
@@ -15,36 +13,17 @@ import {
 } from "lucide-react";
 import { Header } from "@/components/organisms/Header";
 import { Footer } from "@/components/organisms/Footer";
-import { getImagePath } from "@/lib/utils";
 import { useAgendaDemoScroll } from "@/hooks/useAgendaDemoScroll";
-
 import {
   fadeIn,
   fadeInLeft,
   scaleIn,
   staggerContainer
 } from '@/animations/variants';
-
-// --- Componente de Animación en Scroll ---
-const AnimatedSection = ({ children }: { children: ReactNode }) => {
-  const controls = useAnimation();
-  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
-
-  useEffect(() => {
-    if (inView) controls.start("visible");
-  }, [controls, inView]);
-
-  return (
-    <motion.div
-      ref={ref}
-      initial="hidden"
-      animate={controls}
-      variants={staggerContainer}
-    >
-      {children}
-    </motion.div>
-  );
-};
+import { 
+  AnimatedSection, 
+  OptimizedImage
+} from '@/components/shared';
 
 // --- Tarjeta de Solución ---
 const SolutionCard = ({
@@ -111,15 +90,15 @@ const CyberSecurityLanding = () => {
               variants={scaleIn}
               className="flex justify-center items-center"
             >
-              <Image
-                src={getImagePath(
-                  "/images/suvey_cibersegurity/screenshot-2025-07-08-093506.png"
-                )}
+              <OptimizedImage
+                src="/images/suvey_cibersegurity/screenshot-2025-07-08-093506.png"
                 alt="Dashboard con aspectos destacados"
                 width={1200}
                 height={850}
-                className="rounded-xl shadow-2xl transform hover:scale-105 transition-transform duration-500"
+                className="rounded-xl"
                 priority
+                hoverEffect="scale"
+                withShadow
               />
             </motion.div>
           </motion.div>
@@ -272,14 +251,14 @@ const CyberSecurityLanding = () => {
           <AnimatedSection>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <motion.div variants={fadeIn} className="lg:order-last">
-                <Image
-                  src={getImagePath(
-                    "/images/suvey_cibersegurity/screenshot-2025-07-08-093603.png"
-                  )}
+                <OptimizedImage
+                  src="/images/suvey_cibersegurity/screenshot-2025-07-08-093603.png"
                   alt="Dashboard con aspectos destacados"
                   width={1200}
                   height={850}
-                  className="rounded-xl shadow-2xl transform hover:scale-105 transition-transform duration-500"
+                  className="rounded-xl"
+                  hoverEffect="scale"
+                  withShadow
                 />
               </motion.div>
               <motion.div variants={fadeIn}>

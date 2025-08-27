@@ -1,10 +1,7 @@
 "use client";
 
-import React, { useEffect, ReactNode } from "react";
-import { motion, useAnimation, Variants } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-import Image from "next/image";
-import { getImagePath } from "@/lib/utils";
+import React from "react";
+import { motion } from "framer-motion";
 import {
   Lightbulb,
   Users,
@@ -13,88 +10,19 @@ import {
 } from "lucide-react";
 import { Header } from "@/components/organisms/Header";
 import { Footer } from "@/components/organisms/Footer";
-
-// --- Variantes de Animación para Framer Motion ---
-const fadeIn: Variants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.7, ease: "easeOut" },
-  },
-};
-
-const fadeInLeft: Variants = {
-  hidden: { opacity: 0, x: -50 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: { duration: 0.8, ease: "easeOut" },
-  },
-};
-
-const fadeInRight: Variants = {
-  hidden: { opacity: 0, x: 50 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: { duration: 0.8, ease: "easeOut" },
-  },
-};
-
-const scaleIn: Variants = {
-  hidden: { opacity: 0, scale: 0.9 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
-  },
-};
-
-const staggerContainer: Variants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.2,
-    },
-  },
-};
-
-// --- Componente Auxiliar para controlar animaciones en Scroll ---
-const AnimatedSection = ({
-  children,
-  className,
-  style,
-}: {
-  children: ReactNode;
-  className?: string;
-  style?: React.CSSProperties;
-}) => {
-  const controls = useAnimation();
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
-
-  useEffect(() => {
-    if (inView) {
-      controls.start("visible");
-    }
-  }, [controls, inView]);
-
-  return (
-    <motion.div
-      ref={ref}
-      initial="hidden"
-      animate={controls}
-      variants={staggerContainer}
-      className={className}
-      style={style}
-    >
-      {children}
-    </motion.div>
-  );
-};
+import {
+  fadeIn,
+  fadeInLeft,
+  fadeInRight,
+  scaleIn,
+  staggerContainer
+} from '@/animations/variants';
+import { 
+  AnimatedSection, 
+  OptimizedImage,
+  CtaSection
+} from '@/components/shared';
+import { ReactNode } from 'react';
 
 // --- Componente de Tarjeta de Proceso ---
 const StrategyCard = ({
@@ -128,7 +56,7 @@ const PuntoExperienciaWizPage = () => {
         <section className="min-h-screen relative flex items-center justify-center text-white overflow-hidden bg-blue-700">
             <div 
                 className="absolute inset-0 z-0 bg-cover bg-center opacity-20"
-                style={{backgroundImage: `url(${getImagePath("/images/puntowiz/pwiz1.png")})`}}>
+                style={{backgroundImage: `url(/images/puntowiz/pwiz1.png)`}}>
             </div>
             <div className="absolute inset-0 z-10 bg-gradient-to-t from-blue-800 via-blue-700 to-transparent"></div>
             
@@ -151,13 +79,16 @@ const PuntoExperienciaWizPage = () => {
                     </p>
                   </motion.div>
                   <motion.div variants={scaleIn} className="hidden lg:block">
-                      <Image
-                        src={getImagePath("/images/puntowiz/pwiz1.png")}
+                      <OptimizedImage
+                        src="/images/puntowiz/pwiz1.png"
                         alt="Punto de experiencia WiZ en tienda"
                         width={800}
                         height={600}
-                        className="rounded-xl shadow-2xl w-full max-w-md mx-auto"
+                        className="rounded-xl w-full max-w-md mx-auto"
                         priority
+                        withShadow
+                        useMotion
+                        variants={scaleIn}
                       />
                   </motion.div>
                 </motion.div>
@@ -179,24 +110,29 @@ const PuntoExperienciaWizPage = () => {
               <motion.div variants={fadeInLeft}>
                 <h3 className="text-2xl font-bold text-center mb-4 text-gray-500">El Diseño 3D</h3>
                 <div className="relative rounded-xl overflow-hidden shadow-lg border-4 border-gray-100 p-4 bg-gray-100">
-                  <Image
-                    src={getImagePath("/images/puntowiz/wizv2.png")}
+                  <OptimizedImage
+                    src="/images/puntowiz/wizv2.png"
                     alt="Render 3D del punto de experiencia WiZ"
                     width={800}
                     height={600}
                     className="w-full rounded-lg"
+                    useMotion
+                    variants={fadeInLeft}
                   />
                 </div>
               </motion.div>
               <motion.div variants={fadeInRight}>
                  <h3 className="text-2xl font-bold text-center mb-4 text-blue-600">El Punto de Venta</h3>
                 <div className="relative rounded-xl overflow-hidden shadow-2xl border-4 border-white">
-                  <Image
-                    src={getImagePath("/images/puntowiz/pwiz2.png")}
+                  <OptimizedImage
+                    src="/images/puntowiz/pwiz2.png"
                     alt="Foto real del punto de experiencia en la tienda"
                     width={800}
                     height={600}
                     className="w-full"
+                    withShadow
+                    useMotion
+                    variants={fadeInRight}
                   />
                 </div>
               </motion.div>
@@ -257,30 +193,39 @@ const PuntoExperienciaWizPage = () => {
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     <motion.div variants={scaleIn} className="rounded-xl overflow-hidden shadow-lg">
-                        <Image
-                          src={getImagePath("/images/puntowiz/pwiz1.png")}
+                        <OptimizedImage
+                          src="/images/puntowiz/pwiz1.png"
                           alt="Display de WiZ en pasillo de tienda"
                           width={800}
                           height={600}
-                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                          className="w-full h-full object-cover"
+                          hoverEffect="scale"
+                          useMotion
+                          variants={scaleIn}
                         />
                     </motion.div>
                     <motion.div variants={scaleIn} className="rounded-xl overflow-hidden shadow-lg">
-                        <Image
-                          src={getImagePath("/images/puntowiz/pwiz2.png")}
+                        <OptimizedImage
+                          src="/images/puntowiz/pwiz2.png"
                           alt="Módulo de experiencia WiZ en sección de tecnología"
                           width={800}
                           height={600}
-                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                          className="w-full h-full object-cover"
+                          hoverEffect="scale"
+                          useMotion
+                          variants={scaleIn}
                         />
                     </motion.div>
                     <motion.div variants={scaleIn} className="rounded-xl overflow-hidden shadow-lg">
-                        <Image
-                          src={getImagePath("/images/puntowiz/pwiz3.png")}
+                        <OptimizedImage
+                          src="/images/puntowiz/pwiz3.png"
                           alt="Otro ángulo del módulo de experiencia WiZ"
                           width={800}
                           height={600}
-                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                          className="w-full h-full object-cover"
+                          hoverEffect="scale"
+                          useMotion
+                          variants={scaleIn}
                         />
                     </motion.div>
                 </div>
@@ -288,27 +233,17 @@ const PuntoExperienciaWizPage = () => {
         </AnimatedSection>
         
         {/* 5. Conclusión del Proyecto */}
-        <section className="bg-gradient-to-r from-blue-800 to-purple-800">
-          <div className="container mx-auto px-6 py-20 text-center">
-            <AnimatedSection>
-              <motion.div variants={fadeIn}>
-                <Lightbulb className="mx-auto h-16 w-16 text-yellow-300" />
-              </motion.div>
-              <motion.h2
-                variants={fadeIn}
-                className="text-3xl md:text-4xl font-bold text-white mt-6"
-              >
-                Reimaginando Futuros, un Espacio a la Vez
-              </motion.h2>
-              <motion.p
-                variants={fadeIn}
-                className="mt-4 text-lg text-gray-200 max-w-3xl mx-auto"
-              >
-                Este proyecto es una muestra de cómo la creatividad y la tecnología, guiadas por la empatía, pueden iluminar y transformar vidas.
-              </motion.p>
-            </AnimatedSection>
-          </div>
-        </section>
+        <CtaSection
+          title="Reimaginando Futuros, un Espacio a la Vez"
+          description="Este proyecto es una muestra de cómo la creatividad y la tecnología, guiadas por la empatía, pueden iluminar y transformar vidas."
+          bgClassName="bg-gradient-to-r from-blue-800 to-purple-800"
+          titleClassName="text-3xl md:text-4xl font-bold text-white mt-6"
+          descriptionClassName="mt-4 text-lg text-gray-200 max-w-3xl mx-auto"
+        >
+          <motion.div variants={fadeIn}>
+            <Lightbulb className="mx-auto h-16 w-16 text-yellow-300" />
+          </motion.div>
+        </CtaSection>
 
       </main>
       <Footer />
