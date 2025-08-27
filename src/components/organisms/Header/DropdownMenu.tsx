@@ -114,9 +114,15 @@ export function DropdownMenu({
       'legrand-digital-transformation': '/casos-de-exito/legrand-landing',
       'nazca-restaurant-management': '/casos-de-exito/restaurant-landing',
       'qr-event-management': '/casos-de-exito/qr-event-landing',
+      'showroom-wiz': '/casos-de-exito-thinking/ShowroomWizPage',
+      'librero-toysmart': '/casos-de-exito-thinking/LibreroToysmartPage',
+      'stand-tannic': '/casos-de-exito-thinking/StandTannicPage',
+      'punto-experiencia-wiz': '/casos-de-exito-thinking/PuntoExperienciaWizPage',
+      'columna-philips-exito': '/casos-de-exito-thinking/ColumnaPhilipsPage',
+      'filbo-exito': '/casos-de-exito-thinking/FilboExitoPage',
     };
     
-    return routeMap[slug] || `/casos-de-exito/${slug}`;
+    return routeMap[slug] || `/casos-de-exito/${slug}`  ;
   }, []);
 
   // Manejo de navegación por teclado

@@ -23,6 +23,18 @@ const getComponentRoute = (slug: string) => {
       return '/casos-de-exito/restaurant-landing';
     case 'qr-event-management':
       return '/casos-de-exito/qr-event-landing';
+      case 'showroom-wiz':
+        return '/casos-de-exito-thinking/ShowroomWizPage';
+      case 'librero-toysmart':
+        return '/casos-de-exito-thinking/LibreroToysmartPage';
+      case 'stand-tannic':
+        return '/casos-de-exito-thinking/StandTannicPage';
+      case 'punto-experiencia-wiz':
+        return '/casos-de-exito-thinking/PuntoExperienciaWizPage';
+      case 'columna-philips-exito':
+        return '/casos-de-exito-thinking/ColumnaPhilipsPage';
+      case 'filbo-exito':
+        return '/casos-de-exito-thinking/FilboExitoPage';
     default:
       return `/casos-de-exito/${slug}`;
   }

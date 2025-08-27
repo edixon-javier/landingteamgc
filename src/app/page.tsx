@@ -7,6 +7,7 @@ import { Methodology } from '@/components/sections/Methodology';
 import { CaseStudies } from '@/components/sections/CaseStudies';
 import { CTA } from '@/components/sections/CTA';
 import { Footer } from '@/components/organisms/Footer';
+import { CaseStudiesThinking } from "@/components/sections/CaseStudiesThinking";
 // import HomeClient from "@/components/HomeClient";
 
 export const metadata: Metadata = {
@@ -41,6 +42,11 @@ export default function HomePage() {
         {/* Sección de Casos de Éxito */}
         <section id="casos-de-exito">
           <CaseStudies />
+        </section>
+
+        {/* Sección de Casos de Éxito */}
+        <section id="casos-de-exito-design-thinking">
+          <CaseStudiesThinking />
         </section>
 
 

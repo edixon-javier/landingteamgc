@@ -7,11 +7,11 @@ import { motion, AnimatePresence, Variants } from 'framer-motion';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { getImagePath } from '@/lib/utils';
 import { useAgendaDemoScroll } from '@/hooks/useAgendaDemoScroll';
-import { caseStudiesData } from '@/lib/content';
+import { caseStudiesData, caseStudiesDataThinking  } from '@/lib/content';
 import { DropdownMenu } from './DropdownMenu';
 import { MobileDropdown } from './MobileDropdown';
 
-type NavSection = 'inicio' | 'metodologia' | 'soluciones' | 'casos-de-exito' | 'contacto';
+type NavSection = 'inicio' | 'metodologia' | 'soluciones' | 'casos-de-exito' | 'casos-de-exito-design-thinking' | 'contacto';
 
 interface NavLink {
   name: string;
@@ -24,6 +24,7 @@ const navLinks: NavLink[] = [
   { name: 'Soluciones', id: 'soluciones' },
   { name: 'Metodología', id: 'metodologia' },
   { name: 'Casos de Éxito', id: 'casos-de-exito', hasDropdown: true },
+  { name: 'Casos de Éxito Design Thinking', id: 'casos-de-exito-design-thinking', hasDropdown: true },
   { name: 'Contacto', id: 'contacto' }
 ];
 
@@ -112,8 +113,8 @@ export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<NavSection>('inicio');
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [isMobileDropdownOpen, setIsMobileDropdownOpen] = useState(false);
+  const [openDropdownId, setOpenDropdownId] = useState<NavSection | null>(null);
+  const [isMobileDropdownOpen, setIsMobileDropdownOpen] = useState<{ [key: string]: boolean }>({});
   // Refs para manejo de foco y timeouts
   const dropdownTriggerRef = useRef<HTMLAnchorElement>(null);
   const mobileMenuButtonRef = useRef<HTMLButtonElement>(null);
@@ -125,6 +126,7 @@ export function Header() {
   const scrollToMetodologia = useAgendaDemoScroll('metodologia');
   const scrollToSoluciones = useAgendaDemoScroll('soluciones');
   const scrollToCasosExito = useAgendaDemoScroll('casos-de-exito');
+  const scrollToCasosExitoDesignThinking = useAgendaDemoScroll('casos-de-exito-design-thinking');
   const scrollToContacto = useAgendaDemoScroll('contacto');
 
   const scrollFunctions = useMemo(() => ({
@@ -132,25 +134,26 @@ export function Header() {
     'metodologia': scrollToMetodologia,
     'soluciones': scrollToSoluciones,
     'casos-de-exito': scrollToCasosExito,
+    'casos-de-exito-design-thinking': scrollToCasosExitoDesignThinking,
     'contacto': scrollToContacto
-  }), [scrollToInicio, scrollToMetodologia, scrollToSoluciones, scrollToCasosExito, scrollToContacto]);
+  }), [scrollToInicio, scrollToMetodologia, scrollToSoluciones, scrollToCasosExito, scrollToCasosExitoDesignThinking, scrollToContacto]);
 
   // Manejo del dropdown con timeout mejorado
-  const handleDropdownEnter = useCallback(() => {
+  const handleDropdownEnter = useCallback((id: NavSection) => {
     if (dropdownTimeoutRef.current) {
       clearTimeout(dropdownTimeoutRef.current);
     }
-    setIsDropdownOpen(true);
+    setOpenDropdownId(id);
   }, []);
 
   const handleDropdownLeave = useCallback(() => {
     dropdownTimeoutRef.current = setTimeout(() => {
-      setIsDropdownOpen(false);
+      setOpenDropdownId(null);
     }, 150);
   }, []);
 
   const closeDropdown = useCallback(() => {
-    setIsDropdownOpen(false);
+    setOpenDropdownId(null);
     if (dropdownTimeoutRef.current) {
       clearTimeout(dropdownTimeoutRef.current);
     }
@@ -174,8 +177,11 @@ export function Header() {
     setTimeout(() => mobileMenuButtonRef.current?.focus(), 200);
   }, []);
 
-  const toggleMobileDropdown = useCallback(() => {
-    setIsMobileDropdownOpen(prev => !prev);
+  const toggleMobileDropdown = useCallback((id: NavSection) => {
+    setIsMobileDropdownOpen(prev => ({
+      ...prev,
+      [id]: !prev[id]
+    }));
   }, []);
 
   // Optimized scroll handler
@@ -242,7 +248,7 @@ export function Header() {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
-        if (isDropdownOpen) {
+        if (openDropdownId) {
           closeDropdown();
           dropdownTriggerRef.current?.focus();
         } else if (isMenuOpen) {
@@ -253,7 +259,7 @@ export function Header() {
 
     document.addEventListener('keydown', handleKeyDown);
     return () => document.removeEventListener('keydown', handleKeyDown);
-  }, [isDropdownOpen, isMenuOpen, closeDropdown, closeMobileMenu]);
+  }, [openDropdownId, isMenuOpen, closeDropdown, closeMobileMenu]);
 
   // Body scroll lock
   useEffect(() => {
@@ -354,7 +360,7 @@ export function Header() {
                   animate="visible"
                   variants={navItemVariants}
                   className="relative"
-                  onMouseEnter={link.hasDropdown ? handleDropdownEnter : undefined}
+                  onMouseEnter={link.hasDropdown ? () => handleDropdownEnter(link.id) : undefined}
                   onMouseLeave={link.hasDropdown ? handleDropdownLeave : undefined}
                 >
                   <Link
@@ -362,14 +368,14 @@ export function Header() {
                     href={`#${link.id}`}
                     onClick={(e) => handleNavClick(e, link.id)}
                     className={getNavLinkStyles(link.id, activeSection === link.id)}
-                    aria-expanded={link.hasDropdown ? isDropdownOpen : undefined}
+                    aria-expanded={link.hasDropdown ? openDropdownId === link.id : undefined}
                     aria-haspopup={link.hasDropdown ? "menu" : undefined}
                   >
                     <span>{link.name}</span>
                     {link.hasDropdown && (
                       <ChevronDown 
                         className={`ml-1 h-4 w-4 transition-all duration-300 ${
-                          isDropdownOpen ? 'rotate-180 scale-110' : 'rotate-0 scale-100'
+                          openDropdownId === link.id ? 'rotate-180 scale-110' : 'rotate-0 scale-100'
                         } group-hover:scale-110`}
                         aria-hidden="true"
                       />
@@ -379,10 +385,10 @@ export function Header() {
                   
                   {link.hasDropdown && (
                     <DropdownMenu
-                      isOpen={isDropdownOpen}
-                      projects={caseStudiesData}
+                      isOpen={openDropdownId === link.id}
+                      projects={link.id === 'casos-de-exito' ? caseStudiesData : caseStudiesDataThinking}
                       isScrolled={isScrolled}
-                      onMouseEnter={handleDropdownEnter}
+                      onMouseEnter={() => handleDropdownEnter(link.id)}
                       onMouseLeave={handleDropdownLeave}
                       onClose={closeDropdown}
                       triggerRef={dropdownTriggerRef}
@@ -511,9 +517,9 @@ export function Header() {
                     
                     {link.hasDropdown && (
                       <MobileDropdown
-                        isOpen={isMobileDropdownOpen}
-                        projects={caseStudiesData}
-                        onToggle={toggleMobileDropdown}
+                        isOpen={!!isMobileDropdownOpen[link.id]}
+                        projects={link.id === 'casos-de-exito' ? caseStudiesData : caseStudiesDataThinking}
+                        onToggle={() => toggleMobileDropdown(link.id)}
                         activeSection={activeSection}
                       />
                     )}

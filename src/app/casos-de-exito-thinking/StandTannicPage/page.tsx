@@ -1,0 +1,319 @@
+"use client";
+
+import React, { useEffect, ReactNode } from "react";
+import { motion, useAnimation, Variants } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import Image from "next/image";
+import {
+  Wine,
+  DraftingCompass,
+  Layers,
+  Truck,
+} from "lucide-react";
+import { Header } from "@/components/organisms/Header";
+import { Footer } from "@/components/organisms/Footer";
+import { getImagePath } from "@/lib/utils";
+
+// --- Variantes de Animación para Framer Motion ---
+const fadeIn: Variants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: "easeOut" },
+  },
+};
+
+const fadeInLeft: Variants = {
+  hidden: { opacity: 0, x: -50 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.8, ease: "easeOut" },
+  },
+};
+
+const fadeInRight: Variants = {
+  hidden: { opacity: 0, x: 50 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.8, ease: "easeOut" },
+  },
+};
+
+const scaleIn: Variants = {
+  hidden: { opacity: 0, scale: 0.9 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
+const staggerContainer: Variants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+// --- Componente Auxiliar para controlar animaciones en Scroll ---
+const AnimatedSection = ({
+  children,
+  className,
+}: {
+  children: ReactNode;
+  className?: string;
+}) => {
+  const controls = useAnimation();
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+
+  useEffect(() => {
+    if (inView) {
+      controls.start("visible");
+    }
+  }, [controls, inView]);
+
+  return (
+    <motion.div
+      ref={ref}
+      initial="hidden"
+      animate={controls}
+      variants={staggerContainer}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
+};
+
+// --- Componente de Tarjeta de Proceso ---
+const ProcessCard = ({
+  icon,
+  title,
+  children,
+}: {
+  icon: ReactNode;
+  title: string;
+  children: ReactNode;
+}) => (
+  <motion.div
+    variants={fadeIn}
+    className="bg-white p-6 rounded-xl shadow-sm hover:shadow-xl transition-shadow duration-300 border border-gray-100 flex flex-col items-center text-center h-full"
+  >
+    <div className="flex items-center justify-center h-16 w-16 rounded-full bg-gray-800 text-amber-400 mb-4">
+      {icon}
+    </div>
+    <h3 className="text-xl font-bold text-gray-800 mb-2">{title}</h3>
+    <p className="text-gray-600">{children}</p>
+  </motion.div>
+);
+
+// --- Componente principal de la página del proyecto Stand Tannic ---
+const StandTannicPage = () => {
+  return (
+    <div className="bg-gray-50 font-sans">
+      <Header />
+      <main className="text-gray-800">
+        {/* 1. Hero Principal */}
+        <section className="min-h-screen flex items-center bg-gray-900 text-white bg-cover bg-center" style={{backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${getImagePath("/images/tanic/tannicv1.png")})`}}>
+          <div className="container mx-auto px-6 py-12">
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={staggerContainer}
+              className="max-w-3xl text-center mx-auto"
+            >
+              <motion.p
+                variants={fadeIn}
+                className="text-lg font-semibold text-amber-300"
+              >
+                STAND TANNIC - VINO AL PARQUE
+              </motion.p>
+              <motion.h1
+                variants={fadeIn}
+                className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mt-2"
+              >
+                Elevando la experiencia del vino:
+                <span className="block text-amber-400 mt-2">
+                  Un Reto Elegante
+                </span>
+              </motion.h1>
+              <motion.p
+                variants={fadeIn}
+                className="mt-6 text-lg md:text-xl text-gray-200 max-w-2xl mx-auto"
+              >
+                Un stand que no solo destacó por su diseño, sino por su funcionalidad y versatilidad, encarnando la pasión por el vino en la Feria del Vino 2023.
+              </motion.p>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* 2. De la Visión a la Realidad */}
+        <AnimatedSection className="py-20 lg:py-28 bg-white">
+          <div className="container mx-auto px-6">
+            <div className="text-center mb-16">
+                <motion.h2 variants={fadeIn} className="text-3xl md:text-4xl font-bold">
+                    De la Visión a la Realidad
+                </motion.h2>
+                <motion.p variants={fadeIn} className="text-gray-600 mt-4 text-lg max-w-3xl mx-auto">
+                    Nuestro proceso nos permitió visualizar y perfeccionar el concepto, asegurando que el resultado final fuera fiel a la visión inicial de elegancia y sofisticación.
+                </motion.p>
+            </div>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <motion.div variants={fadeInLeft}>
+                <h3 className="text-2xl font-bold text-center mb-4 text-gray-500">El Render 3D</h3>
+                <div className="relative rounded-xl overflow-hidden shadow-lg border-4 border-gray-200">
+                  <Image
+                    src={getImagePath("/images/tanic/tannicv1.png")}
+                    alt="Render 3D del stand de Tannic"
+                    width={800}
+                    height={600}
+                    className="w-full"
+                  />
+                </div>
+              </motion.div>
+              <motion.div variants={fadeInRight}>
+                 <h3 className="text-2xl font-bold text-center mb-4 text-gray-800">El Stand en el Evento</h3>
+                <div className="relative rounded-xl overflow-hidden shadow-2xl border-4 border-white">
+                  <Image
+                    src={getImagePath("/images/tanic/tannic1.png")}
+                    alt="Foto real del stand de Tannic en el parque"
+                    width={800}
+                    height={600}
+                    className="w-full"
+                  />
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </AnimatedSection>
+
+        {/* 3. Proceso de Diseño Sofisticado */}
+        <AnimatedSection className="py-20 lg:py-28 bg-gray-50">
+          <div className="container mx-auto px-6">
+            <div className="text-center mb-16">
+              <motion.h2
+                variants={fadeIn}
+                className="text-3xl md:text-4xl font-bold"
+              >
+                Un Proceso de Diseño Sofisticado
+              </motion.h2>
+              <motion.p
+                variants={fadeIn}
+                className="text-gray-600 mt-4 text-lg max-w-3xl mx-auto"
+              >
+                Cada etapa fue crucial para crear un espacio que no solo sirviera como punto de degustación, sino que también encarnara la elegancia que los entusiastas del vino esperan.
+              </motion.p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <ProcessCard
+                icon={<DraftingCompass size={32} />}
+                title="Ideación y Bocetos"
+              >
+                El proceso creativo comenzó con la consolidación de ideas y bocetos entre el equipo para definir la dirección del diseño.
+              </ProcessCard>
+              <ProcessCard
+                icon={<Layers size={32} />}
+                title="Render 3D y Materiales"
+              >
+                Creamos renders 3D y fotomontajes realistas, seleccionando cuidadosamente materiales estéticos, prácticos y reutilizables.
+              </ProcessCard>
+              <ProcessCard
+                icon={<Truck size={32} />}
+                title="Logística y Ejecución"
+              >
+                Se planificó minuciosamente la logística de instalación para asegurar una ejecución impecable y a tiempo para el evento.
+              </ProcessCard>
+            </div>
+          </div>
+        </AnimatedSection>
+
+        {/* 4. Galería de la Experiencia */}
+        <AnimatedSection className="py-20 lg:py-28 bg-white">
+            <div className="container mx-auto px-6">
+                <div className="text-center mb-16">
+                    <motion.h2 variants={fadeIn} className="text-3xl md:text-4xl font-bold">
+                        Una Atmósfera para Disfrutar
+                    </motion.h2>
+                    <motion.p variants={fadeIn} className="text-gray-600 mt-4 text-lg max-w-2xl mx-auto">
+                        El stand se consolidó como un punto de encuentro para aficionados y expertos, demostrando que el buen diseño potencia la experiencia de los visitantes.
+                    </motion.p>
+                </div>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <motion.div variants={scaleIn} className="col-span-2 row-span-2 rounded-xl overflow-hidden shadow-lg">
+                        <Image 
+                          src={getImagePath("/images/tanic/tannic4.png")} 
+                          alt="Vista lateral del stand Tannic en el evento" 
+                          width={800}
+                          height={600}
+                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300" 
+                        />
+                    </motion.div>
+                    <motion.div variants={scaleIn} className="rounded-xl overflow-hidden shadow-lg">
+                        <Image 
+                          src={getImagePath("/images/tanic/tannic1.png")} 
+                          alt="Vista frontal del stand Tannic" 
+                          width={400}
+                          height={300}
+                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300" 
+                        />
+                    </motion.div>
+                    <motion.div variants={scaleIn} className="rounded-xl overflow-hidden shadow-lg">
+                        <Image 
+                          src={getImagePath("/images/tanic/tannic3.png")} 
+                          alt="Stand Tannic iluminado de noche" 
+                          width={400}
+                          height={300}
+                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300" 
+                        />
+                    </motion.div>
+                     <motion.div variants={scaleIn} className="col-span-2 rounded-xl overflow-hidden shadow-lg">
+                        <Image 
+                          src={getImagePath("/images/tanic/tannic2.png")} 
+                          alt="Vista amplia del stand Tannic en el parque" 
+                          width={800}
+                          height={400}
+                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300" 
+                        />
+                    </motion.div>
+                </div>
+            </div>
+        </AnimatedSection>
+        
+        {/* 5. Conclusión del Proyecto */}
+        <section className="bg-gray-800">
+          <div className="container mx-auto px-6 py-20 text-center">
+            <AnimatedSection>
+              <motion.div variants={fadeIn}>
+                <Wine className="mx-auto h-16 w-16 text-amber-400" />
+              </motion.div>
+              <motion.h2
+                variants={fadeIn}
+                className="text-3xl md:text-4xl font-bold text-white mt-6"
+              >
+                Un Brindis por el Buen Diseño
+              </motion.h2>
+              <motion.p
+                variants={fadeIn}
+                className="mt-4 text-lg text-gray-300 max-w-3xl mx-auto"
+              >
+                Con Tannic, cada sorbo de vino se acompañó de una atmósfera que invitaba a explorar y disfrutar, haciendo de esta feria un memorable encuentro con la cultura del vino.
+              </motion.p>
+            </AnimatedSection>
+          </div>
+        </section>
+
+      </main>
+      <Footer />
+    </div>
+  );
+};
+
+export default StandTannicPage;
