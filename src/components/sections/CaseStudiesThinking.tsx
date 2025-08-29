@@ -5,7 +5,6 @@ import { motion, Variants } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { getImagePath } from '@/lib/utils';
 import { caseStudiesDataThinking } from '@/lib/content';
 
 // --- Variantes de Animación ---
@@ -91,7 +90,7 @@ export function CaseStudiesThinking() {
                 >
                   <div className="relative overflow-hidden h-56">
                     <Image
-                      src={getImagePath(study.imageUrl)}
+                      src={study.imageUrl}
                       alt={`Caso de éxito de ${study.name}`}
                       fill
                       className="object-cover transition-transform duration-300 group-hover:scale-105"
