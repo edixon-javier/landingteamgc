@@ -6,13 +6,13 @@ export const solutionsData: Solution[] = [
     title: "Estrategia y Design Thinking",
     description:
       "Transformamos desafíos de negocio en oportunidades de crecimiento. Aplicamos Design Thinking para crear estrategias que resuenan con tus clientes y generan resultados medibles.",
-    href: "/casos-de-exito/",
+    href: "/casos-de-exito-thinking/",
   },
    {
     title: "Desarrollo y Tecnología a Medida",
     description:
       "Creamos las herramientas digitales que tu negocio necesita para escalar. Desde CRMs y aplicaciones logísticas hasta plataformas web, construimos soluciones robustas y centradas en el usuario.",
-    href: "/casos-de-exito-thinking/",
+    href: "/casos-de-exito",
   },
   {
     title: "Operaciones y Logística Inteligente",

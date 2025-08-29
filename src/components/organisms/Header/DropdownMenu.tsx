@@ -2,7 +2,6 @@ import React, { useRef, useEffect, useState, useCallback } from 'react';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
 import Link from 'next/link';
 import { CaseStudy } from '@/types';
-import { getLinkPath } from '@/lib/utils';
 
 interface DropdownMenuProps {
   isOpen: boolean;
@@ -124,8 +123,7 @@ export function DropdownMenu({
     };
     
     // Usar la función getLinkPath para construir la ruta completa
-    const path = routeMap[slug] || `/casos-de-exito/${slug}`;
-    return getLinkPath(path);
+      return routeMap[slug] || `/casos-de-exito/${slug}`  ;
   }, []);
 
   // Manejo de navegación por teclado

@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { ChevronDown } from 'lucide-react';
 import { CaseStudy } from '@/types';
-import { getLinkPath } from '@/lib/utils';
 
 interface MobileDropdownProps {
   isOpen: boolean;
@@ -31,48 +30,34 @@ export function MobileDropdown({
   activeSection
 }: MobileDropdownProps) {
   const getProjectRoute = (slug: string) => {
-    let path;
     switch (slug) {
       case 'suvey_cibersegurity':
-        path = '/casos-de-exito/cyber-security-landing';
-        break;
+        return '/casos-de-exito/cyber-security-landing';
       case 'dultos-consultans-platform':
-        path = '/casos-de-exito/crm-insurance-landing';
-        break;
+        return '/casos-de-exito/crm-insurance-landing';
       case 'prh-content-management':
-        path = '/casos-de-exito/prh-landing';
-        break;
+        return '/casos-de-exito/prh-landing';
       case 'legrand-digital-transformation':
-        path = '/casos-de-exito/legrand-landing';
-        break;
+        return '/casos-de-exito/legrand-landing';
       case 'nazca-restaurant-management':
-        path = '/casos-de-exito/restaurant-landing';
-        break;
+        return '/casos-de-exito/restaurant-landing';
       case 'qr-event-management':
-        path = '/casos-de-exito/qr-event-landing';
-        break;
+        return '/casos-de-exito/qr-event-landing';
       case 'showroom-wiz':
-        path = '/casos-de-exito-thinking/ShowroomWizPage';
-        break;
+        return '/casos-de-exito-thinking/ShowroomWizPage';
       case 'librero-toysmart':
-        path = '/casos-de-exito-thinking/LibreroToysmartPage';
-        break;
+        return '/casos-de-exito-thinking/LibreroToysmartPage';
       case 'stand-tannic':
-        path = '/casos-de-exito-thinking/StandTannicPage';
-        break;
+        return '/casos-de-exito-thinking/StandTannicPage';
       case 'punto-experiencia-wiz':
-        path = '/casos-de-exito-thinking/PuntoExperienciaWizPage';
-        break;
+        return '/casos-de-exito-thinking/PuntoExperienciaWizPage';
       case 'columna-philips-exito':
-        path = '/casos-de-exito-thinking/ColumnaPhilipsPage';
-        break;
+        return '/casos-de-exito-thinking/ColumnaPhilipsPage';
       case 'filbo-exito':
-        path = '/casos-de-exito-thinking/FilboExitoPage';
-        break;
+        return '/casos-de-exito-thinking/FilboExitoPage';
       default:
-        path = `/casos-de-exito/${slug}`;
+        return `/casos-de-exito/${slug}`;
     }
-    return getLinkPath(path);
   };
 
   return (
