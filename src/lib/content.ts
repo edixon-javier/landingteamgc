@@ -232,7 +232,7 @@ export const caseStudiesDataThinking = [
       "Un espacio sofisticado de degustación que elevó la experiencia del vino para aficionados y expertos.",
     imageUrl: getImagePath("/images/tanic/tannicv1.png"),
     description:
-      "Proyecto realizado en la Feria del Vino 2023 en Bogotá para Grupo Nazca y Tannic. Mediante un proceso creativo que incluyó bocetos, renders 3D y planificación logística, se diseñó un stand funcional, estético y reutilizable. El resultado fue un espacio que combinó elegancia, practicidad y una atmósfera inmersiva, consolidándose como un punto de encuentro para los amantes del vino.",
+      "Proyecto realizado en la Feria del Vino 2023 en Bogotá para Grupo Nazca y Tannic. A través de bocetos, renders 3D y planificación logística, creamos un stand funcional y elegante que combinó practicidad y una atmósfera inmersiva, consolidándose como un punto de encuentro destacado para los amantes del vino.",
   },
   {
     slug: "punto-experiencia-wiz",
@@ -243,7 +243,7 @@ export const caseStudiesDataThinking = [
       "Un proyecto innovador que transformó la manera en que las personas perciben y viven la iluminación.",
     imageUrl: getImagePath("/images/puntowiz/wizv2.png"),
     description:
-      "Desde 2018, nuestra agencia acompaña a Philips en la implementación de puntos de experiencia WiZ, activos hasta hoy en día. Estos espacios fueron concebidos como aulas vivas donde los usuarios exploran de manera inmersiva el potencial de la iluminación inteligente. Mediante renders 3D fotorrealistas, modelado a escala real e integración de visuales en espacios comerciales, logramos que cada punto funcionara como un escenario de aprendizaje, conexión y transformación. El resultado ha sido un proyecto sostenible, adaptable y en constante evolución, que lleva más de 6 años inspirando a comunidades en Colombia y Centroamérica.",
+      "Desde 2018 acompañamos a Philips con la implementación de puntos de experiencia WiZ en Colombia y Centroamérica. Estos espacios invitan a los usuarios a explorar la iluminación inteligente mediante diseños a escala real y renders 3D integrados al entorno comercial, convirtiéndose en escenarios de aprendizaje e innovación.",
   },
   {
     slug: "columna-philips-exito",
@@ -254,18 +254,17 @@ export const caseStudiesDataThinking = [
       "Un proyecto de instalación P.O.P. que convirtió un espacio cotidiano en una experiencia inmersiva para los clientes.",
     imageUrl: getImagePath("/images/philips/philips1.png"),
     description:
-      "En 2017, nuestro equipo asumió el reto de rediseñar una columna en Éxito Campestre para Philips, logrando que un elemento común se transformara en un soporte visual atractivo y funcional. Desde la conceptualización hasta la implementación final, cada detalle fue cuidadosamente planeado: materiales de calidad, disposición estratégica de productos y diseño inmersivo. Esta instalación P.O.P. no solo reforzó la visibilidad de la marca, sino que también generó una experiencia envolvente para los clientes, guiándolos de manera natural a través del espacio y fortaleciendo su conexión con Philips.",
+      "En 2017 rediseñamos una columna en Éxito Campestre para Philips, transformándola en un soporte visual atractivo y funcional. Con materiales de calidad y una disposición estratégica, logramos una instalación P.O.P. que resaltó la marca y mejoró la experiencia de compra de los clientes.",
   },
   {
-  slug: "filbo-exito",
-  name: "FILBO en Almacenes Éxito",
-  title:
-    "Transformamos espacios comerciales en escenarios culturales para las principales editoriales de Colombia.",
-  subtitle:
-    "Un proyecto que llevó la atmósfera de la Feria Internacional del Libro a los pasillos de Almacenes Éxito.",
+    slug: "filbo-exito",
+    name: "FILBO en Almacenes Éxito",
+    title:
+      "Transformamos espacios comerciales en escenarios culturales para las principales editoriales de Colombia.",
+    subtitle:
+      "Un proyecto que llevó la atmósfera de la Feria Internacional del Libro a los pasillos de Almacenes Éxito.",
   imageUrl: getImagePath("/images/filbo/filbov2.png"),
-  description:
-    "En abril de 2024, Penguin Random House, Editorial Planeta y Editorial Sin Fronteras confiaron en nuestro equipo para llevar la magia de la FILBO a los almacenes Éxito. Implementamos stands en Éxito Colina (Bogotá) y Éxito Bello (Antioquia), diseñados para invitar a los visitantes a explorar el mundo literario dentro de un entorno comercial. A través de design thinking, bocetos iniciales, renders 3D y una producción de alto nivel, logramos recrear una atmósfera inspiradora y cultural. Cada stand no solo incrementó la visibilidad y las ventas, sino que también consolidó a los almacenes como puntos de encuentro cultural, ofreciendo una experiencia enriquecedora para lectores y curiosos por igual."
-}
-
+    description:
+      "En abril de 2024 llevamos la experiencia de la FILBO a Almacenes Éxito con Penguin Random House, Editorial Planeta y Editorial Sin Fronteras. Implementamos stands en Bogotá y Antioquia que recrearon el ambiente de feria del libro, combinando diseño, producción y montaje para atraer lectores y generar un impacto cultural y comercial.",
+  },
 ];
