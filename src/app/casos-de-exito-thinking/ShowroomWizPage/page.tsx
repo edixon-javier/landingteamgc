@@ -1,8 +1,9 @@
 "use client";
 
 import React, { useEffect, ReactNode } from "react";
-import { motion, useAnimation, Variants } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import Image from "next/image";
 import {
   Users,
   MapPin,
@@ -12,65 +13,19 @@ import {
 } from "lucide-react";
 import { Header } from "@/components/organisms/Header";
 import { Footer } from "@/components/organisms/Footer";
-  // Placeholder para la ruta de las imágenes. Reemplaza esta función si tu estructura es diferente.
 import { getImagePath } from "@/lib/utils";
+import ReactCompareImage from "react-compare-image";
 
-// --- Variantes de Animación para Framer Motion ---
-// Estas son las definiciones para las animaciones que se usarán en el componente.
-const fadeIn: Variants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.7, ease: "easeOut" },
-  },
-};
-
-const fadeInLeft: Variants = {
-  hidden: { opacity: 0, x: -50 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: { duration: 0.8, ease: "easeOut" },
-  },
-};
-
-const fadeInRight: Variants = {
-  hidden: { opacity: 0, x: 50 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: { duration: 0.8, ease: "easeOut" },
-  },
-};
-
-const scaleIn: Variants = {
-  hidden: { opacity: 0, scale: 0.85 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
-  },
-};
-
-const staggerContainer: Variants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.2,
-    },
-  },
-};
+import {
+  fadeIn,
+  fadeInLeft,
+  fadeInRight,
+  scaleIn,
+  staggerContainer
+} from '@/animations/variants';
 
 // --- Componente Auxiliar para controlar animaciones en Scroll ---
-// Este componente activa la animación cuando el elemento entra en la pantalla.
-const AnimatedSection = ({
-  children,
-  className,
-}: {
-  children: ReactNode;
-  className?: string;
-}) => {
+const AnimatedSection = ({ children, className }: { children: ReactNode, className?: string }) => {
   const controls = useAnimation();
   const [ref, inView] = useInView({
     triggerOnce: true,
@@ -154,11 +109,13 @@ const ShowroomWizPage = () => {
                 </p>
               </motion.div>
               <motion.div variants={scaleIn}>
-                <img
-  // Placeholder para la ruta de las imágenes. Reemplaza esta función si tu estructura es diferente.
-                  src={getImagePath("/images/wiz/showroom4.png")}
+                <Image
+                  src={getImagePath("/images/wiz/wizv1.png")}
                   alt="Showroom WiZ finalizado"
-                  className="rounded-xl shadow-2xl w-full h-auto"
+                  width={800}
+                  height={600}
+                  className="rounded-xl shadow-2xl"
+                  priority
                 />
               </motion.div>
             </motion.div>
@@ -204,10 +161,11 @@ const ShowroomWizPage = () => {
                 variants={scaleIn}
                 className="w-full h-auto rounded-xl overflow-hidden shadow-2xl"
               >
-                <img
-  // Placeholder para la ruta de las imágenes. Reemplaza esta función si tu estructura es diferente.
+                <Image
                   src={getImagePath("/images/wiz/showroom6.png")}
                   alt="Showroom WiZ en funcionamiento"
+                  width={800}
+                  height={600}
                   className="object-cover w-full h-full"
                 />
               </motion.div>
@@ -280,18 +238,20 @@ const ShowroomWizPage = () => {
                 construcción.
               </motion.p>
             </div>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
               {/* Prototipo */}
               <motion.div variants={fadeInLeft}>
                 <h3 className="text-2xl font-bold text-center mb-4">
                   El Diseño 3D
                 </h3>
-                <div className="relative rounded-xl overflow-hidden shadow-lg">
-                  <img
-  // Placeholder para la ruta de las imágenes. Reemplaza esta función si tu estructura es diferente.
-                    src={getImagePath("/images/wiz/wizv1.png")}
-                    alt="Prototipo 3D del showroom"
-                    className="w-full"
+                <div className="relative rounded-xl overflow-hidden shadow-lg h-[350px]">
+                  <ReactCompareImage
+                    leftImage={getImagePath("/images/wiz/wizv1.png")}
+                    rightImage={getImagePath("/images/wiz/wizv2.png")}
+                    sliderLineWidth={2}
+                    sliderLineColor="#7c3aed"
+                    handle={<div className="bg-purple-600 rounded-full p-1 shadow-md" />}
+                    hover={true}
                   />
                 </div>
               </motion.div>
@@ -300,12 +260,14 @@ const ShowroomWizPage = () => {
                 <h3 className="text-2xl font-bold text-center mb-4">
                   El Espacio Final
                 </h3>
-                <div className="relative rounded-xl overflow-hidden shadow-lg">
-                  <img
-  // Placeholder para la ruta de las imágenes. Reemplaza esta función si tu estructura es diferente.
-                    src={getImagePath("/images/wiz/showroom5.png")}
-                    alt="Showroom finalizado"
-                    className="w-full"
+                <div className="relative rounded-xl overflow-hidden shadow-lg h-[350px]">
+                  <ReactCompareImage
+                    leftImage={getImagePath("/images/wiz/wizv1.png")}
+                    rightImage={getImagePath("/images/wiz/showroom4.png")}
+                    sliderLineWidth={2}
+                    sliderLineColor="#7c3aed"
+                    handle={<div className="bg-purple-600 rounded-full p-1 shadow-md" />}
+                    hover={true}
                   />
                 </div>
               </motion.div>
@@ -336,10 +298,11 @@ const ShowroomWizPage = () => {
                 variants={scaleIn}
                 className="rounded-lg overflow-hidden shadow-md"
               >
-                <img
-  // Placeholder para la ruta de las imágenes. Reemplaza esta función si tu estructura es diferente.
+                <Image
                   src={getImagePath("/images/wiz/showroom1.png")}
                   alt="Construcción del showroom 1"
+                  width={600}
+                  height={400}
                   className="w-full h-full object-cover"
                 />
               </motion.div>
@@ -347,10 +310,11 @@ const ShowroomWizPage = () => {
                 variants={scaleIn}
                 className="rounded-lg overflow-hidden shadow-md"
               >
-                <img
-  // Placeholder para la ruta de las imágenes. Reemplaza esta función si tu estructura es diferente.
+                <Image
                   src={getImagePath("/images/wiz/showroom2.png")}
                   alt="Construcción del showroom 2"
+                  width={600}
+                  height={400}
                   className="w-full h-full object-cover"
                 />
               </motion.div>
@@ -358,10 +322,11 @@ const ShowroomWizPage = () => {
                 variants={scaleIn}
                 className="rounded-lg overflow-hidden shadow-md"
               >
-                <img
-  // Placeholder para la ruta de las imágenes. Reemplaza esta función si tu estructura es diferente.
+                <Image
                   src={getImagePath("/images/wiz/showroom3.png")}
                   alt="Construcción del showroom 3"
+                  width={600}
+                  height={400}
                   className="w-full h-full object-cover"
                 />
               </motion.div>
@@ -414,10 +379,11 @@ const ShowroomWizPage = () => {
                 variants={scaleIn}
                 className="w-full h-auto rounded-xl overflow-hidden shadow-2xl"
               >
-                <img
-  // Placeholder para la ruta de las imágenes. Reemplaza esta función si tu estructura es diferente.
-                  src={getImagePath("/images/wiz/showroom4.png")}
+                <Image
+                  src={getImagePath("/images/wiz/showroom6.png")}
                   alt="Detalle del showroom final"
+                  width={800}
+                  height={600}
                   className="object-cover w-full h-full"
                 />
               </motion.div>
