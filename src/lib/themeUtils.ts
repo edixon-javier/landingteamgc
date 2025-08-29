@@ -6,7 +6,14 @@ import { theme } from './theme';
  * @returns El valor del tema o undefined si no existe
  */
 export function getThemeValue(path: string): string | undefined {
-  return path.split('.').reduce((obj, key) => (obj as Record<string, unknown>)?.[key], theme as Record<string, unknown>) as string | undefined;
+  type ThemeValue = string | number | boolean | null | undefined;
+  type ThemeObject = { [key: string]: ThemeObject | ThemeValue };
+  type ThemeObjectOrValue = ThemeObject | ThemeValue;
+  
+  return path.split('.').reduce<ThemeObjectOrValue>((obj, key) => 
+    obj && typeof obj === 'object' ? obj[key] : undefined, 
+    theme as ThemeObjectOrValue
+  ) as string | undefined;
 }
 
 /**

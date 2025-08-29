@@ -2,7 +2,7 @@ import dynamic from 'next/dynamic';
 import { type ComponentType } from 'react';
 
 interface DynamicLoaderProps {
-  loader: () => Promise<{ default: ComponentType<any> }>;
+  loader: () => Promise<{ default: ComponentType }>;
 }
 
 // Loader con skeleton animado por defecto
@@ -16,7 +16,7 @@ const DefaultSkeleton = () => (
   </div>
 );
 
-export function withDynamicLoader<T>({
+export function withDynamicLoader({
   loader,
   LoadingComponent = DefaultSkeleton,
   ssr = false,
@@ -25,14 +25,14 @@ export function withDynamicLoader<T>({
   ssr?: boolean;
 }) {
   return dynamic(loader, {
-    loading: LoadingComponent,
+    loading: () => <LoadingComponent />,
     ssr,
   });
 }
 
 // Componentes con carga dinámica
 export const DynamicHeroSection = withDynamicLoader({
-  loader: () => import('@/components/home/HeroSection'),
+  loader: () => import('@/components/home/HeroSection').then(mod => ({ default: mod.HeroSection })),
   ssr: true,
 });
 

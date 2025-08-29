@@ -21,10 +21,10 @@ interface NavLink {
 
 const navLinks: NavLink[] = [
   { name: 'Inicio', id: 'inicio' },
-  { name: 'Soluciones', id: 'soluciones' },
+  { name: 'Servicios', id: 'soluciones' },
   { name: 'Metodología', id: 'metodologia' },
-  { name: 'Casos de Éxito', id: 'casos-de-exito', hasDropdown: true },
-  { name: 'Casos de Éxito Design Thinking', id: 'casos-de-exito-design-thinking', hasDropdown: true },
+  { name: 'Desarrollo y Tecnología', id: 'casos-de-exito', hasDropdown: true },
+  { name: 'Estrategia y Design Thinking', id: 'casos-de-exito-design-thinking', hasDropdown: true },
   { name: 'Contacto', id: 'contacto' }
 ];
 
@@ -164,7 +164,7 @@ export function Header() {
     setIsMenuOpen(prev => {
       const newState = !prev;
       if (!newState) {
-        setIsMobileDropdownOpen(false);
+        setIsMobileDropdownOpen({});
         setTimeout(() => mobileMenuButtonRef.current?.focus(), 200);
       }
       return newState;
@@ -173,7 +173,7 @@ export function Header() {
 
   const closeMobileMenu = useCallback(() => {
     setIsMenuOpen(false);
-    setIsMobileDropdownOpen(false);
+    setIsMobileDropdownOpen({});
     setTimeout(() => mobileMenuButtonRef.current?.focus(), 200);
   }, []);
 

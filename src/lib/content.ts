@@ -8,18 +8,19 @@ export const solutionsData: Solution[] = [
       "Transformamos desafíos de negocio en oportunidades de crecimiento. Aplicamos Design Thinking para crear estrategias que resuenan con tus clientes y generan resultados medibles.",
     href: "/casos-de-exito/",
   },
+   {
+    title: "Desarrollo y Tecnología a Medida",
+    description:
+      "Creamos las herramientas digitales que tu negocio necesita para escalar. Desde CRMs y aplicaciones logísticas hasta plataformas web, construimos soluciones robustas y centradas en el usuario.",
+    href: "/casos-de-exito-thinking/",
+  },
   {
     title: "Operaciones y Logística Inteligente",
     description:
       "Optimizamos tu cadena de suministro de principio a fin. Integramos tecnología y procesos eficientes para reducir costos, agilizar operaciones y superar las expectativas de tus clientes.",
     href: "/casos-de-exito/",
   },
-  {
-    title: "Desarrollo y Tecnología a Medida",
-    description:
-      "Creamos las herramientas digitales que tu negocio necesita para escalar. Desde CRMs y aplicaciones logísticas hasta plataformas web, construimos soluciones robustas y centradas en el usuario.",
-    href: "/casos-de-exito-thinking/",
-  },
+ 
 ];
 
 export const clientLogos: ClientLogo = [

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, easeOut, Variants } from "framer-motion";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { MapPin, Mail, Phone } from "lucide-react";
 

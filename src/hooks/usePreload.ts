@@ -1,5 +1,5 @@
 import { useEffect, useCallback, useRef } from 'react';
-import { useIntersectionObserver } from './useIntersectionObserver';
+import { useInView } from 'react-intersection-observer';
 
 interface PreloadOptions {
   threshold?: number;
@@ -48,23 +48,23 @@ export function usePreload(
     loadedUrls.current.add(url);
   }, []);
 
-  const { ref } = useIntersectionObserver({
-    onIntersect: useCallback(
-      (entry: IntersectionObserverEntry) => {
-        if (entry.isIntersecting && enabled) {
-          resourceUrls.forEach(preloadResource);
-        }
-      },
-      [enabled, preloadResource, resourceUrls]
-    ),
+  const [ref, inView] = useInView({
     threshold,
     rootMargin,
+    triggerOnce: true,
   });
+
+  useEffect(() => {
+    if (inView && enabled) {
+      resourceUrls.forEach(preloadResource);
+    }
+  }, [inView, enabled, preloadResource, resourceUrls]);
 
   // Limpieza al desmontar
   useEffect(() => {
+    const currentLoadedUrls = loadedUrls.current;
     return () => {
-      loadedUrls.current.clear();
+      currentLoadedUrls.clear();
     };
   }, []);
 

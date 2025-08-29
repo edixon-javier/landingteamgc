@@ -57,7 +57,7 @@ export function CaseStudies() {
           </motion.p>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
-            {featuredStudies.map((study, index) => (
+            {featuredStudies.map((study) => (
               <motion.div 
                 key={study.slug} 
                 variants={itemVariants}

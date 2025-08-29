@@ -1,5 +1,5 @@
-import { getThemeValue, isDarkMode, getThemeMode, cx, getCssVar } from '@/lib/themeUtils';
-import { getOptimizedImagePath, getSrcSet, generateSizes } from '@/lib/imageUtils';
+import { getThemeValue, cx } from '@/lib/themeUtils';
+import { getOptimizedImagePath, generateSizes } from '@/lib/imageUtils';
 
 describe('Theme Utils', () => {
   describe('getThemeValue', () => {

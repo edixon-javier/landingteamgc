@@ -1,7 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { useUI, UIProvider } from '@/contexts/UIContext';
 import { useApp, AppProvider } from '@/contexts/AppContext';
-import { act } from '@testing-library/react';
 
 describe('Contexts', () => {
   describe('UIContext', () => {

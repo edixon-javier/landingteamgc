@@ -1,7 +1,7 @@
 'use client';
 
-import { useEffect, useState, useCallback, ReactNode } from 'react';
-import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
+import { useEffect, useState, ReactNode } from 'react';
+import { useInView } from 'react-intersection-observer';
 
 interface DeferLoadProps {
   children: ReactNode;
@@ -20,20 +20,18 @@ export function DeferLoad({
 }: DeferLoadProps) {
   const [shouldRender, setShouldRender] = useState(false);
 
-  const handleIntersect = useCallback(
-    (entry: IntersectionObserverEntry) => {
-      if (entry.isIntersecting && enabled) {
-        setShouldRender(true);
-      }
-    },
-    [enabled]
-  );
-
-  const { ref } = useIntersectionObserver({
-    onIntersect: handleIntersect,
+  const [ref, inView] = useInView({
     threshold,
     rootMargin,
+    triggerOnce: true,
   });
+
+  // Manejo de la intersección
+  useEffect(() => {
+    if (inView && enabled) {
+      setShouldRender(true);
+    }
+  }, [inView, enabled]);
 
   // Manejo de SSR
   useEffect(() => {

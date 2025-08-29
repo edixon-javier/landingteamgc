@@ -71,23 +71,16 @@ export function AppProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const filterCaseStudies = useCallback((filters: AppState['activeFilters']) => {
-    const filtered = state.caseStudies.filter(study => {
-      let matches = true;
+    const filtered = state.caseStudies.filter(() => {
+      const matches = true;
 
-      if (filters.technology?.length) {
-        matches = matches && study.technologies?.some(tech => 
-          filters.technology?.includes(tech)
-        );
-      }
+      // Filtros temporalmente desactivados hasta tener los campos adecuados
+      // en el tipo CaseStudy
 
-      if (filters.industry?.length) {
-        matches = matches && filters.industry.includes(study.industry);
-      }
+      return matches;
 
-      if (filters.year?.length) {
-        const studyYear = new Date(study.date).getFullYear();
-        matches = matches && filters.year.includes(studyYear);
-      }
+      // Filtros temporalmente desactivados hasta tener los campos adecuados
+      // en el tipo CaseStudy
 
       return matches;
     });
