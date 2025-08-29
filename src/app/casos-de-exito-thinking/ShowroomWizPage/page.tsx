@@ -110,7 +110,7 @@ const ShowroomWizPage = () => {
               </motion.div>
               <motion.div variants={scaleIn}>
                 <Image
-                  src={getImagePath("/images/wiz/wizv1.png")}
+                  src={getImagePath("/images/wiz/wizv1.webp")}
                   alt="Showroom WiZ finalizado"
                   width={800}
                   height={600}
@@ -247,7 +247,7 @@ const ShowroomWizPage = () => {
                 <div className="relative rounded-xl overflow-hidden shadow-lg h-[350px]">
                   <ReactCompareImage
                     leftImage={getImagePath("/images/wiz/wizv2.png")}
-                    rightImage={getImagePath("/images/wiz/wizv1.png")}
+                    rightImage={getImagePath("/images/wiz/wizv1.webp")}
                     leftImageLabel="Antes"
                     rightImageLabel="Después"
                     sliderLineWidth={3}
@@ -268,7 +268,7 @@ const ShowroomWizPage = () => {
                 </h3>
                 <div className="relative rounded-xl overflow-hidden shadow-lg h-[350px]">
                   <ReactCompareImage
-                    leftImage={getImagePath("/images/wiz/wizv1.png")}
+                    leftImage={getImagePath("/images/wiz/wizv1.webp")}
                     rightImage={getImagePath("/images/wiz/showroom5.png")}
                     leftImageLabel="Antes"
                     rightImageLabel="Después"

@@ -6,19 +6,19 @@ export const solutionsData: Solution[] = [
     title: "Estrategia y Design Thinking",
     description:
       "Transformamos desafíos de negocio en oportunidades de crecimiento. Aplicamos Design Thinking para crear estrategias que resuenan con tus clientes y generan resultados medibles.",
-    href: "/casos-de-exito-thinking/",
+    href: "/landingteamgc/casos-de-exito-thinking",
   },
    {
     title: "Desarrollo y Tecnología a Medida",
     description:
       "Creamos las herramientas digitales que tu negocio necesita para escalar. Desde CRMs y aplicaciones logísticas hasta plataformas web, construimos soluciones robustas y centradas en el usuario.",
-    href: "/casos-de-exito",
+    href: "/landingteamgc/casos-de-exito",
   },
   {
     title: "Operaciones y Logística Inteligente",
     description:
       "Optimizamos tu cadena de suministro de principio a fin. Integramos tecnología y procesos eficientes para reducir costos, agilizar operaciones y superar las expectativas de tus clientes.",
-    href: "/casos-de-exito/",
+    href: "/landingteamgc/casos-de-exito/",
   },
 ];
 
@@ -208,7 +208,7 @@ export const caseStudiesDataThinking = [
       "Diseñamos un showroom inmersivo que simula un apartamento minimalista, demostrando cómo la tecnología WiZ transforma por completo un hogar.",
     subtitle:
       "Permite a los visitantes controlar y personalizar la iluminación por voz o app, experimentando en tiempo real la creación de atmósferas únicas.",
-    imageUrl: getImagePath("/images/wiz/wizv1.png"),
+    imageUrl: getImagePath("/images/wiz/wizv1.webp"),
     description:
       "Creación de un showroom experiencial para WiZ en Homecenter, diseñado para simular un hogar inteligente y permitir a los usuarios interactuar con la tecnología de iluminación.",
   },
@@ -219,7 +219,7 @@ export const caseStudiesDataThinking = [
       "Reimaginamos espacios infantiles a través del design thinking, creando un mueble librero más funcional y atractivo para Penguin Random House.",
     subtitle:
       "Una experiencia innovadora para los más pequeños, combinando estética, practicidad y branding.",
-    imageUrl: getImagePath("/images/toysmart/frame4.png"),
+    imageUrl: getImagePath("/images/toysmart/frame4.webp"),
     description:
       "Proyecto desarrollado en conjunto con Penguin Random House y la cadena TOYSMART. Mediante un enfoque de design thinking, rediseñamos un librero 360° para hacerlo más ligero, funcional y adaptado al público infantil, manteniendo la identidad de marca y mejorando la experiencia de acceso a los libros.",
   },
@@ -230,7 +230,7 @@ export const caseStudiesDataThinking = [
       "Diseñamos y ejecutamos un stand elegante y versátil para Grupo Nazca y Tannic en la Feria del Vino 2023 en Bogotá.",
     subtitle:
       "Un espacio sofisticado de degustación que elevó la experiencia del vino para aficionados y expertos.",
-    imageUrl: getImagePath("/images/tanic/tannicv1.png"),
+    imageUrl: getImagePath("/images/tanic/tannicv1.webp"),
     description:
       "Proyecto realizado en la Feria del Vino 2023 en Bogotá para Grupo Nazca y Tannic. A través de bocetos, renders 3D y planificación logística, creamos un stand funcional y elegante que combinó practicidad y una atmósfera inmersiva, consolidándose como un punto de encuentro destacado para los amantes del vino.",
   },
