@@ -2,61 +2,26 @@
 
 import React, { useEffect, useState, ReactNode } from "react";
 import Image from "next/image";
-import { motion, useAnimation, Variants, AnimatePresence } from "framer-motion";
+import { motion, useAnimation, AnimatePresence } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import {
-  BrainCircuit,
-  Scaling,
-  Sparkles,
-} from "lucide-react";
+import { BrainCircuit, Scaling, Sparkles } from "lucide-react";
 import { Header } from "@/components/organisms/Header";
 import { Footer } from "@/components/organisms/Footer";
 import { getImagePath } from "@/lib/utils";
 
-// --- Variantes de Animación para Framer Motion ---
-const fadeIn: Variants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.7, ease: "easeOut" },
-  },
-};
+import {
+  fadeIn,
+  fadeInLeft,
+  fadeInRight,
+  scaleIn,
+  staggerContainer
+} from '@/animations/variants';
 
-const fadeInLeft: Variants = {
-  hidden: { opacity: 0, x: -50 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: { duration: 0.8, ease: "easeOut" },
-  },
-};
-
-const fadeInRight: Variants = {
-  hidden: { opacity: 0, x: 50 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: { duration: 0.8, ease: "easeOut" },
-  },
-};
-
-const scaleIn: Variants = {
-  hidden: { opacity: 0, scale: 0.9 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
-  },
-};
-
-const staggerContainer: Variants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.2,
-    },
-  },
+// Variante personalizada para la animación del carrusel
+const carouselVariants = {
+  enter: { opacity: 0, rotateY: -25 },
+  center: { opacity: 1, rotateY: 0 },
+  exit: { opacity: 0, rotateY: 25 },
 };
 
 // --- Componente Auxiliar para controlar animaciones en Scroll ---
@@ -116,23 +81,23 @@ const ProcessCard = ({
 
 // --- Componente principal de la página del proyecto Librero Toysmart ---
 const LibreroToysmartPage = () => {
-    const carouselImages = [
-        "/images/toysmart/frame1.png",
-        "/images/toysmart/frame2.png",
-        "/images/toysmart/frame3.png",
-        "/images/toysmart/frame4.png",
-        "/images/toysmart/frame5.png",
-        "/images/toysmart/frame6.png",
-    ];
-    const [currentIndex, setCurrentIndex] = useState(0);
+  const carouselImages = [
+    "/images/toysmart/frame1.png",
+    "/images/toysmart/frame2.png",
+    "/images/toysmart/frame3.png",
+    "/images/toysmart/frame4.png",
+    "/images/toysmart/frame5.png",
+    "/images/toysmart/frame6.png",
+    "/images/toysmart/frame7.png",
+  ];
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setCurrentIndex((prevIndex) => (prevIndex + 1) % carouselImages.length);
-        }, 3000); // Cambia la imagen cada 3 segundos
-        return () => clearInterval(interval);
-    }, [carouselImages.length]);
-
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % carouselImages.length);
+    }, 3000); // Cambia la imagen cada 3 segundos
+    return () => clearInterval(interval);
+  }, [carouselImages.length]);
 
   return (
     <div className="bg-gray-50 font-sans">
@@ -161,7 +126,9 @@ const LibreroToysmartPage = () => {
                   </span>
                 </h1>
                 <p className="mt-6 text-lg md:text-xl text-yellow-50 max-w-xl mx-auto lg:mx-0">
-                  Una demostración de ingenio y Design Thinking, donde optimizamos una idea para agregar valor y crear una nueva perspectiva sin alterar su esencia.
+                  Una demostración de ingenio y Design Thinking, donde
+                  optimizamos una idea para agregar valor y crear una nueva
+                  perspectiva sin alterar su esencia.
                 </p>
               </motion.div>
               <motion.div variants={scaleIn}>
@@ -169,7 +136,7 @@ const LibreroToysmartPage = () => {
                   src={getImagePath("/images/toysmart/frame7.png")}
                   alt="Librero Toysmart finalizado y con libros"
                   width={800}
-                  height={600}
+                  height={800}
                   className="rounded-xl w-full h-auto"
                   priority
                 />
@@ -177,47 +144,66 @@ const LibreroToysmartPage = () => {
             </motion.div>
           </div>
         </section>
-z
         {/* 2. El Desafío: Antes y Después */}
         <AnimatedSection className="py-20 lg:py-28 bg-white">
           <div className="container mx-auto px-6">
             <div className="text-center mb-16">
-                <motion.h2 variants={fadeIn} className="text-3xl md:text-4xl font-bold">
-                    El Punto de Partida
-                </motion.h2>
-                <motion.p variants={fadeIn} className="text-gray-600 mt-4 text-lg max-w-3xl mx-auto">
-                    Analizamos la estructura existente en TOYSMART para entender sus limitaciones y proponer una solución práctica, viable y estéticamente superior.
-                </motion.p>
+              <motion.h2
+                variants={fadeIn}
+                className="text-3xl md:text-4xl font-bold"
+              >
+                El Punto de Partida
+              </motion.h2>
+              <motion.p
+                variants={fadeIn}
+                className="text-gray-600 mt-4 text-lg max-w-3xl mx-auto"
+              >
+                Analizamos la estructura existente en TOYSMART para entender sus
+                limitaciones y proponer una solución práctica, viable y
+                estéticamente superior.
+              </motion.p>
             </div>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <motion.div variants={fadeInLeft}>
-                <h3 className="text-2xl font-bold text-center mb-4 text-gray-500">El Mueble Anterior</h3>
-                <div className="relative rounded-xl overflow-hidden shadow-lg">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-stretch">
+              {/* Card: El Mueble Anterior */}
+              <motion.div
+                variants={fadeInLeft}
+                className="flex flex-col  p-6 rounded-2xl shadow-lg border border-gray-200"
+              >
+                <h3 className="text-2xl font-bold text-center mb-4 text-gray-500">
+                  El Mueble Anterior
+                </h3>
+                <div className="flex-grow flex items-center justify-center bg-white rounded-xl p-4 min-h-[450px]">
                   <Image
                     src={getImagePath("/images/toysmart/estanteantiguo2.png")}
                     alt="Mueble librero antiguo en la tienda"
-                    width={800}
-                    height={200}
-                    className="w-full"
+                    width={400}
+                    height={600}
+                    className="w-auto h-full max-h-[400px] object-contain"
                   />
                 </div>
               </motion.div>
-              <motion.div variants={fadeInRight}>
-                 <h3 className="text-2xl font-bold text-center mb-4 text-amber-600">Nuestra Propuesta</h3>
-                <div className="relative rounded-xl overflow-hidden shadow-lg">
+
+              {/* Card: Nuestra Propuesta */}
+              <motion.div
+                variants={fadeInRight}
+                className="flex flex-col bg-white p-6 rounded-2xl shadow-2xl border-2 border-[#FF7D00]"
+              >
+                <h3 className="text-2xl font-bold text-center mb-4 text-[#FF7D00]">
+                  Nuestra Propuesta
+                </h3>
+                <div className="flex-grow flex items-center justify-center rounded-xl p-4 min-h-[450px]">
                   <Image
                     src={getImagePath("/images/toysmart/estante2.png")}
                     alt="Nuevo diseño del librero, más ligero y funcional"
                     width={400}
-                    height={200}
-                    className="w-full"
+                    height={600}
+                    className="w-auto h-full max-h-[400px] object-contain"
                   />
                 </div>
               </motion.div>
             </div>
           </div>
         </AnimatedSection>
-
         {/* 3. Nuestro Proceso de Ingenio */}
         <AnimatedSection className="py-20 lg:py-28 bg-gray-50">
           <div className="container mx-auto px-6">
@@ -232,66 +218,150 @@ z
                 variants={fadeIn}
                 className="text-gray-600 mt-4 text-lg max-w-3xl mx-auto"
               >
-                En lugar de desechar ideas, las optimizamos. Adaptamos el concepto inicial de un mueble 360° a una solución que cumpliera con la funcionalidad, el presupuesto y el contexto del cliente.
+                En lugar de desechar ideas, las optimizamos. Adaptamos el
+                concepto inicial de un mueble 360° a una solución que cumpliera
+                con la funcionalidad, el presupuesto y el contexto del cliente.
               </motion.p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               <ProcessCard
-                icon={<BrainCircuit size={32} />}
+                icon={<BrainCircuit size={32} className="text-[#FF7D00]" />}
                 title="Análisis y Viabilidad"
               >
-                Evidenciamos que un mueble 360° completamente cargado no era práctico. El análisis de campo fue clave para redefinir el enfoque.
+                Evidenciamos que un mueble 360° completamente cargado no era
+                práctico. El análisis de campo fue clave para redefinir el
+                enfoque.
               </ProcessCard>
               <ProcessCard
-                icon={<Scaling size={32} />}
+                icon={<Scaling size={32} className="text-[#FF7D00]" />}
                 title="Adaptación del Diseño"
               >
-                Propusimos una estructura más ligera que destaca cada libro, manteniendo el tamaño y color de la marca pero mejorando el acceso y la visibilidad.
+                Propusimos una estructura más ligera que destaca cada libro,
+                manteniendo el tamaño y color de la marca pero mejorando el
+                acceso y la visibilidad.
               </ProcessCard>
               <ProcessCard
-                icon={<Sparkles size={32} />}
+                icon={<Sparkles size={32} className="text-[#FF7D00]" />}
                 title="Branding y Estética Infantil"
               >
-                Introdujimos elementos de branding y colores más llamativos para el público infantil, haciendo la elección de un libro una experiencia práctica y atractiva.
+                Introdujimos elementos de branding y colores más llamativos para
+                el público infantil, haciendo la elección de un libro una
+                experiencia práctica y atractiva.
               </ProcessCard>
             </div>
           </div>
         </AnimatedSection>
-
-        {/* 4. Galería Dinámica del Producto Final */}
+        {/* 4. Galería Dinámica del Producto Final (REINVENTADA) */}
         <AnimatedSection className="py-20 lg:py-28 bg-white">
-            <div className="container mx-auto px-6">
-                <div className="text-center mb-16">
-                    <motion.h2 variants={fadeIn} className="text-3xl md:text-4xl font-bold">
-                        Un Diseño que Gira en la Mente
-                    </motion.h2>
-                    <motion.p variants={fadeIn} className="text-gray-600 mt-4 text-lg max-w-2xl mx-auto">
-                        Aunque el mueble es estático, su diseño 360° invita a explorarlo desde todos los ángulos. Este carrusel muestra la versatilidad y el atractivo del producto final.
-                    </motion.p>
-                </div>
-                <motion.div variants={scaleIn} className="relative w-full max-w-2xl mx-auto h-96 md:h-[500px] overflow-hidden rounded-xl shadow-2xl">
-                    <AnimatePresence mode="wait">
-                            <motion.div
-                                key={currentIndex}
-                                initial={{ opacity: 0, x: 50 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                exit={{ opacity: 0, x: -50 }}
-                                transition={{ duration: 0.5, ease: "easeInOut" }}
-                                className="relative w-full h-full"
-                            >
-                                <Image
-                                    src={carouselImages[currentIndex]}
-                                    alt={`Vista ${currentIndex + 1} del librero Toysmart`}
-                                    fill
-                                    style={{ objectFit: 'contain' }}
-                                    priority
-                                />
-                            </motion.div>
-                        </AnimatePresence>
-                </motion.div>
+          <div className="container mx-auto px-6">
+            <div className="text-center mb-16">
+              <motion.h2
+                variants={fadeIn}
+                className="text-3xl md:text-4xl font-bold text-[#FF7D00]"
+              >
+                Un Diseño que Gira en la Mente
+              </motion.h2>
+              <motion.p
+                variants={fadeIn}
+                className="text-gray-600 mt-4 text-lg max-w-2xl mx-auto"
+              >
+                Aunque el mueble es estático, su diseño 360° invita a explorarlo
+                desde todos los ángulos. Esta galería interactiva muestra la
+                versatilidad y el atractivo del producto final.
+              </motion.p>
             </div>
-        </AnimatedSection>
 
+            {/* Contenedor de la galería rediseñado */}
+            <motion.div
+              variants={scaleIn}
+              className="grid grid-cols-1 lg:grid-cols-5 gap-4 w-full max-w-7xl mx-auto h-[600px] p-4"
+            >
+              {/* Columna Izquierda */}
+              <div className="hidden lg:flex flex-col gap-4">
+                <div className="h-1/2 rounded-2xl overflow-hidden shadow-lg">
+                  <Image
+                    src={getImagePath("/images/toysmart/frame6.png")}
+                    alt="Vista lateral del librero"
+                    width={400}
+                    height={400}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="h-1/2 rounded-2xl overflow-hidden shadow-lg">
+                  <Image
+                    src={getImagePath("/images/toysmart/frame1.png")}
+                    alt="Vista frontal del librero vacío"
+                    width={400}
+                    height={400}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+              {/* Columna Central - Carrusel con nueva animación */}
+              <div
+                className="relative col-span-1 lg:col-span-3 h-full rounded-2xl shadow-2xl bg-[#E9E7E8] flex items-center justify-center overflow-hidden"
+                style={{ perspective: "1200px" }}
+              >
+                <div className="absolute inset-0 bg-[url('https://tailwindcss.com/_next/static/media/grid.1d8093ae.svg')] opacity-5"></div>
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={currentIndex}
+                    initial="enter"
+                    animate="center"
+                    exit="exit"
+                    variants={carouselVariants}
+                    transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
+                    className="w-full h-full absolute"
+                  >
+                    <Image
+                      src={getImagePath(carouselImages[currentIndex])}
+                      alt={`Vista ${currentIndex + 1} del librero Toysmart`}
+                      fill
+                      style={{ objectFit: "contain" }}
+                      priority
+                    />
+                  </motion.div>
+                </AnimatePresence>
+                {/* Controles de Navegación */}
+                <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-3">
+                  {carouselImages.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentIndex(index)}
+                      className={`w-3 h-3 rounded-full transition-colors ${
+                        currentIndex === index
+                          ? "bg-white"
+                          : "bg-white/50 hover:bg-white/75"
+                      }`}
+                    ></button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Columna Derecha */}
+              <div className="hidden lg:flex flex-col gap-4">
+                <div className="h-1/2 rounded-2xl overflow-hidden shadow-lg">
+                  <Image
+                    src={getImagePath("/images/toysmart/frame8.png")}
+                    alt="Vista frontal del librero con libros"
+                    width={400}
+                    height={400}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="h-1/2 rounded-2xl overflow-hidden shadow-lg">
+                  <Image
+                    src={getImagePath("/images/toysmart/frame7.png")}
+                    alt="Detalle del librero"
+                    width={400}
+                    height={400}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </AnimatedSection>
       </main>
       <Footer />
     </div>

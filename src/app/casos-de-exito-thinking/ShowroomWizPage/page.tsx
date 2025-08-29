@@ -246,14 +246,20 @@ const ShowroomWizPage = () => {
                 </h3>
                 <div className="relative rounded-xl overflow-hidden shadow-lg h-[350px]">
                   <ReactCompareImage
-                    leftImage={getImagePath("/images/wiz/wizv1.png")}
-                    rightImage={getImagePath("/images/wiz/wizv2.png")}
-                    sliderLineWidth={2}
+                    leftImage={getImagePath("/images/wiz/wizv2.png")}
+                    rightImage={getImagePath("/images/wiz/wizv1.png")}
+                    leftImageLabel="Antes"
+                    rightImageLabel="Después"
+                    sliderLineWidth={3}
+                    sliderPositionPercentage={0.3}
                     sliderLineColor="#7c3aed"
-                    handle={<div className="bg-purple-600 rounded-full p-1 shadow-md" />}
                     hover={true}
                   />
                 </div>
+                 <p className="text-center text-gray-500 mt-4 italic">
+                  Desliza para comparar el boceto inicial con el modelo 3D
+                  detallado.
+                </p>
               </motion.div>
               {/* Realidad */}
               <motion.div variants={fadeInRight}>
@@ -263,13 +269,18 @@ const ShowroomWizPage = () => {
                 <div className="relative rounded-xl overflow-hidden shadow-lg h-[350px]">
                   <ReactCompareImage
                     leftImage={getImagePath("/images/wiz/wizv1.png")}
-                    rightImage={getImagePath("/images/wiz/showroom4.png")}
-                    sliderLineWidth={2}
+                    rightImage={getImagePath("/images/wiz/showroom5.png")}
+                    leftImageLabel="Antes"
+                    rightImageLabel="Después"
+                    sliderLineWidth={3}
                     sliderLineColor="#7c3aed"
-                    handle={<div className="bg-purple-600 rounded-full p-1 shadow-md" />}
                     hover={true}
                   />
                 </div>
+                 <p className="text-center text-gray-500 mt-4 italic">
+                  Desliza para comparar el boceto inicial con el modelo 3D
+                  detallado.
+                </p>
               </motion.div>
             </div>
           </div>
