@@ -1,7 +1,6 @@
 import { Metadata } from "next";
 import { Header } from '@/components/organisms/Header';
 import { HeroSection } from '@/components/home/HeroSection';
-import { LogoCloud } from '@/components/sections/LogoCloud';
 import { Solutions } from '@/components/sections/Solutions';
 import { Methodology } from '@/components/sections/Methodology';
 import { CaseStudies } from '@/components/sections/CaseStudies';
@@ -25,9 +24,6 @@ export default function HomePage() {
         <section id="inicio">
           <HeroSection />
         </section>
-
-        {/* Sección de logos de clientes */}
-        <LogoCloud />
 
         {/* Sección de Soluciones */}
         <section id="soluciones">

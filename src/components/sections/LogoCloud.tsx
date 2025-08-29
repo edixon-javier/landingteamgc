@@ -42,12 +42,12 @@ const Logo = memo(({ logo, index }: { logo: typeof clientLogos[0], index: number
         alt={`${logo.name} logo`}
         width={logo.width || 158}
         height={logo.height || 48}
-        className="grayscale opacity-70 transition-all duration-300 group-hover:grayscale-0 group-hover:opacity-100"
+        className="grayscale opacity-90 transition-all duration-300 group-hover:grayscale-0 group-hover:opacity-100"
         priority={index < 6} // Prioriza la carga de los primeros logos
       />
     </div>
     <motion.span 
-      className="text-gray-500 text-sm font-light tracking-wide"
+      className="text-gray-400 text-sm font-light tracking-wide"
       initial={{ opacity: 0.6 }}
       whileHover={{ opacity: 1 }}
       transition={{ duration: 0.2 }}
@@ -196,7 +196,7 @@ export function LogoCloud({
   }, [activeSlide, controls, visibleLogos, autoplay, isInView, continuousControls, speed]);
 
   return (
-    <section className="bg-gray-50 py-16 sm:py-24 overflow-hidden">
+    <section className="py-2 sm:py-4 overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial="hidden"
@@ -205,10 +205,7 @@ export function LogoCloud({
           variants={sectionVariants}
           className="text-center"
         >
-          <h2 className="text-base font-semibold text-gray-600 tracking-wider uppercase">
-            Marcas que confían en nuestra capacidad para generar valor
-          </h2>
-          
+  
           <div 
             ref={containerRef}
             className="mt-12 relative"

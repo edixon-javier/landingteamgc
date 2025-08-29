@@ -3,22 +3,22 @@ import { getImagePath } from "./utils";
 
 export const solutionsData: Solution[] = [
   {
-    title: "Consultoría Estratégica",
+    title: "Estrategia y Design Thinking",
     description:
-      "Desarrollamos estrategias de innovación y transformación basadas en Design Thinking para ayudar a tu organización a alcanzar sus objetivos de negocio de manera efectiva.",
-    href: "/soluciones/consultoria-estrategica",
+      "Transformamos desafíos de negocio en oportunidades de crecimiento. Aplicamos Design Thinking para crear estrategias que resuenan con tus clientes y generan resultados medibles.",
+    href: "/casos-de-exito/",
   },
   {
-    title: "Gestión de Operaciones y Logística",
+    title: "Operaciones y Logística Inteligente",
     description:
-      "Optimizamos tus cadenas de suministro y flujos de trabajo para mejorar la eficiencia operativa, reducir costos y aumentar la satisfacción del cliente.",
-    href: "/soluciones/operaciones-logistica",
+      "Optimizamos tu cadena de suministro de principio a fin. Integramos tecnología y procesos eficientes para reducir costos, agilizar operaciones y superar las expectativas de tus clientes.",
+    href: "/casos-de-exito/",
   },
   {
-    title: "Desarrollo Tecnológico",
+    title: "Desarrollo y Tecnología a Medida",
     description:
-      "Creamos soluciones digitales a medida que potencian tu negocio, desde aplicaciones web y móviles hasta sistemas de automatización e integración.",
-    href: "/soluciones/desarrollo-tecnologico",
+      "Creamos las herramientas digitales que tu negocio necesita para escalar. Desde CRMs y aplicaciones logísticas hasta plataformas web, construimos soluciones robustas y centradas en el usuario.",
+    href: "/casos-de-exito-thinking/",
   },
 ];
 
