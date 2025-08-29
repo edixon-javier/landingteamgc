@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useState, useCallback } from 'react';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
 import Link from 'next/link';
 import { CaseStudy } from '@/types';
+import { getLinkPath } from '@/lib/utils';
 
 interface DropdownMenuProps {
   isOpen: boolean;
@@ -122,7 +123,9 @@ export function DropdownMenu({
       'filbo-exito': '/casos-de-exito-thinking/FilboExitoPage',
     };
     
-    return routeMap[slug] || `/casos-de-exito/${slug}`  ;
+    // Usar la función getLinkPath para construir la ruta completa
+    const path = routeMap[slug] || `/casos-de-exito/${slug}`;
+    return getLinkPath(path);
   }, []);
 
   // Manejo de navegación por teclado

@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { ChevronDown } from 'lucide-react';
 import { CaseStudy } from '@/types';
+import { getLinkPath } from '@/lib/utils';
 
 interface MobileDropdownProps {
   isOpen: boolean;
@@ -30,22 +31,48 @@ export function MobileDropdown({
   activeSection
 }: MobileDropdownProps) {
   const getProjectRoute = (slug: string) => {
+    let path;
     switch (slug) {
       case 'suvey_cibersegurity':
-        return '/casos-de-exito/cyber-security-landing';
+        path = '/casos-de-exito/cyber-security-landing';
+        break;
       case 'dultos-consultans-platform':
-        return '/casos-de-exito/crm-insurance-landing';
+        path = '/casos-de-exito/crm-insurance-landing';
+        break;
       case 'prh-content-management':
-        return '/casos-de-exito/prh-landing';
+        path = '/casos-de-exito/prh-landing';
+        break;
       case 'legrand-digital-transformation':
-        return '/casos-de-exito/legrand-landing';
+        path = '/casos-de-exito/legrand-landing';
+        break;
       case 'nazca-restaurant-management':
-        return '/casos-de-exito/restaurant-landing';
+        path = '/casos-de-exito/restaurant-landing';
+        break;
       case 'qr-event-management':
-        return '/casos-de-exito/qr-event-landing';
+        path = '/casos-de-exito/qr-event-landing';
+        break;
+      case 'showroom-wiz':
+        path = '/casos-de-exito-thinking/ShowroomWizPage';
+        break;
+      case 'librero-toysmart':
+        path = '/casos-de-exito-thinking/LibreroToysmartPage';
+        break;
+      case 'stand-tannic':
+        path = '/casos-de-exito-thinking/StandTannicPage';
+        break;
+      case 'punto-experiencia-wiz':
+        path = '/casos-de-exito-thinking/PuntoExperienciaWizPage';
+        break;
+      case 'columna-philips-exito':
+        path = '/casos-de-exito-thinking/ColumnaPhilipsPage';
+        break;
+      case 'filbo-exito':
+        path = '/casos-de-exito-thinking/FilboExitoPage';
+        break;
       default:
-        return `/casos-de-exito/${slug}`;
+        path = `/casos-de-exito/${slug}`;
     }
+    return getLinkPath(path);
   };
 
   return (

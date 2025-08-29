@@ -4,12 +4,16 @@ import { motion } from 'framer-motion';
 import { solutionsData } from '@/lib/content';
 import { ArrowRight, BrainCircuit, Truck, Code } from 'lucide-react';
 import { staggerContainer as sectionVariants, fadeIn as itemVariants } from '@/animations/variants';
+import { getLinkPath } from '@/lib/utils';
 
 // --- Componente de Tarjeta de Solución (Rediseñado) ---
 const SolutionCard = ({ icon, title, description, href }: { icon: React.ReactNode; title: string; description: string; href: string; }) => {
+  // Generar la URL completa usando la función de utilidad
+  const fullHref = getLinkPath(href);
+  
   return (
     <motion.div variants={itemVariants} className="h-full">
-      <a href={href} className="group p-8 bg-white rounded-2xl border border-gray-200/80 shadow-lg hover:shadow-2xl hover:border-sky-500 transition-all duration-300 h-full flex flex-col text-left">
+      <a href={fullHref} className="group p-8 bg-white rounded-2xl border border-gray-200/80 shadow-lg hover:shadow-2xl hover:border-sky-500 transition-all duration-300 h-full flex flex-col text-left">
         <div className="bg-sky-600 text-white w-14 h-14 rounded-xl flex items-center justify-center mb-5 shadow-md group-hover:bg-gray-900 transition-colors duration-300">
           {icon}
         </div>

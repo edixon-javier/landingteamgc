@@ -15,7 +15,7 @@ const nextConfig: NextConfig = {
   },
   // Configuración para GitHub Pages
   basePath: basePath,
-  assetPrefix: isProd ? `${basePath}/` : '',
+  assetPrefix: isProd ? basePath : '', // Eliminado slash adicional
   // Asegurar que las URLs terminen con barra para mejor compatibilidad
   trailingSlash: true,
   // Configuración para mejorar el rendimiento y optimización

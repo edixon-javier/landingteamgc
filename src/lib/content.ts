@@ -20,7 +20,6 @@ export const solutionsData: Solution[] = [
       "Optimizamos tu cadena de suministro de principio a fin. Integramos tecnología y procesos eficientes para reducir costos, agilizar operaciones y superar las expectativas de tus clientes.",
     href: "/casos-de-exito/",
   },
- 
 ];
 
 export const clientLogos: ClientLogo = [
