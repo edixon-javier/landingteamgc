@@ -55,9 +55,11 @@ export function getImagePath(path: string) {
     .replace(/\/+/g, '/');
   
   // Asegurar que no haya doble slash entre basePath y la ruta
-  const finalPath = basePath 
-    ? `${basePath}${formattedPath}` 
-    : formattedPath;
+  // Para evitar duplicación en producción, usamos directamente el formattedPath
+  // ya que basePath ya está añadido en next.config.ts
+  const finalPath = process.env.NODE_ENV === 'production'
+    ? formattedPath  // En producción, solo la ruta normalizada
+    : (basePath ? `${basePath}${formattedPath}` : formattedPath);  // En desarrollo
     
   // Para depuración en desarrollo
   if (process.env.NODE_ENV !== 'production') {
@@ -85,7 +87,10 @@ export function getVideoPath(path: string) {
     .replace(/--+/g, '-')
     .replace(/\/+/g, '/');
   
-  return `${basePath}${formattedPath}`;
+  // En producción, evitamos añadir basePath para prevenir duplicación
+  return process.env.NODE_ENV === 'production'
+    ? formattedPath
+    : `${basePath}${formattedPath}`;
 }
 
 export function cn(...inputs: ClassValue[]) {
