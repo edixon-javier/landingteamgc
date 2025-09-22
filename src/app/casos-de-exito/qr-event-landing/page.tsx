@@ -21,10 +21,6 @@ import { fadeInUp } from "@/animations/variants";
 import Image from "next/image";
 import { getImagePath } from "@/lib/utils";
 
-// Tipos personalizados para propiedades de imágenes
-type ObjectFitType = "fill" | "contain" | "cover" | "none" | "scale-down";
-type AspectRatioType = "square" | "portrait" | "landscape";
-
 const staggerContainer = {
   hidden: {},
   visible: {
@@ -746,6 +742,7 @@ const QrEventLanding: React.FC = () => {
                 <p className="text-center text-slate-700 min-h-[4em]">
                   {dashboardImages[currentIndex].caption}
                 </p>
+               
               </div>
               <button
                 onClick={prevSlide}
@@ -775,6 +772,17 @@ const QrEventLanding: React.FC = () => {
               </div>
             </motion.div>
           </motion.div>
+           <div className="flex justify-center mt-5">
+                  <a 
+                    href="https://app.powerbi.com/view?r=eyJrIjoiMzVhMzJhYjgtN2UyMC00NWMxLTllNDQtOTZlYTg4ZWUwMzcwIiwidCI6ImFhN2IzZTUzLWU2NzUtNDU0Ni04Nzg4LTdkM2JjM2YxZDgwNCIsImMiOjR9" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="bg-[#1447E6] text-white px-6 py-2.5 rounded-md hover:bg-blue-700 transition-colors duration-300 flex items-center gap-2 shadow-md font-medium"
+                  >
+                    <LayoutDashboard className="w-5 h-5" />
+                    Ver Dashboard Completo
+                  </a>
+                </div>
         </section>
 
         <section
