@@ -39,16 +39,16 @@ const pillars = [
       "Desarrollamos una campaña de incentivos phygital diseñada para penetrar el canal de distribución, fortaleciendo la relación con 280 socios comerciales y sus clientes.",
   },
   {
-    icon: <Database className="w-8 h-8" />,
-    title: "Plataforma de Data Intelligence",
-    description:
-      "Implementamos una solución de captura de datos en punto de venta vía códigos QR, convirtiendo cada interacción de cliente en un datapoint accionable para el análisis de mercado.",
-  },
-  {
     icon: <Truck className="w-8 h-8" />,
     title: "Operaciones y Logística Nacional",
     description:
       "Orquestamos la totalidad de la cadena logística, desde el sourcing y branding de 5,600 productos hasta la entrega sincronizada en 8 zonas geográficas del país.",
+  },
+  {
+    icon: <Database className="w-8 h-8" />,
+    title: "Plataforma de Data Intelligence",
+    description:
+      "Implementamos una solución de captura de datos en punto de venta vía códigos QR, convirtiendo cada interacción de cliente en un datapoint accionable para el análisis de mercado.",
   },
   {
     icon: <LayoutDashboard className="w-8 h-8" />,
@@ -77,7 +77,7 @@ const timelineData = [
       'Fase 2: Diseño de la experiencia. Se curó el catálogo de 20 productos por kit y se diseñó todo el material de punto de venta, incluyendo el sistema "Raspa y Gana".',
     imageUrl: getImagePath("/images/QrEvent/diseno.png"),
     altText: "Productos promocionales brandeados.",
-    objectFit: "cover",
+    objectFit: "fill",
     objectPosition: "center",
     priority: false,
   },
@@ -108,9 +108,9 @@ const timelineData = [
     title: "Capacitación y Lanzamiento",
     description:
       "Fase 5: Habilitación del canal. Se ejecutaron programas de formación para los equipos comerciales y gerentes de tienda, asegurando la adopción y correcta implementación.",
-    imageUrl: getImagePath("/images/QrEvent/profesional_form.webp"),
+    imageUrl: getImagePath("/images/QrEvent/profesional_form.png"),
     altText: "Sesión de capacitación corporativa.",
-    objectFit: "cover",
+    objectFit: "content",
     objectPosition: "center",
     priority: false,
   },
@@ -143,7 +143,7 @@ const galleryImages = [
     src: getImagePath("/images/QrEvent/galeria1.png"),
     alt: "Caja de kit promocional de Corteva abierta con productos",
     title: "Kits Promocionales",
-    objectFit: "cover",
+    objectFit: "content",
     objectPosition: "center",
     priority: true,
     aspectRatio: "square", // square, portrait, landscape
@@ -223,30 +223,28 @@ const scratchSteps = [
   },
 ];
 
-
-
 const dashboardImages = [
   {
     src: getImagePath("/images/QrEvent/powerbi1.png"),
     caption:
-    "Dashboard General: Informe de gestión del programa Territorio Corteva en Colombia al 31 de agosto 2024, mostrando zonas cubiertas, registros totales, almacenes impactados y municipios alcanzados.",
-    objectFit: "contain",
+      "Dashboard General: Informe de gestión del programa Territorio Corteva en Colombia al 31 de agosto 2024, mostrando zonas cubiertas, registros totales, almacenes impactados y municipios alcanzados.",
+    objectFit: "fill",
     objectPosition: "center",
     priority: true,
   },
   {
     src: getImagePath("/images/QrEvent/powerbi2.png"),
     caption:
-    "Distribución de registros por zona y municipio: Huila lidera con mayor participación, seguido de Cundinamarca y Nariño. Se muestran gráficos comparativos y un mapa georreferenciado de ventas en Colombia.",
-    objectFit: "contain",
+      "Distribución de registros por zona y municipio: Huila lidera con mayor participación, seguido de Cundinamarca y Nariño. Se muestran gráficos comparativos y un mapa georreferenciado de ventas en Colombia.",
+    objectFit: "fill",
     objectPosition: "center",
     priority: false,
   },
   {
     src: getImagePath("/images/QrEvent/powerbi3.png"),
     caption:
-    "Evolución de registros por zona y mes: comparación mensual de mayo a agosto 2024, destacando el crecimiento en Huila y Cundinamarca. Incluye gráfico de tendencias y distribución acumulada por regiones.",
-    objectFit: "contain",
+      "Evolución de registros por zona y mes: comparación mensual de mayo a agosto 2024, destacando el crecimiento en Huila y Cundinamarca. Incluye gráfico de tendencias y distribución acumulada por regiones.",
+    objectFit: "fill",
     objectPosition: "center",
     priority: false,
   },
@@ -254,69 +252,67 @@ const dashboardImages = [
     src: getImagePath("/images/QrEvent/powerbi4.png"),
     caption:
       "Resumen de visitas realizadas a 31 de agosto 2024 en localidades clave: Terra Negra, Cota, Tunja y Pamplona.",
-    objectFit: "contain",
+    objectFit: "fill",
     objectPosition: "center",
     priority: false,
   },
-{
-  src: getImagePath("/images/QrEvent/powerbi5.png"),
-  caption:
-    "Visita a Tierra Negra (Cundinamarca): registro fotográfico de Agro Ruiz S.A.S., mostrando fachada, interior del local, productos en exhibición, personal y material promocional en punto de venta.",
-  objectFit: "contain",
-  objectPosition: "center",
-  priority: false,
-},
-{
-  src: getImagePath("/images/QrEvent/powerbi6.png"),
-  caption:
-    "Visita a Tunja (Boyacá): registro de puntos de venta agrícolas, mostrando exhibiciones de fertilizantes, promociones de productos, estanterías organizadas y material visual de campañas comerciales.",
-  objectFit: "contain",
-  objectPosition: "center",
-  priority: false,
-},
-{
-  src: getImagePath("/images/QrEvent/powerbi7.png"),
-  caption:
-    "Activación en Pamplona, Santanderes: punto de venta Agropecuaria La Séptima con visibilidad de material promocional 'Raspa y Gana con Territorio Corteva', incentivando la compra de productos y la participación en dinámicas comerciales.",
-  objectFit: "contain",
-  objectPosition: "center",
-  priority: false,
-},
-{
-  src: getImagePath("/images/QrEvent/powerbi8.png"),
-  caption:
-    "Registro de facturas: total de 514 tickets ingresados en la campaña, consolidando la participación de distribuidores y clientes en Territorio Corteva Colombia.",
-  objectFit: "contain",
-  objectPosition: "center",
-  priority: false,
-},
-{
-  src: getImagePath("/images/QrEvent/powerbi9.png"),
-  caption:
-    "Consolidado de Registro de Facturas: evidencias fotográficas de facturas físicas de insumos agrícolas en diferentes puntos de venta, validando compras y participación en el programa Territorio Corteva. Total acumulado: 514 registros/tickets.",
-  objectFit: "contain",
-  objectPosition: "center",
-  priority: false,
-},
-{
-  src: getImagePath("/images/QrEvent/powerbi10.png"),
-  caption:
-    "Tierra Negra – Registro de Facturas: recopilación de comprobantes de compra en diferentes agropecuarias y almacenes agrícolas (Coagrohuila, Agrover, Campo Z.G, entre otros). Evidencias de transacciones validadas dentro del programa Territorio Corteva. Total consolidado: 514 registros/tickets.",
-  objectFit: "contain",
-  objectPosition: "center",
-  priority: false,
-},
+  {
+    src: getImagePath("/images/QrEvent/powerbi5.png"),
+    caption:
+      "Visita a Tierra Negra (Cundinamarca): registro fotográfico de Agro Ruiz S.A.S., mostrando fachada, interior del local, productos en exhibición, personal y material promocional en punto de venta.",
+    objectFit: "fill",
+    objectPosition: "center",
+    priority: false,
+  },
+  {
+    src: getImagePath("/images/QrEvent/powerbi6.png"),
+    caption:
+      "Visita a Tunja (Boyacá): registro de puntos de venta agrícolas, mostrando exhibiciones de fertilizantes, promociones de productos, estanterías organizadas y material visual de campañas comerciales.",
+    objectFit: "fill",
+    objectPosition: "center",
+    priority: false,
+  },
+  {
+    src: getImagePath("/images/QrEvent/powerbi7.png"),
+    caption:
+      "Activación en Pamplona, Santanderes: punto de venta Agropecuaria La Séptima con visibilidad de material promocional 'Raspa y Gana con Territorio Corteva', incentivando la compra de productos y la participación en dinámicas comerciales.",
+    objectFit: "fill",
+    objectPosition: "center",
+    priority: false,
+  },
+  {
+    src: getImagePath("/images/QrEvent/powerbi8.png"),
+    caption:
+      "Registro de facturas: total de 514 tickets ingresados en la campaña, consolidando la participación de distribuidores y clientes en Territorio Corteva Colombia.",
+    objectFit: "fill",
+    objectPosition: "center",
+    priority: false,
+  },
+  {
+    src: getImagePath("/images/QrEvent/powerbi9.png"),
+    caption:
+      "Consolidado de Registro de Facturas: evidencias fotográficas de facturas físicas de insumos agrícolas en diferentes puntos de venta, validando compras y participación en el programa Territorio Corteva. Total acumulado: 514 registros/tickets.",
+    objectFit: "fill",
+    objectPosition: "center",
+    priority: false,
+  },
+  {
+    src: getImagePath("/images/QrEvent/powerbi10.png"),
+    caption:
+      "Tierra Negra – Registro de Facturas: recopilación de comprobantes de compra en diferentes agropecuarias y almacenes agrícolas (Coagrohuila, Agrover, Campo Z.G, entre otros). Evidencias de transacciones validadas dentro del programa Territorio Corteva. Total consolidado: 514 registros/tickets.",
+    objectFit: "fill",
+    objectPosition: "center",
+    priority: false,
+  },
   {
     src: getImagePath("/images/QrEvent/powerbi11.png"),
     caption:
       "Informe de gestión del programa Territorio Corteva en Colombia al 31 de agosto 2024",
-    objectFit: "contain",
+    objectFit: "fill",
     objectPosition: "center",
     priority: false,
   },
 ];
-
-
 
 // --- HELPER COMPONENTS ---
 const AnimatedCounter: React.FC<{ value: number; label: string }> = ({
@@ -357,11 +353,24 @@ const QrEventLanding: React.FC = () => {
         (prevIndex - 1 + dashboardImages.length) % dashboardImages.length
     );
   };
-
+  
+  // Se eliminó el cambio automático de imágenes para que solo cambien cuando el usuario haga clic
+  
+  // Efecto para mostrar brevemente la pista de navegación al cargar la página
   useEffect(() => {
-    const interval = setInterval(nextSlide, 5000);
-    return () => clearInterval(interval);
-  }, [nextSlide]);
+    const navigationHint = document.getElementById('navigation-hint');
+    if (navigationHint) {
+      // Mostrar la pista después de un pequeño retraso
+      setTimeout(() => {
+        navigationHint.style.opacity = '1';
+        
+        // Ocultar la pista después de unos segundos
+        setTimeout(() => {
+          navigationHint.style.opacity = '0';
+        }, 3000);
+      }, 1500);
+    }
+  }, []);
 
   return (
     <div className="bg-[#FDFDFD] font-sans text-slate-800">
@@ -428,7 +437,7 @@ const QrEventLanding: React.FC = () => {
           </motion.div>
 
           <div className="relative z-20">
-            <div className="container mx-auto px-6 max-w-4xl pb-16 sm:pb-24">
+            <div className="container mx-auto px-6 max-w-4xl  sm:pb-10">
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
                 <AnimatedCounter value={8} label="Zonas Estratégicas" />
                 <AnimatedCounter value={280} label="Almacenes Activados" />
@@ -507,7 +516,7 @@ const QrEventLanding: React.FC = () => {
                     </div>
                     <div className="w-px h-full bg-slate-300 mt-2"></div>
                   </div>
-                  <div className="pb-16 w-full">
+                  <div className="pb-14 w-full">
                     <h3 className="text-2xl font-medium text-slate-900 mb-4">
                       {item.title}
                     </h3>
@@ -519,22 +528,35 @@ const QrEventLanding: React.FC = () => {
                         src={item.imageUrl}
                         alt={item.altText}
                         className={`rounded-lg ${
-                          item.objectFit === "contain" ? "object-contain" : 
-                          item.objectFit === "fill" ? "object-fill" :
-                          item.objectFit === "none" ? "object-none" : 
-                          item.objectFit === "scale-down" ? "object-scale-down" :
-                          "object-cover"
+                          item.objectFit === "contain"
+                            ? "object-contain"
+                            : item.objectFit === "fill"
+                            ? "object-fill"
+                            : item.objectFit === "none"
+                            ? "object-none"
+                            : item.objectFit === "scale-down"
+                            ? "object-scale-down"
+                            : "object-cover"
                         } ${
-                          item.objectPosition === "center" ? "object-center" :
-                          item.objectPosition === "top" ? "object-top" :
-                          item.objectPosition === "bottom" ? "object-bottom" :
-                          item.objectPosition === "left" ? "object-left" :
-                          item.objectPosition === "right" ? "object-right" :
-                          item.objectPosition === "left top" ? "object-left-top" :
-                          item.objectPosition === "right top" ? "object-right-top" :
-                          item.objectPosition === "left bottom" ? "object-left-bottom" :
-                          item.objectPosition === "right bottom" ? "object-right-bottom" :
-                          "object-center"
+                          item.objectPosition === "center"
+                            ? "object-center"
+                            : item.objectPosition === "top"
+                            ? "object-top"
+                            : item.objectPosition === "bottom"
+                            ? "object-bottom"
+                            : item.objectPosition === "left"
+                            ? "object-left"
+                            : item.objectPosition === "right"
+                            ? "object-right"
+                            : item.objectPosition === "left top"
+                            ? "object-left-top"
+                            : item.objectPosition === "right top"
+                            ? "object-right-top"
+                            : item.objectPosition === "left bottom"
+                            ? "object-left-bottom"
+                            : item.objectPosition === "right bottom"
+                            ? "object-right-bottom"
+                            : "object-center"
                         }`}
                         fill
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 800px"
@@ -574,42 +596,68 @@ const QrEventLanding: React.FC = () => {
                 <motion.div
                   variants={fadeInUp}
                   key={index}
-                  className="relative overflow-hidden rounded-lg shadow-lg group"
+                  className="relative overflow-hidden rounded-lg shadow-lg group cursor-pointer"
+                  whileHover={{ y: -5, transition: { duration: 0.2 } }}
                 >
-                  <div className={`relative w-full ${
-                    image.aspectRatio === 'portrait' ? 'aspect-[3/4]' : 
-                    image.aspectRatio === 'landscape' ? 'aspect-[4/3]' : 
-                    'aspect-square'
-                  } overflow-hidden`}>
+                  <div
+                    className={`relative w-full ${
+                      image.aspectRatio === "portrait"
+                        ? "aspect-[3/4]"
+                        : image.aspectRatio === "landscape"
+                        ? "aspect-[4/3]"
+                        : "aspect-square"
+                    } overflow-hidden`}
+                  >
                     <Image
                       src={image.src}
                       alt={image.alt}
                       className={`transition-transform duration-500 group-hover:scale-110 ${
-                        image.objectFit === "contain" ? "object-contain" : 
-                        image.objectFit === "fill" ? "object-fill" :
-                        image.objectFit === "none" ? "object-none" : 
-                        image.objectFit === "scale-down" ? "object-scale-down" :
-                        "object-cover"
+                        image.objectFit === "contain"
+                          ? "object-contain"
+                          : image.objectFit === "fill"
+                          ? "object-fill"
+                          : image.objectFit === "none"
+                          ? "object-none"
+                          : image.objectFit === "scale-down"
+                          ? "object-scale-down"
+                          : "object-cover"
                       } ${
-                        image.objectPosition === "center" ? "object-center" :
-                        image.objectPosition === "top" ? "object-top" :
-                        image.objectPosition === "bottom" ? "object-bottom" :
-                        image.objectPosition === "left" ? "object-left" :
-                        image.objectPosition === "right" ? "object-right" :
-                        image.objectPosition === "left top" ? "object-left-top" :
-                        image.objectPosition === "right top" ? "object-right-top" :
-                        image.objectPosition === "left bottom" ? "object-left-bottom" :
-                        image.objectPosition === "right bottom" ? "object-right-bottom" :
-                        "object-center"
+                        image.objectPosition === "center"
+                          ? "object-center"
+                          : image.objectPosition === "top"
+                          ? "object-top"
+                          : image.objectPosition === "bottom"
+                          ? "object-bottom"
+                          : image.objectPosition === "left"
+                          ? "object-left"
+                          : image.objectPosition === "right"
+                          ? "object-right"
+                          : image.objectPosition === "left top"
+                          ? "object-left-top"
+                          : image.objectPosition === "right top"
+                          ? "object-right-top"
+                          : image.objectPosition === "left bottom"
+                          ? "object-left-bottom"
+                          : image.objectPosition === "right bottom"
+                          ? "object-right-bottom"
+                          : "object-center"
                       }`}
                       fill
                       sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 400px"
                       priority={image.priority}
                     />
-                    <div className="absolute inset-0 bg-black/60 flex items-end p-4 transition-opacity duration-500 opacity-0 group-hover:opacity-100">
-                      <h3 className="text-white text-lg font-bold">
-                        {image.title}
-                      </h3>
+                    {/* Overlay y texto mejorados */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex flex-col justify-end p-4 transition-all duration-500 opacity-0 group-hover:opacity-100">
+                      <h3 className="text-white text-lg font-bold mb-1">{image.title}</h3>
+                      <p className="text-white/80 text-sm">{image.alt}</p>
+                      <div className="w-8 h-1 bg-[#1447E6] mt-2 rounded-full transform group-hover:w-full transition-all duration-300"></div>
+                    </div>
+                    {/* Indicador de interactividad */}
+                    <div className="absolute top-3 right-3 bg-white/80 p-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform rotate-45 group-hover:rotate-0">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-slate-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                      </svg>
                     </div>
                   </div>
                 </motion.div>
@@ -626,6 +674,7 @@ const QrEventLanding: React.FC = () => {
             variants={staggerContainer}
             className="max-w-7xl mx-auto px-6 lg:px-8"
           >
+            {/* Encabezado */}
             <motion.div
               variants={fadeInUp}
               className="max-w-3xl mx-auto text-center mb-16"
@@ -638,41 +687,48 @@ const QrEventLanding: React.FC = () => {
                 de interacción y recolección de datos de alto valor.
               </p>
             </motion.div>
+
+            {/* Contenido en dos columnas */}
             <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <motion.div variants={staggerContainer} className="space-y-6">
+              {/* Columna izquierda: pasos */}
+              <motion.div variants={staggerContainer} className="space-y-8">
                 <h3 className="text-2xl font-bold text-slate-800">
                   Flujo del Usuario:
                 </h3>
-                {scratchSteps.map((step) => (
-                  <motion.div
-                    variants={fadeInUp}
-                    key={step.num}
-                    className="flex items-start gap-4"
-                  >
-                    <div className="flex items-center justify-center w-10 h-10 rounded-full bg-[#1447E6] text-white font-bold text-xl flex-shrink-0">
-                      {step.num}
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-lg text-slate-900">
-                        {step.title}
-                      </h4>
-                      <p className="text-slate-600">{step.desc}</p>
-                    </div>
-                  </motion.div>
-                ))}
+                <div className="space-y-6">
+                  {scratchSteps.map((step) => (
+                    <motion.div
+                      variants={fadeInUp}
+                      key={step.num}
+                      className="flex items-start gap-4"
+                    >
+                      <div className="flex items-center justify-center w-12 h-12 rounded-full bg-[#1447E6] text-white font-bold text-xl flex-shrink-0 shadow-md">
+                        {step.num}
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-lg text-slate-900">
+                          {step.title}
+                        </h4>
+                        <p className="text-slate-600">{step.desc}</p>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
               </motion.div>
+
+              {/* Columna derecha: imagen */}
               <motion.div
                 variants={fadeInUp}
                 className="flex items-center justify-center"
               >
-                <div className="relative h-[400px] w-full">
+                <div className="relative w-full max-w-lg mx-auto">
                   <Image
                     src={getImagePath("/images/QrEvent/raspaygana.png")}
                     alt="Promoción Raspa y Gana"
-                    className="rounded-2xl shadow-xl object-contain object-center"
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
-                    priority={true}
+                    className="rounded-2xl shadow-2xl object-contain"
+                    width={800}
+                    height={600}
+                    priority
                   />
                 </div>
               </motion.div>
@@ -702,9 +758,27 @@ const QrEventLanding: React.FC = () => {
             </motion.div>
             <motion.div
               variants={fadeInUp}
-              className="relative bg-white p-4 sm:p-6 rounded-lg shadow-xl border border-gray-200"
+              className="relative overflow-hidden"
             >
-              <div className="overflow-hidden relative h-[300px] sm:h-[400px] md:h-[500px] rounded-md">
+              {/* Indicador de navegación */}
+              <div className="absolute top-3 right-4 z-30 bg-slate-800/80 text-white px-4 py-2 rounded-full text-sm font-medium shadow-lg">
+                <span aria-live="polite">
+                  {currentIndex + 1} / {dashboardImages.length}
+                </span>
+              </div>
+              
+              {/* Instrucción de navegación */}
+              <div 
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 bg-black/75 text-white px-5 py-3 rounded-lg opacity-0 transition-opacity duration-500 pointer-events-none flex items-center gap-3"
+                aria-hidden="true"
+                style={{ opacity: '0' }}
+                id="navigation-hint"
+              >
+                <span className="flex items-center"><ChevronLeft className="w-5 h-5 mr-1" /> <ChevronRight className="w-5 h-5" /></span>
+                <span>Navegue entre las imágenes</span>
+              </div>
+              
+              <div className="overflow-hidden relative h-[350px] sm:h-[450px] md:h-[550px] rounded-xl group">
                 <AnimatePresence initial={false}>
                   <motion.div
                     key={currentIndex}
@@ -719,18 +793,33 @@ const QrEventLanding: React.FC = () => {
                       alt={`Dashboard: ${dashboardImages[currentIndex].caption}`}
                       fill
                       className={`${
-                        dashboardImages[currentIndex].objectFit === "cover" ? "object-cover" : 
-                        dashboardImages[currentIndex].objectFit === "fill" ? "object-fill" :
-                        dashboardImages[currentIndex].objectFit === "none" ? "object-none" : 
-                        dashboardImages[currentIndex].objectFit === "scale-down" ? "object-scale-down" :
-                        "object-contain"
+                        dashboardImages[currentIndex].objectFit === "cover"
+                          ? "object-cover"
+                          : dashboardImages[currentIndex].objectFit === "fill"
+                          ? "object-fill"
+                          : dashboardImages[currentIndex].objectFit === "none"
+                          ? "object-none"
+                          : dashboardImages[currentIndex].objectFit ===
+                            "scale-down"
+                          ? "object-scale-down"
+                          : "object-contain"
                       } ${
-                        dashboardImages[currentIndex].objectPosition === "center" ? "object-center" :
-                        dashboardImages[currentIndex].objectPosition === "top" ? "object-top" :
-                        dashboardImages[currentIndex].objectPosition === "bottom" ? "object-bottom" :
-                        dashboardImages[currentIndex].objectPosition === "left" ? "object-left" :
-                        dashboardImages[currentIndex].objectPosition === "right" ? "object-right" :
-                        "object-center"
+                        dashboardImages[currentIndex].objectPosition ===
+                        "center"
+                          ? "object-center"
+                          : dashboardImages[currentIndex].objectPosition ===
+                            "top"
+                          ? "object-top"
+                          : dashboardImages[currentIndex].objectPosition ===
+                            "bottom"
+                          ? "object-bottom"
+                          : dashboardImages[currentIndex].objectPosition ===
+                            "left"
+                          ? "object-left"
+                          : dashboardImages[currentIndex].objectPosition ===
+                            "right"
+                          ? "object-right"
+                          : "object-center"
                       }`}
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 70vw"
                       priority={dashboardImages[currentIndex].priority}
@@ -738,51 +827,61 @@ const QrEventLanding: React.FC = () => {
                   </motion.div>
                 </AnimatePresence>
               </div>
-              <div className="mt-4 p-4 bg-gray-50 rounded-b-md">
-                <p className="text-center text-slate-700 min-h-[4em]">
+              
+              <div className="mt-8 px-4 mb-10">
+                <p className="text-center text-slate-700 min-h-[4em] text-lg" aria-live="polite">
                   {dashboardImages[currentIndex].caption}
                 </p>
-               
               </div>
+              
+              {/* Botones de navegación mejorados */}
               <button
                 onClick={prevSlide}
-                className="absolute top-1/2 left-2 -translate-y-1/2 bg-white/50 p-2 rounded-full hover:bg-white transition-colors"
-                aria-label="Previous slide"
+                className="absolute top-1/2 left-4 -translate-y-1/2 bg-slate-700/80 hover:bg-slate-800 hover:scale-110 p-5 rounded-full transition-all duration-300 shadow-xl transform focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 z-20"
+                aria-label="Imagen anterior"
               >
-                <ChevronLeft className="h-6 w-6 text-slate-800" />
+                <ChevronLeft className="h-8 w-8 text-white" />
               </button>
               <button
                 onClick={nextSlide}
-                className="absolute top-1/2 right-2 -translate-y-1/2 bg-white/50 p-2 rounded-full hover:bg-white transition-colors"
-                aria-label="Next slide"
+                className="absolute top-1/2 right-4 -translate-y-1/2 bg-slate-700/80 hover:bg-slate-800 hover:scale-110 p-5 rounded-full transition-all duration-300 shadow-xl transform focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 z-20"
+                aria-label="Imagen siguiente"
               >
-                <ChevronRight className="h-6 w-6 text-slate-800" />
+                <ChevronRight className="h-8 w-8 text-white" />
               </button>
-              <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex space-x-2">
+              
+              {/* Indicadores de navegación mejorados */}
+              <div className="absolute -bottom-14 left-0 right-0 bg-gradient-to-t from-transparent to-transparent h-20 pointer-events-none z-10"></div>
+              <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 flex space-x-3 z-20">
                 {dashboardImages.map((_, index) => (
                   <button
                     key={index}
                     onClick={() => setCurrentIndex(index)}
-                    className={`w-3 h-3 rounded-full ${
-                      currentIndex === index ? "bg-[#1447E6]" : "bg-gray-300"
+                    className={`w-5 h-5 rounded-full transition-all duration-300 ${
+                      currentIndex === index 
+                        ? "bg-[#1447E6] scale-110 ring-2 ring-white" 
+                        : "bg-slate-500/70 hover:bg-slate-600 hover:scale-110"
                     }`}
-                    aria-label={`Go to slide ${index + 1}`}
+                    aria-label={`Ir a la imagen ${index + 1} de ${dashboardImages.length}`}
+                    aria-current={currentIndex === index ? "true" : "false"}
                   ></button>
                 ))}
               </div>
             </motion.div>
           </motion.div>
-           <div className="flex justify-center mt-5">
-                  <a 
-                    href="https://app.powerbi.com/view?r=eyJrIjoiMzVhMzJhYjgtN2UyMC00NWMxLTllNDQtOTZlYTg4ZWUwMzcwIiwidCI6ImFhN2IzZTUzLWU2NzUtNDU0Ni04Nzg4LTdkM2JjM2YxZDgwNCIsImMiOjR9" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="bg-[#1447E6] text-white px-6 py-2.5 rounded-md hover:bg-blue-700 transition-colors duration-300 flex items-center gap-2 shadow-md font-medium"
-                  >
-                    <LayoutDashboard className="w-5 h-5" />
-                    Ver Dashboard Completo
-                  </a>
-                </div>
+          <div className="flex justify-center mt-12">
+            <a
+              href="https://app.powerbi.com/view?r=eyJrIjoiMzVhMzJhYjgtN2UyMC00NWMxLTllNDQtOTZlYTg4ZWUwMzcwIiwidCI6ImFhN2IzZTUzLWU2NzUtNDU0Ni04Nzg4LTdkM2JjM2YxZDgwNCIsImMiOjR9"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-[#1447E6] text-white px-10 py-4 rounded-lg hover:bg-blue-700 transition-all duration-300 flex items-center gap-4 shadow-xl font-bold text-lg transform hover:scale-105 group"
+              aria-label="Ver el dashboard completo en Power BI (se abre en una nueva ventana)"
+            >
+              <LayoutDashboard className="w-6 h-6 group-hover:animate-pulse" />
+              Ver Dashboard Completo
+              <span className="ml-1 text-xs bg-blue-500 px-3 py-1.5 rounded-full group-hover:bg-white group-hover:text-blue-700 transition-colors duration-300 font-semibold">Power BI</span>
+            </a>
+          </div>
         </section>
 
         <section
@@ -812,8 +911,9 @@ const QrEventLanding: React.FC = () => {
                 <h3 className="text-xl font-bold mb-4">Insights Clave</h3>
                 <ul className="space-y-3 list-disc list-inside text-blue-100">
                   <li>
-                    La mecánica de &quot;Raspa y Gana&quot; demostró ser un poderoso
-                    catalizador para la recolección de datos de primer nivel.
+                    La mecánica de &quot;Raspa y Gana&quot; demostró ser un
+                    poderoso catalizador para la recolección de datos de primer
+                    nivel.
                   </li>
                   <li>
                     La combinación de incentivos para asesores y premios para
@@ -873,28 +973,48 @@ const QrEventLanding: React.FC = () => {
           </motion.div>
         </section>
 
-        <section id="contacto" className="py-20 md:py-32 bg-white">
+        <section id="contacto" className="py-20 md:py-32 bg-white relative overflow-hidden">
+          {/* Elementos decorativos de fondo */}
+          <div className="absolute -top-24 -right-24 w-64 h-64 bg-blue-100 rounded-full opacity-20"></div>
+          <div className="absolute bottom-12 -left-12 w-48 h-48 bg-blue-200 rounded-full opacity-25"></div>
+          
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.5 }}
             variants={fadeInUp}
-            className="container mx-auto px-6 text-center"
+            className="container mx-auto px-6 text-center relative z-10"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-              ¿Interesado en replicar este éxito?
-            </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto mb-8">
-              Contáctanos para explorar cómo podemos impulsar tu próximo
-              proyecto con inteligencia de datos.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="mailto:contacto@example.com"
-                className="bg-[#1447E6] text-white font-bold py-3 px-8 rounded-full shadow-lg hover:opacity-90 transition-transform transform hover:scale-105"
-              >
-                Contactar al equipo
-              </a>
+            <div className="max-w-3xl mx-auto bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl">
+              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+                ¿Interesado en replicar este éxito?
+              </h2>
+              <p className="text-lg text-slate-600 max-w-2xl mx-auto mb-8">
+                Contáctanos para explorar cómo podemos impulsar tu próximo
+                proyecto con inteligencia de datos.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <a
+                  href="mailto:contacto@example.com"
+                  className="bg-[#1447E6] text-white font-bold py-4 px-10 rounded-full shadow-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2"
+                  aria-label="Enviar email para contacto"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                  Contactar al equipo
+                </a>
+                <a
+                  href="#impacto"
+                  className="bg-white text-[#1447E6] border-2 border-[#1447E6] font-bold py-4 px-10 rounded-full shadow-lg hover:bg-[#1447E6] hover:text-white transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2"
+                  aria-label="Ver resultados e impacto del proyecto"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                  </svg>
+                  Ver resultados
+                </a>
+              </div>
             </div>
           </motion.div>
         </section>
