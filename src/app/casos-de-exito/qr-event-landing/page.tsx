@@ -19,6 +19,7 @@ import {
 } from "lucide-react";
 import { fadeInUp } from "@/animations/variants";
 import Image from "next/image";
+import { getImagePath } from "@/lib/utils";
 
 const staggerContainer = {
   hidden: {},
@@ -63,7 +64,7 @@ const timelineData = [
     title: "Conceptualización y Estrategia",
     description:
       "Fase 1: Inmersión y análisis. Se definieron los objetivos de negocio, KPIs primarios (tasa de canje, calidad de datos) y el alcance geográfico-operacional del programa.",
-    imageUrl: "/images/QrEvent/reunion.png",
+    imageUrl: getImagePath("/images/QrEvent/reunion.png"),
     altText: "Equipo de ConsultansGC en sesión de estrategia.",
   },
   {
@@ -71,7 +72,7 @@ const timelineData = [
     title: "Diseño de Activos y Brandeo",
     description:
       'Fase 2: Diseño de la experiencia. Se curó el catálogo de 20 productos por kit y se diseñó todo el material de punto de venta, incluyendo el sistema "Raspa y Gana".',
-    imageUrl: "/images/QrEvent/diseno.png",
+    imageUrl: getImagePath("/images/QrEvent/diseno.png"),
     altText: "Productos promocionales brandeados.",
   },
   {
@@ -79,7 +80,7 @@ const timelineData = [
     title: "Desarrollo de la Plataforma Tecnológica",
     description:
       "Fase 3: Construcción del motor de datos. Se desarrolló y probó la plataforma de captura de información, optimizando el formulario para una experiencia de usuario móvil fluida y segura.",
-    imageUrl: "/images/QrEvent/form_phone.webp",
+    imageUrl: getImagePath("/images/QrEvent/form_phone.webp"),
     altText: "Interfaz de formulario en un smartphone.",
   },
   {
@@ -87,7 +88,7 @@ const timelineData = [
     title: "Logística y Distribución",
     description:
       "Fase 4: Planificación operativa. Se coordinó el ensamblaje de 280 kits y se diseñó la matriz de distribución nacional para garantizar la entrega puntual.",
-    imageUrl: "/images/QrEvent/logistica.png",
+    imageUrl: getImagePath("/images/QrEvent/logistica.png"),
     altText: "Centro de distribución con paquetes listos.",
   },
   {
@@ -95,7 +96,7 @@ const timelineData = [
     title: "Capacitación y Lanzamiento",
     description:
       "Fase 5: Habilitación del canal. Se ejecutaron programas de formación para los equipos comerciales y gerentes de tienda, asegurando la adopción y correcta implementación.",
-    imageUrl: "/images/QrEvent/profesional_form.webp",
+    imageUrl: getImagePath("/images/QrEvent/profesional_form.webp"),
     altText: "Sesión de capacitación corporativa.",
   },
   {
@@ -103,7 +104,7 @@ const timelineData = [
     title: "Activación y Monitoreo en Tiempo Real",
     description:
       "Fase 6: Go-live. Se lanzó la campaña en los 280 puntos de venta. El progreso fue monitoreado en tiempo real a través de nuestro dashboard de control.",
-    imageUrl: "/images/QrEvent/dashboard.png",
+    imageUrl: getImagePath("/images/QrEvent/dashboard.png"),
     altText: "Cliente interactuando con material POP.",
   },
   {
@@ -111,39 +112,39 @@ const timelineData = [
     title: "Análisis de Datos y Reporting Ejecutivo",
     description:
       "Fase 7: Cierre y entrega de valor. Se procesaron y analizaron los datos para generar un informe ejecutivo en Power BI con insights y recomendaciones estratégicas.",
-    imageUrl: "/images/QrEvent/powerbi.png",
+    imageUrl: getImagePath("/images/QrEvent/powerbi.png"),
     altText: "Dashboard de Power BI con resultados.",
   },
 ];
 
 const galleryImages = [
   {
-    src: "/images/QrEvent/galeria1.png",
+    src: getImagePath("/images/QrEvent/galeria1.png"),
     alt: "Caja de kit promocional de Corteva abierta con productos",
     title: "Kits Promocionales",
   },
   {
-    src: "/images/QrEvent/galeria2.png",
+    src: getImagePath("/images/QrEvent/galeria2.png"),
     alt: "Productos de Corteva con branding de la campaña",
     title: "Productos Brandeados",
   },
   {
-    src: "/images/QrEvent/galeria3.png",
+    src: getImagePath("/images/QrEvent/galeria3.png"),
     alt: "Afiche de Raspa y Gana en un almacén agrícola",
     title: "Material P.O.P",
   },
   {
-    src: "/images/QrEvent/galeria4.png",
+    src: getImagePath("/images/QrEvent/galeria4.png"),
     alt: "Detalle de un producto brandeado Corteva",
     title: "Branding de Producto",
   },
   {
-    src: "/images/QrEvent/galeria5.png",
+    src: getImagePath("/images/QrEvent/galeria5.png"),
     alt: "Asesor explicando la campaña a un cliente",
     title: "Rediseno del logo de Corteva",
   },
   {
-    src: "/images/QrEvent/galeria6.png",
+    src: getImagePath("/images/QrEvent/galeria6.png"),
     alt: "Pila de kits listos para ser despachados",
     title: "Danglers para punto de venta",
   },
@@ -181,63 +182,63 @@ const scratchSteps = [
 
 const dashboardImages = [
   {
-    src: "/images/QrEvent/powerbi1.png",
+    src: getImagePath("/images/QrEvent/powerbi1.png"),
      caption:
     "Dashboard General: Informe de gestión del programa Territorio Corteva en Colombia al 31 de agosto 2024, mostrando zonas cubiertas, registros totales, almacenes impactados y municipios alcanzados.",
   },
   {
-    src: "/images/QrEvent/powerbi2.png",
+    src: getImagePath("/images/QrEvent/powerbi2.png"),
     caption:
     "Distribución de registros por zona y municipio: Huila lidera con mayor participación, seguido de Cundinamarca y Nariño. Se muestran gráficos comparativos y un mapa georreferenciado de ventas en Colombia.",
   },
   {
-    src: "/images/QrEvent/powerbi3.png",
+    src: getImagePath("/images/QrEvent/powerbi3.png"),
     caption:
     "Evolución de registros por zona y mes: comparación mensual de mayo a agosto 2024, destacando el crecimiento en Huila y Cundinamarca. Incluye gráfico de tendencias y distribución acumulada por regiones.",
   },
   {
-    src: "/images/QrEvent/powerbi4.png",
+    src: getImagePath("/images/QrEvent/powerbi4.png"),
     caption:
       "Resumen de visitas realizadas a 31 de agosto 2024 en localidades clave: Terra Negra, Cota, Tunja y Pamplona.",
   },
 {
-  src: "/images/QrEvent/powerbi5.png",
+  src: getImagePath("/images/QrEvent/powerbi5.png"),
   caption:
     "Visita a Tierra Negra (Cundinamarca): registro fotográfico de Agro Ruiz S.A.S., mostrando fachada, interior del local, productos en exhibición, personal y material promocional en punto de venta.",
 },
 
 {
-  src: "/images/QrEvent/powerbi6.png",
+  src: getImagePath("/images/QrEvent/powerbi6.png"),
   caption:
     "Visita a Tunja (Boyacá): registro de puntos de venta agrícolas, mostrando exhibiciones de fertilizantes, promociones de productos, estanterías organizadas y material visual de campañas comerciales.",
 },
 
 {
-  src: "/images/QrEvent/powerbi7.png",
+  src: getImagePath("/images/QrEvent/powerbi7.png"),
   caption:
     "Activación en Pamplona, Santanderes: punto de venta Agropecuaria La Séptima con visibilidad de material promocional 'Raspa y Gana con Territorio Corteva', incentivando la compra de productos y la participación en dinámicas comerciales.",
 },
 
 {
-  src: "/images/QrEvent/powerbi8.png",
+  src: getImagePath("/images/QrEvent/powerbi8.png"),
   caption:
     "Registro de facturas: total de 514 tickets ingresados en la campaña, consolidando la participación de distribuidores y clientes en Territorio Corteva Colombia.",
 },
 
 {
-  src: "/images/QrEvent/powerbi9.png",
+  src: getImagePath("/images/QrEvent/powerbi9.png"),
   caption:
     "Consolidado de Registro de Facturas: evidencias fotográficas de facturas físicas de insumos agrícolas en diferentes puntos de venta, validando compras y participación en el programa Territorio Corteva. Total acumulado: 514 registros/tickets.",
 },
 
 {
-  src: "/images/QrEvent/powerbi10.png",
+  src: getImagePath("/images/QrEvent/powerbi10.png"),
   caption:
     "Tierra Negra – Registro de Facturas: recopilación de comprobantes de compra en diferentes agropecuarias y almacenes agrícolas (Coagrohuila, Agrover, Campo Z.G, entre otros). Evidencias de transacciones validadas dentro del programa Territorio Corteva. Total consolidado: 514 registros/tickets.",
 },
 
   {
-    src: "/images/QrEvent/powerbi11.png",
+    src: getImagePath("/images/QrEvent/powerbi11.png"),
     caption:
       "Informe de gestión del programa Territorio Corteva en Colombia al 31 de agosto 2024",
   },
@@ -302,7 +303,7 @@ const QrEventLanding: React.FC = () => {
             muted
             playsInline
             className="absolute z-0 w-auto min-w-full min-h-full max-w-none"
-            poster="/images/QrEvent/hero.png"
+            poster={getImagePath("/images/QrEvent/hero.png")}
           ></video>
           <div className="absolute inset-0 bg-gradient-to-t from-[#101828]/70 via-[#101828]/60 to-transparent z-10"></div>
 
@@ -551,7 +552,7 @@ const QrEventLanding: React.FC = () => {
                 className="flex items-center justify-center"
               >
                 <Image
-                  src="/images/QrEvent/raspaygana.png"
+                  src={getImagePath("/images/QrEvent/raspaygana.png")}
                   alt="Promoción Raspa y Gana"
                   className="w-full rounded-2xl shadow-xl"
                   width={800}
@@ -589,17 +590,23 @@ const QrEventLanding: React.FC = () => {
             >
               <div className="overflow-hidden relative h-[300px] sm:h-[400px] md:h-[500px] rounded-md">
                 <AnimatePresence initial={false}>
-                  <motion.img
+                  <motion.div
                     key={currentIndex}
-                    src={dashboardImages[currentIndex].src}
-                    alt={`Dashboard: ${dashboardImages[currentIndex].caption}`}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.5 }}
-                    className="absolute w-full h-full object-cover"
-                    loading="lazy"
-                  />
+                    className="absolute inset-0"
+                  >
+                    <Image
+                      src={dashboardImages[currentIndex].src}
+                      alt={`Dashboard: ${dashboardImages[currentIndex].caption}`}
+                      className="object-cover"
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 70vw"
+                      priority={currentIndex === 0}
+                    />
+                  </motion.div>
                 </AnimatePresence>
               </div>
               <div className="mt-4 p-4 bg-gray-50 rounded-b-md">
