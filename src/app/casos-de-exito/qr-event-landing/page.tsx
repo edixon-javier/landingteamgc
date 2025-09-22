@@ -21,6 +21,10 @@ import { fadeInUp } from "@/animations/variants";
 import Image from "next/image";
 import { getImagePath } from "@/lib/utils";
 
+// Tipos personalizados para propiedades de imágenes
+type ObjectFitType = "fill" | "contain" | "cover" | "none" | "scale-down";
+type AspectRatioType = "square" | "portrait" | "landscape";
+
 const staggerContainer = {
   hidden: {},
   visible: {
@@ -66,6 +70,9 @@ const timelineData = [
       "Fase 1: Inmersión y análisis. Se definieron los objetivos de negocio, KPIs primarios (tasa de canje, calidad de datos) y el alcance geográfico-operacional del programa.",
     imageUrl: getImagePath("/images/QrEvent/reunion.png"),
     altText: "Equipo de ConsultansGC en sesión de estrategia.",
+    objectFit: "cover",
+    objectPosition: "center",
+    priority: true,
   },
   {
     phase: 2,
@@ -74,6 +81,9 @@ const timelineData = [
       'Fase 2: Diseño de la experiencia. Se curó el catálogo de 20 productos por kit y se diseñó todo el material de punto de venta, incluyendo el sistema "Raspa y Gana".',
     imageUrl: getImagePath("/images/QrEvent/diseno.png"),
     altText: "Productos promocionales brandeados.",
+    objectFit: "cover",
+    objectPosition: "center",
+    priority: false,
   },
   {
     phase: 3,
@@ -82,6 +92,9 @@ const timelineData = [
       "Fase 3: Construcción del motor de datos. Se desarrolló y probó la plataforma de captura de información, optimizando el formulario para una experiencia de usuario móvil fluida y segura.",
     imageUrl: getImagePath("/images/QrEvent/form_phone.webp"),
     altText: "Interfaz de formulario en un smartphone.",
+    objectFit: "contain",
+    objectPosition: "center",
+    priority: false,
   },
   {
     phase: 4,
@@ -90,6 +103,9 @@ const timelineData = [
       "Fase 4: Planificación operativa. Se coordinó el ensamblaje de 280 kits y se diseñó la matriz de distribución nacional para garantizar la entrega puntual.",
     imageUrl: getImagePath("/images/QrEvent/logistica.png"),
     altText: "Centro de distribución con paquetes listos.",
+    objectFit: "cover",
+    objectPosition: "center top",
+    priority: false,
   },
   {
     phase: 5,
@@ -98,6 +114,9 @@ const timelineData = [
       "Fase 5: Habilitación del canal. Se ejecutaron programas de formación para los equipos comerciales y gerentes de tienda, asegurando la adopción y correcta implementación.",
     imageUrl: getImagePath("/images/QrEvent/profesional_form.webp"),
     altText: "Sesión de capacitación corporativa.",
+    objectFit: "cover",
+    objectPosition: "center",
+    priority: false,
   },
   {
     phase: 6,
@@ -106,6 +125,9 @@ const timelineData = [
       "Fase 6: Go-live. Se lanzó la campaña en los 280 puntos de venta. El progreso fue monitoreado en tiempo real a través de nuestro dashboard de control.",
     imageUrl: getImagePath("/images/QrEvent/dashboard.png"),
     altText: "Cliente interactuando con material POP.",
+    objectFit: "contain",
+    objectPosition: "center",
+    priority: false,
   },
   {
     phase: 7,
@@ -114,6 +136,9 @@ const timelineData = [
       "Fase 7: Cierre y entrega de valor. Se procesaron y analizaron los datos para generar un informe ejecutivo en Power BI con insights y recomendaciones estratégicas.",
     imageUrl: getImagePath("/images/QrEvent/powerbi.png"),
     altText: "Dashboard de Power BI con resultados.",
+    objectFit: "contain",
+    objectPosition: "center",
+    priority: false,
   },
 ];
 
@@ -122,31 +147,55 @@ const galleryImages = [
     src: getImagePath("/images/QrEvent/galeria1.png"),
     alt: "Caja de kit promocional de Corteva abierta con productos",
     title: "Kits Promocionales",
+    objectFit: "cover",
+    objectPosition: "center",
+    priority: true,
+    aspectRatio: "square", // square, portrait, landscape
   },
   {
     src: getImagePath("/images/QrEvent/galeria2.png"),
     alt: "Productos de Corteva con branding de la campaña",
     title: "Productos Brandeados",
+    objectFit: "cover",
+    objectPosition: "center",
+    priority: true,
+    aspectRatio: "square",
   },
   {
     src: getImagePath("/images/QrEvent/galeria3.png"),
     alt: "Afiche de Raspa y Gana en un almacén agrícola",
     title: "Material P.O.P",
+    objectFit: "cover",
+    objectPosition: "center",
+    priority: false,
+    aspectRatio: "square",
   },
   {
     src: getImagePath("/images/QrEvent/galeria4.png"),
     alt: "Detalle de un producto brandeado Corteva",
     title: "Branding de Producto",
+    objectFit: "cover",
+    objectPosition: "center",
+    priority: false,
+    aspectRatio: "square",
   },
   {
     src: getImagePath("/images/QrEvent/galeria5.png"),
     alt: "Asesor explicando la campaña a un cliente",
     title: "Rediseno del logo de Corteva",
+    objectFit: "cover",
+    objectPosition: "center",
+    priority: false,
+    aspectRatio: "square",
   },
   {
     src: getImagePath("/images/QrEvent/galeria6.png"),
     alt: "Pila de kits listos para ser despachados",
     title: "Danglers para punto de venta",
+    objectFit: "cover",
+    objectPosition: "center",
+    priority: false,
+    aspectRatio: "square",
   },
 ];
 
@@ -183,64 +232,91 @@ const scratchSteps = [
 const dashboardImages = [
   {
     src: getImagePath("/images/QrEvent/powerbi1.png"),
-     caption:
+    caption:
     "Dashboard General: Informe de gestión del programa Territorio Corteva en Colombia al 31 de agosto 2024, mostrando zonas cubiertas, registros totales, almacenes impactados y municipios alcanzados.",
+    objectFit: "contain",
+    objectPosition: "center",
+    priority: true,
   },
   {
     src: getImagePath("/images/QrEvent/powerbi2.png"),
     caption:
     "Distribución de registros por zona y municipio: Huila lidera con mayor participación, seguido de Cundinamarca y Nariño. Se muestran gráficos comparativos y un mapa georreferenciado de ventas en Colombia.",
+    objectFit: "contain",
+    objectPosition: "center",
+    priority: false,
   },
   {
     src: getImagePath("/images/QrEvent/powerbi3.png"),
     caption:
     "Evolución de registros por zona y mes: comparación mensual de mayo a agosto 2024, destacando el crecimiento en Huila y Cundinamarca. Incluye gráfico de tendencias y distribución acumulada por regiones.",
+    objectFit: "contain",
+    objectPosition: "center",
+    priority: false,
   },
   {
     src: getImagePath("/images/QrEvent/powerbi4.png"),
     caption:
       "Resumen de visitas realizadas a 31 de agosto 2024 en localidades clave: Terra Negra, Cota, Tunja y Pamplona.",
+    objectFit: "contain",
+    objectPosition: "center",
+    priority: false,
   },
 {
   src: getImagePath("/images/QrEvent/powerbi5.png"),
   caption:
     "Visita a Tierra Negra (Cundinamarca): registro fotográfico de Agro Ruiz S.A.S., mostrando fachada, interior del local, productos en exhibición, personal y material promocional en punto de venta.",
+  objectFit: "contain",
+  objectPosition: "center",
+  priority: false,
 },
-
 {
   src: getImagePath("/images/QrEvent/powerbi6.png"),
   caption:
     "Visita a Tunja (Boyacá): registro de puntos de venta agrícolas, mostrando exhibiciones de fertilizantes, promociones de productos, estanterías organizadas y material visual de campañas comerciales.",
+  objectFit: "contain",
+  objectPosition: "center",
+  priority: false,
 },
-
 {
   src: getImagePath("/images/QrEvent/powerbi7.png"),
   caption:
     "Activación en Pamplona, Santanderes: punto de venta Agropecuaria La Séptima con visibilidad de material promocional 'Raspa y Gana con Territorio Corteva', incentivando la compra de productos y la participación en dinámicas comerciales.",
+  objectFit: "contain",
+  objectPosition: "center",
+  priority: false,
 },
-
 {
   src: getImagePath("/images/QrEvent/powerbi8.png"),
   caption:
     "Registro de facturas: total de 514 tickets ingresados en la campaña, consolidando la participación de distribuidores y clientes en Territorio Corteva Colombia.",
+  objectFit: "contain",
+  objectPosition: "center",
+  priority: false,
 },
-
 {
   src: getImagePath("/images/QrEvent/powerbi9.png"),
   caption:
     "Consolidado de Registro de Facturas: evidencias fotográficas de facturas físicas de insumos agrícolas en diferentes puntos de venta, validando compras y participación en el programa Territorio Corteva. Total acumulado: 514 registros/tickets.",
+  objectFit: "contain",
+  objectPosition: "center",
+  priority: false,
 },
-
 {
   src: getImagePath("/images/QrEvent/powerbi10.png"),
   caption:
     "Tierra Negra – Registro de Facturas: recopilación de comprobantes de compra en diferentes agropecuarias y almacenes agrícolas (Coagrohuila, Agrover, Campo Z.G, entre otros). Evidencias de transacciones validadas dentro del programa Territorio Corteva. Total consolidado: 514 registros/tickets.",
+  objectFit: "contain",
+  objectPosition: "center",
+  priority: false,
 },
-
   {
     src: getImagePath("/images/QrEvent/powerbi11.png"),
     caption:
       "Informe de gestión del programa Territorio Corteva en Colombia al 31 de agosto 2024",
+    objectFit: "contain",
+    objectPosition: "center",
+    priority: false,
   },
 ];
 
@@ -442,14 +518,33 @@ const QrEventLanding: React.FC = () => {
                     <p className="text-slate-600 leading-relaxed mb-6">
                       {item.description}
                     </p>
-                    <Image
-                      src={item.imageUrl}
-                      alt={item.altText}
-                      className="rounded-lg object-contain w-full"
-                      width={800}
-                      height={600}
-                      priority={false}
-                    />
+                    <div className="relative w-full h-[300px] md:h-[400px]">
+                      <Image
+                        src={item.imageUrl}
+                        alt={item.altText}
+                        className={`rounded-lg ${
+                          item.objectFit === "contain" ? "object-contain" : 
+                          item.objectFit === "fill" ? "object-fill" :
+                          item.objectFit === "none" ? "object-none" : 
+                          item.objectFit === "scale-down" ? "object-scale-down" :
+                          "object-cover"
+                        } ${
+                          item.objectPosition === "center" ? "object-center" :
+                          item.objectPosition === "top" ? "object-top" :
+                          item.objectPosition === "bottom" ? "object-bottom" :
+                          item.objectPosition === "left" ? "object-left" :
+                          item.objectPosition === "right" ? "object-right" :
+                          item.objectPosition === "left top" ? "object-left-top" :
+                          item.objectPosition === "right top" ? "object-right-top" :
+                          item.objectPosition === "left bottom" ? "object-left-bottom" :
+                          item.objectPosition === "right bottom" ? "object-right-bottom" :
+                          "object-center"
+                        }`}
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 800px"
+                        priority={item.priority}
+                      />
+                    </div>
                   </div>
                 </motion.div>
               ))}
@@ -485,18 +580,41 @@ const QrEventLanding: React.FC = () => {
                   key={index}
                   className="relative overflow-hidden rounded-lg shadow-lg group"
                 >
-                  <Image
-                    src={image.src}
-                    alt={image.alt}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    width={800}
-                    height={600}
-                    priority={false}
-                  />
-                  <div className="absolute inset-0 bg-black/60 flex items-end p-4 transition-opacity duration-500 opacity-0 group-hover:opacity-100">
-                    <h3 className="text-white text-lg font-bold">
-                      {image.title}
-                    </h3>
+                  <div className={`relative w-full ${
+                    image.aspectRatio === 'portrait' ? 'aspect-[3/4]' : 
+                    image.aspectRatio === 'landscape' ? 'aspect-[4/3]' : 
+                    'aspect-square'
+                  } overflow-hidden`}>
+                    <Image
+                      src={image.src}
+                      alt={image.alt}
+                      className={`transition-transform duration-500 group-hover:scale-110 ${
+                        image.objectFit === "contain" ? "object-contain" : 
+                        image.objectFit === "fill" ? "object-fill" :
+                        image.objectFit === "none" ? "object-none" : 
+                        image.objectFit === "scale-down" ? "object-scale-down" :
+                        "object-cover"
+                      } ${
+                        image.objectPosition === "center" ? "object-center" :
+                        image.objectPosition === "top" ? "object-top" :
+                        image.objectPosition === "bottom" ? "object-bottom" :
+                        image.objectPosition === "left" ? "object-left" :
+                        image.objectPosition === "right" ? "object-right" :
+                        image.objectPosition === "left top" ? "object-left-top" :
+                        image.objectPosition === "right top" ? "object-right-top" :
+                        image.objectPosition === "left bottom" ? "object-left-bottom" :
+                        image.objectPosition === "right bottom" ? "object-right-bottom" :
+                        "object-center"
+                      }`}
+                      fill
+                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 400px"
+                      priority={image.priority}
+                    />
+                    <div className="absolute inset-0 bg-black/60 flex items-end p-4 transition-opacity duration-500 opacity-0 group-hover:opacity-100">
+                      <h3 className="text-white text-lg font-bold">
+                        {image.title}
+                      </h3>
+                    </div>
                   </div>
                 </motion.div>
               ))}
@@ -551,14 +669,16 @@ const QrEventLanding: React.FC = () => {
                 variants={fadeInUp}
                 className="flex items-center justify-center"
               >
-                <Image
-                  src={getImagePath("/images/QrEvent/raspaygana.png")}
-                  alt="Promoción Raspa y Gana"
-                  className="w-full rounded-2xl shadow-xl"
-                  width={800}
-                  height={600}
-                  priority={false}
-                />
+                <div className="relative h-[400px] w-full">
+                  <Image
+                    src={getImagePath("/images/QrEvent/raspaygana.png")}
+                    alt="Promoción Raspa y Gana"
+                    className="rounded-2xl shadow-xl object-contain object-center"
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
+                    priority={true}
+                  />
+                </div>
               </motion.div>
             </div>
           </motion.div>
@@ -601,10 +721,23 @@ const QrEventLanding: React.FC = () => {
                     <Image
                       src={dashboardImages[currentIndex].src}
                       alt={`Dashboard: ${dashboardImages[currentIndex].caption}`}
-                      className="object-cover"
                       fill
+                      className={`${
+                        dashboardImages[currentIndex].objectFit === "cover" ? "object-cover" : 
+                        dashboardImages[currentIndex].objectFit === "fill" ? "object-fill" :
+                        dashboardImages[currentIndex].objectFit === "none" ? "object-none" : 
+                        dashboardImages[currentIndex].objectFit === "scale-down" ? "object-scale-down" :
+                        "object-contain"
+                      } ${
+                        dashboardImages[currentIndex].objectPosition === "center" ? "object-center" :
+                        dashboardImages[currentIndex].objectPosition === "top" ? "object-top" :
+                        dashboardImages[currentIndex].objectPosition === "bottom" ? "object-bottom" :
+                        dashboardImages[currentIndex].objectPosition === "left" ? "object-left" :
+                        dashboardImages[currentIndex].objectPosition === "right" ? "object-right" :
+                        "object-center"
+                      }`}
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 70vw"
-                      priority={currentIndex === 0}
+                      priority={dashboardImages[currentIndex].priority}
                     />
                   </motion.div>
                 </AnimatePresence>
