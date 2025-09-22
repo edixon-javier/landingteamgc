@@ -5,7 +5,7 @@ export const fadeIn: Variants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.7, ease: "easeOut" },
+    transition: { duration: 0.7, ease: [0.42, 0, 0.58, 1] },
   },
 };
 
@@ -14,7 +14,7 @@ export const fadeInLeft: Variants = {
   visible: {
     opacity: 1,
     x: 0,
-    transition: { duration: 0.8, ease: "easeOut" },
+    transition: { duration: 0.8, ease: [0.42, 0, 0.58, 1] },
   },
 };
 
@@ -23,7 +23,7 @@ export const fadeInRight: Variants = {
   visible: {
     opacity: 1,
     x: 0,
-    transition: { duration: 0.8, ease: "easeOut" },
+    transition: { duration: 0.8, ease: [0.42, 0, 0.58, 1] },
   },
 };
 
@@ -55,7 +55,7 @@ export const slideUp: Variants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: "easeOut" },
+    transition: { duration: 0.6, ease: [0.42, 0, 0.58, 1] },
   },
 };
 
@@ -64,7 +64,7 @@ export const fadeInUp: Variants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.8, ease: "easeOut" },
+    transition: { duration: 0.8, ease: [0.42, 0, 0.58, 1] },
   },
 };
 
@@ -73,7 +73,7 @@ export const slideDown: Variants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: "easeOut" },
+    transition: { duration: 0.6, ease: [0.42, 0, 0.58, 1] },
   },
 };
 
@@ -82,7 +82,7 @@ export const zoomIn: Variants = {
   visible: {
     opacity: 1,
     scale: 1,
-    transition: { duration: 0.5, ease: "easeOut" },
+    transition: { duration: 0.5, ease: [0.42, 0, 0.58, 1] },
   },
 };
 
@@ -91,6 +91,6 @@ export const listItem: Variants = {
   visible: {
     opacity: 1,
     x: 0,
-    transition: { duration: 0.5, ease: "easeOut" },
+    transition: { duration: 0.5, ease: [0.42, 0, 0.58, 1] },
   },
 };

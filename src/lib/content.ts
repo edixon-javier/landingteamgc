@@ -189,7 +189,7 @@ export const caseStudiesData = [
   },
   {
     slug: "qr-event-management",
-    name: "Gestión de Eventos con Códigos QR",
+    name: "Programa de Activación Territorial y CRM para Corteva.",
     title:
       "Nuestra plataforma centraliza y automatiza el registro de datos y facilita el análisis de resultados en tiempo real.",
     subtitle:
