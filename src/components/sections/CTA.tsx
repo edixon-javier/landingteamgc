@@ -63,6 +63,14 @@ export function CTA() {
                 </div>
                 
                 <div className="flex items-start gap-6 group">
+                  <MapPin className="h-6 w-6 text-sky-600 mt-1 flex-shrink-0 group-hover:scale-110 transition-transform" />
+                  <div>
+                    <h3 className="font-semibold text-lg text-gray-900">Ciudad de Panamá, Panamá</h3>
+                    <p className="text-gray-600">Torre Empresarial</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start gap-6 group">
                   <Phone className="h-6 w-6 text-sky-600 mt-1 flex-shrink-0 group-hover:scale-110 transition-transform" />
                   <div>
                     <h3 className="font-semibold text-lg text-gray-900">Móvil</h3>
@@ -86,8 +94,33 @@ export function CTA() {
             variants={fadeIn}
             className="bg-white p-8 lg:p-12 rounded-2xl shadow-2xl shadow-sky-900/5 border border-gray-100/50 backdrop-blur-sm"
           >
-            <form action="#" method="POST" className="space-y-8">
-              <div className="space-y-6">
+            <div className="mb-6">
+              <h3 className="text-2xl font-bold text-gray-900 mb-2">¿Listo para dar el siguiente paso?</h3>
+              <p className="text-gray-600">Completa el formulario y nos pondremos en contacto contigo en menos de 24 horas.</p>
+            </div>
+            
+            <form action="#" method="POST" className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label
+                    htmlFor="name"
+                    className="block text-sm font-semibold text-gray-700 mb-2"
+                  >
+                    Nombre
+                  </label>
+                  <input
+                    type="text"
+                    name="name"
+                    id="name"
+                    autoComplete="name"
+                    placeholder="Tu nombre"
+                    className="block w-full px-4 py-3 text-gray-900 placeholder-gray-400 
+                    bg-gray-50 border border-gray-200 rounded-xl
+                    focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500 
+                    focus:bg-white transition-all duration-200"
+                  />
+                </div>
+                
                 <div>
                   <label
                     htmlFor="email"
@@ -107,28 +140,63 @@ export function CTA() {
                     focus:bg-white transition-all duration-200"
                   />
                 </div>
-
-                <div>
-                  <label
-                    htmlFor="message"
-                    className="block text-sm font-semibold text-gray-700 mb-2"
-                  >
-                    ¿Cómo podemos ayudarte?
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={6}
-                    placeholder="Cuéntanos sobre tu proyecto..."
-                    className="block w-full px-4 py-3 text-gray-900 placeholder-gray-400 
-                    bg-gray-50 border border-gray-200 rounded-xl
-                    focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500 
-                    focus:bg-white transition-all duration-200 resize-none"
-                  ></textarea>
-                </div>
+              </div>
+              
+              <div>
+                <label
+                  htmlFor="company"
+                  className="block text-sm font-semibold text-gray-700 mb-2"
+                >
+                  Empresa
+                </label>
+                <input
+                  type="text"
+                  name="company"
+                  id="company"
+                  placeholder="Nombre de tu empresa"
+                  className="block w-full px-4 py-3 text-gray-900 placeholder-gray-400 
+                  bg-gray-50 border border-gray-200 rounded-xl
+                  focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500 
+                  focus:bg-white transition-all duration-200"
+                />
               </div>
 
               <div>
+                <label
+                  htmlFor="message"
+                  className="block text-sm font-semibold text-gray-700 mb-2"
+                >
+                  ¿Cómo podemos ayudarte?
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows={7}
+                  placeholder="Cuéntanos sobre tu proyecto..."
+                  className="block w-full px-4 py-3 text-gray-900 placeholder-gray-400 
+                  bg-gray-50 border border-gray-200 rounded-xl
+                  focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500 
+                  focus:bg-white transition-all duration-200 resize-none"
+                ></textarea>
+              </div>
+
+              <div className="flex items-start">
+                <div className="flex items-center h-5">
+                  <input
+                    id="privacy"
+                    name="privacy"
+                    type="checkbox"
+                    className="h-4 w-4 text-sky-600 border-gray-300 rounded focus:ring-sky-500"
+                  />
+                </div>
+                <div className="ml-3">
+                  <label htmlFor="privacy" className="text-sm text-gray-600">
+                    Acepto la <a href="#" className="text-sky-600 hover:text-sky-800">política de privacidad</a> y el tratamiento de mis datos
+                  </label>
+                </div>
+              </div>
+
+              <div className="pt-2">
                 <motion.div
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
