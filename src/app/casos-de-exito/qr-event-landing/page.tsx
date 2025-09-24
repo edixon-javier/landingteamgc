@@ -202,21 +202,22 @@ const scratchSteps = [
     title: "Compra",
     desc: "El cliente realiza una compra de productos Corteva participantes.",
   },
-  {
+   {
     num: 2,
-    title: "Raspa",
-    desc: 'Recibe una tarjeta "Raspa y Gana" para descubrir el código QR.',
+    title: "Completa Formulario",
+    desc: "Ingresa sus datos para registrar su participación y redimir su premio.",
   },
   {
     num: 3,
     title: "Escanea QR",
     desc: "Usa su celular para escanear el código y acceder al formulario.",
   },
-  {
+    {
     num: 4,
-    title: "Completa Formulario",
-    desc: "Ingresa sus datos para registrar su participación y redimir su premio.",
+    title: "Raspa",
+    desc: 'Recibe una tarjeta "Raspa y Gana" para descubrir el código QR.',
   },
+
   {
     num: 5,
     title: "Entrega del Premio",
