@@ -12,6 +12,9 @@ const roboto = Roboto({
 export const metadata: Metadata = {
   title: "Consultoría y Desarrollo | ConsultansGC",
   description: "Soluciones tecnológicas innovadoras para transformar ideas en realidades digitales impactantes.",
+  icons: {
+    icon: "/assets/icons/favicon.ico",
+  },
 };
 
 import { UIProvider } from "@/contexts/UIContext";
