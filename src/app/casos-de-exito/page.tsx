@@ -3,7 +3,7 @@
 import { Suspense } from 'react';
 import { Header } from '@/components/organisms/Header';
 import { caseStudiesData } from '@/lib/content';
-import { CaseStudyCard } from '@/components/portfolio/CaseStudyCard';
+import { CaseStudyGrid } from '@/components/portfolio/CaseStudyCard';
 import { Footer } from "@/components/organisms/Footer";
 import { motion } from 'framer-motion';
 import { useAgendaDemoScroll } from '@/hooks/useAgendaDemoScroll';
@@ -108,33 +108,24 @@ export default function CasosDeExitoPage() {
       <main className="py-20 md:py-32 bg-white relative">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <Suspense fallback={
-            <div className="space-y-16">
-              {[...Array(3)].map((_, i) => (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {[...Array(6)].map((_, i) => (
                 <div 
                   key={i} 
-                  className="animate-pulse flex flex-col lg:flex-row gap-12 items-center mb-28"
+                  className="animate-pulse bg-white rounded-2xl shadow-lg overflow-hidden"
                 >
-                  <div className="w-full lg:w-1/2 h-[400px] bg-gray-200 rounded-2xl"></div>
-                  <div className="w-full lg:w-1/2 space-y-6">
-                    <div className="h-8 bg-gray-200 rounded-full w-32"></div>
-                    <div className="h-12 bg-gray-200 rounded w-3/4"></div>
-                    <div className="h-24 bg-gray-200 rounded w-full"></div>
-                    <div className="h-14 bg-gray-200 rounded-xl w-48"></div>
+                  <div className="h-48 bg-gray-200"></div>
+                  <div className="p-6 space-y-4">
+                    <div className="h-4 bg-gray-200 rounded w-24"></div>
+                    <div className="h-6 bg-gray-200 rounded w-3/4"></div>
+                    <div className="h-16 bg-gray-200 rounded w-full"></div>
+                    <div className="h-10 bg-gray-200 rounded w-full"></div>
                   </div>
                 </div>
               ))}
             </div>
           }>
-            <div className="space-y-16 md:space-y-24">
-              {caseStudiesData.map((caseStudy, index) => (
-                <CaseStudyCard
-                  key={caseStudy.slug}
-                  caseStudy={caseStudy}
-                  isReversed={index % 2 === 1}
-                  priority={index < 2}
-                />
-              ))}
-            </div>
+            <CaseStudyGrid caseStudies={caseStudiesData} />
           </Suspense>
         </div>
       </main>
