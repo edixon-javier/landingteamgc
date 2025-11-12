@@ -90,7 +90,7 @@ export default function TerminosCondicionesPage() {
               <section>
                 <h2 className="text-2xl font-semibold text-white mb-4">6. Limitación de Responsabilidad</h2>
                 <p>
-                  Nuestros servicios se proporcionan "tal como están". No garantizamos resultados específicos, 
+                  Nuestros servicios se proporcionan &quot;tal como están&quot;. No garantizamos resultados específicos, 
                   aunque nos comprometemos a aplicar las mejores prácticas de la industria.
                 </p>
               </section>
