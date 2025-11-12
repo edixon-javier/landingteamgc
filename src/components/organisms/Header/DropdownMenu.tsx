@@ -122,8 +122,8 @@ export function DropdownMenu({
       'filbo-exito': '/casos-de-exito-thinking/FilboExitoPage',
     };
     
-    // Usar la función getLinkPath para construir la ruta completa
-      return routeMap[slug] || `/casos-de-exito/${slug}`  ;
+    // Devolver la ruta directamente sin basePath
+    return routeMap[slug] || `/casos-de-exito/${slug}`;
   }, []);
 
   // Manejo de navegación por teclado

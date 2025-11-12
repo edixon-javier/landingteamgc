@@ -2,95 +2,52 @@ import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
 /**
- * Devuelve la ruta base según el entorno
+ * Devuelve la ruta base - para dominio personalizado siempre vacía
  */
 export function getBasePath() {
-  return process.env.NODE_ENV === 'production' ? '/landingteamgc' : '';
+  return '';
 }
 
 /**
- * Genera una URL completa con el basePath correcto para enlaces internos
- * Usar esta función para todos los enlaces de navegación
+ * Genera una URL para enlaces internos - limpia referencias a landingteamgc
  */
 export function getLinkPath(path: string) {
-  const basePath = getBasePath();
+  // Limpiar cualquier basePath existente (landingteamgc)
+  const cleanPath = path.replace('/landingteamgc', '');
   
-  // Normalizar la ruta para asegurar que comienza con /
-  const normalizedPath = path.startsWith('/') ? path : `/${path}`;
+  // Normalizar la ruta
+  const normalizedPath = cleanPath.startsWith('/') ? cleanPath : `/${cleanPath}`;
   
-  // Construir URL completa con basePath si estamos en producción
-  const fullPath = `${basePath}${normalizedPath}`;
-  
-  // Para depuración en desarrollo
-  if (process.env.NODE_ENV !== 'production') {
-    console.log(`Original link path: ${path}, Full path: ${fullPath}`);
-  }
-  
-  return fullPath;
+  // Asegurar que no hay dobles barras
+  return normalizedPath.replace(/\/+/g, '/');
 }
 
 /**
- * Genera una ruta completa para imágenes estáticas
+ * Genera una ruta para imágenes - limpia referencias a landingteamgc
  */
 export function getImagePath(path: string) {
-  const basePath = getBasePath();
+  // Limpiar cualquier basePath existente (landingteamgc)
+  const cleanPath = path.replace('/landingteamgc', '');
   
-  // Asegurar que la ruta no comience con '/' cuando hay un basePath
-  const normalizedPath = path.startsWith('/') 
-    ? path.substring(1) 
-    : path;
+  // Normalizar la ruta
+  const normalizedPath = cleanPath.startsWith('/') 
+    ? cleanPath 
+    : `/${cleanPath}`;
   
-  // Verificar si la ruta existe y corregir el nombre de carpeta si es necesario
-  let correctedPath = normalizedPath;
-  
-  // Corregir referencias específicas conocidas que están dando problemas
-  if (correctedPath.includes('tanic/')) {
-    correctedPath = correctedPath.replace('tanic/', 'tanic/');
-  }
-  
-  // Mantener las mayúsculas/minúsculas originales y solo normalizar los separadores
-  const formattedPath = `/${correctedPath}`
+  // Limpiar espacios y barras dobles
+  const formattedPath = normalizedPath
     .replace(/\s+/g, '-')
     .replace(/--+/g, '-')
     .replace(/\/+/g, '/');
   
-  // Asegurar que no haya doble slash entre basePath y la ruta
-  const finalPath = basePath 
-    ? `${basePath}${formattedPath}` 
-    : formattedPath;
-
-
-    
-  // Para depuración en desarrollo
-  if (process.env.NODE_ENV !== 'production') {
-    console.log(`Original path: ${path}, Final path: ${finalPath}`);
-  }
-  
-  return finalPath;
+  return formattedPath;
 }
 
 /**
- * Función específica para recursos de video con las mismas normalizaciones
+ * Función para recursos de video - limpia referencias a landingteamgc
  */
 export function getVideoPath(path: string) {
-  const basePath = getBasePath();
-  
-  // Asegurar que la ruta no comience con '/' cuando hay un basePath
-  const normalizedPath = path.startsWith('/') 
-    ? path.substring(1) 
-    : path;
-  
-  // Normalizar la ruta y asegurar que comience con /
-  const formattedPath = `/${normalizedPath}`
-    .toLowerCase()
-    .replace(/\s+/g, '-')
-    .replace(/--+/g, '-')
-    .replace(/\/+/g, '/');
-  
-  return `${basePath}${formattedPath}`;
-
-
-
+  return getImagePath(path);
 }
 
 export function cn(...inputs: ClassValue[]) {

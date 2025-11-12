@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+  <!-- Favicon ConsultansGC -->
+  <rect width="48" height="48" fill="#1E40AF" rx="6"/>
+  
+  <!-- GC estilizado -->
+  <g fill="white" font-family="Arial, sans-serif" font-weight="bold" font-size="24">
+    <text x="6" y="32">GC</text>
+  </g>
+  
+  <!-- Punto decorativo -->
+  <circle cx="38" cy="38" r="3" fill="#60A5FA"/>
+  
+  <!-- Línea decorativa -->
+  <rect x="8" y="40" width="24" height="2" fill="#60A5FA" rx="1"/>
+</svg>

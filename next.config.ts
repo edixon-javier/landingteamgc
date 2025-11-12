@@ -1,40 +1,47 @@
 import type { NextConfig } from "next";
 
-const isProd = process.env.NODE_ENV === 'production';
-const basePath = isProd ? '/landingteamgc' : '';
-
 const nextConfig: NextConfig = {
+  // Configuración para build estático (compatible con Plesk)
   output: 'export',
+  trailingSlash: true,
+  
+  // Configuración de imágenes para build estático
   images: {
-    unoptimized: true,
+    unoptimized: true, // Necesario para exportación estática
     remotePatterns: [],
-    path: `${basePath}/_next/image`,
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     formats: ['image/avif', 'image/webp'],
   },
-  // Configuración para GitHub Pages
-  basePath: basePath,
-  assetPrefix: basePath,
-  // Asegurar que las URLs terminen con barra para mejor compatibilidad
-  trailingSlash: true,
-  // Configuración para mejorar el rendimiento y optimización
+  
+  // Configuración de rendimiento
   reactStrictMode: true,
   poweredByHeader: false,
   compress: true,
-  // Configuración adicional para manejo de assets
-  webpack: (config) => {
+  
+  // Configuración de webpack optimizada
+  webpack: (config, { isServer }) => {
+    // Configuración para el cliente
+    if (!isServer) {
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        fs: false,
+      };
+    }
+    
+    // Manejo de archivos multimedia
     config.module.rules.push({
       test: /\.(mp4|webm|ogg)$/,
       use: {
         loader: 'file-loader',
         options: {
-          publicPath: `${basePath}/_next`,
+          publicPath: '/_next/static/media/',
           outputPath: 'static/media/',
           name: '[name].[hash].[ext]',
         },
       },
     });
+    
     return config;
   },
 };

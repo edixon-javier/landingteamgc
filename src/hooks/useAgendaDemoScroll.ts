@@ -14,11 +14,8 @@ export function useAgendaDemoScroll(sectionId: string) {
     if (e) e.preventDefault();
     if (typeof window === "undefined") return;
 
-    // Obtener el basePath de forma dinámica desde la configuración de Next.js
-    const basePath = process.env.NODE_ENV === 'production' ? '/landingteamgc' : '';
-    
-    // Obtener la ruta actual sin el basePath
-    const pathname = window.location.pathname.replace(basePath, '');
+    // Obtener la ruta actual (sin basePath para dominio personalizado)
+    const pathname = window.location.pathname;
     const isLanding = pathname === '/' || pathname === '';
 
     const scrollToSection = () => {
@@ -39,7 +36,7 @@ export function useAgendaDemoScroll(sectionId: string) {
       setTimeout(scrollToSection, 80);
     } else {
       // Si no estamos en la landing, redirigimos a la landing con el hash
-      const targetUrl = `${basePath}/#${sectionId}`;
+      const targetUrl = `/#${sectionId}`;
       window.location.href = targetUrl;
     }
   }, [sectionId]);

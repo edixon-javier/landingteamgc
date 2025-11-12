@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" width="180" height="180">
+  <!-- Apple Touch Icon ConsultansGC -->
+  <rect width="180" height="180" fill="#1E40AF" rx="32"/>
+  
+  <!-- Logo GC para Apple Touch Icon -->
+  <g fill="white">
+    <!-- G -->
+    <path d="M45 90 A45 45 0 0 1 90 45 A45 45 0 0 1 135 90 L120 90 A30 30 0 0 0 90 60 A30 30 0 0 0 60 90 A30 30 0 0 0 90 120 L90 105 L120 105 L120 135 A45 45 0 0 1 45 90"/>
+    
+    <!-- C -->
+    <circle cx="135" cy="90" r="45" fill="none" stroke="white" stroke-width="15" stroke-dasharray="0 70 210 70"/>
+  </g>
+  
+  <!-- Línea decorativa -->
+  <rect x="60" y="150" width="60" height="4" fill="#60A5FA" rx="2"/>
+</svg>

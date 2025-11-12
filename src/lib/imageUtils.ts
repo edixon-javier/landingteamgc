@@ -6,7 +6,7 @@ interface ImageConfig {
 }
 
 const imageConfig: ImageConfig = {
-  basePath: process.env.NEXT_PUBLIC_BASE_PATH || '',
+  basePath: '', // Sin basePath para dominio personalizado
   formats: ['webp', 'avif', 'png', 'jpg', 'jpeg'],
   defaultFormat: 'webp',
   quality: 75,
@@ -24,11 +24,11 @@ export function getOptimizedImagePath(path: string, format?: string): string {
   // Si se especifica un formato, intenta convertir la imagen a ese formato
   if (format && imageConfig.formats.includes(format)) {
     const pathWithoutExt = normalizedPath.replace(/\.[^/.]+$/, '');
-    return `${imageConfig.basePath}/${pathWithoutExt}.${format}`;
+    return `/${pathWithoutExt}.${format}`;
   }
 
   // Si no se especifica formato, mantén el formato original
-  return `${imageConfig.basePath}/${normalizedPath}`;
+  return `/${normalizedPath}`;
 }
 
 export function getSrcSet(path: string): string {
