@@ -20,7 +20,7 @@ export default function CasosDeExitoThinkingPage() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
-        className="relative min-h-[90vh] flex items-center justify-center bg-[#111827] text-white overflow-hidden"
+        className="relative min-h-[60vh] flex items-center justify-center bg-[#111827] text-white overflow-hidden"
       >
         {/* Fondo decorativo con animación sutil */}
         <div className="absolute inset-0">
